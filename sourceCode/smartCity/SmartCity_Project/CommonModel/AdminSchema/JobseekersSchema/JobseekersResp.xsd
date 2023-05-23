@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd2"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd2"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="JobseekersResp" type="JobseekersRespType"/>
+	<xs:complexType name="JobseekersRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="JobseekersInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="JobseekersInfo" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="BusinessResp" type="BusinessRespType"/>
+	<xs:complexType name="BusinessRespType">
+		<xs:sequence>
+			<xs:element ref="Status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="BusinessInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="City" type="xs:string"/>
+	<xs:element name="BusinessInfo" type="BusinessInfoType"/>
+	<xs:complexType name="BusinessInfoType">
+		<xs:choice>
+			<xs:element ref="News" minOccurs="0"/>
+			<xs:element ref="Business_centers" minOccurs="0"/>
+			<xs:element ref="Industries" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="News" type="NewsType"/>
+	<xs:element name="Business_centers" type="Business_centersType"/>
+	<xs:element name="Industries" type="IndustriesType"/>
+	<xs:complexType name="NewsType">
+		<xs:sequence>
+			<xs:element ref="Title"/>
+			<xs:element ref="Description"/>
+			<xs:element ref="Published_Date"/>
+			<xs:element ref="Source"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Business_centersType">
+		<xs:sequence>
+			<xs:element ref="Center_name"/>
+			<xs:element ref="Locations"/>
+			<xs:element ref="Descriptions"/>
+			<xs:element ref="Contact_email"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndustriesType">
+		<xs:sequence>
+			<xs:element ref="Industry_Id"/>
+			<xs:element ref="Industry_name"/>
+			<xs:element ref="Descriptions"/>
+			<xs:element ref="Locations"/>
+			<xs:element ref="Contact_email"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Title" type="xs:string"/>
+	<xs:element name="Description" type="xs:string"/>
+	<xs:element name="Published_Date" type="xs:string"/>
+	<xs:element name="Source" type="xs:string"/>
+	<xs:element name="Center_name" type="xs:string"/>
+	<xs:element name="Locations" type="xs:string"/>
+	<xs:element name="Descriptions" type="xs:string"/>
+	<xs:element name="Contact_email" type="xs:string"/>
+	<xs:element name="Industry_name" type="xs:string"/>
+	<xs:element name="Status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="Industry_Id" type="xs:string"/>
+</xs:schema>

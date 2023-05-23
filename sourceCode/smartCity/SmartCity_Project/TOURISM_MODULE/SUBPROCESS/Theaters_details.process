@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd4" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd4" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/TheaterSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/TheaterSchema.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Theaters_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx6:TheatersReq"/>
+    <pd:startX>86</pd:startX>
+    <pd:startY>137</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx6:TheatersReq/pfx6:operations='INSERT'">
+                <pfx6:TheatersResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;THEATERS DETAILS ARE INSERTED SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo">
+                        <pfx6:TheatersInfo>
+                            <pfx6:TheaterId>
+                                <xsl:value-of select="pfx6:TheaterId"/>
+                            </pfx6:TheaterId>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Street>
+                                <xsl:value-of select="pfx6:Street"/>
+                            </pfx6:Street>
+                            <pfx6:city>
+                                <xsl:value-of select="pfx6:city"/>
+                            </pfx6:city>
+                            <pfx6:State>
+                                <xsl:value-of select="pfx6:State"/>
+                            </pfx6:State>
+                            <pfx6:pincode>
+                                <xsl:value-of select="pfx6:pincode"/>
+                            </pfx6:pincode>
+                        </pfx6:TheatersInfo>
+                    </xsl:for-each>
+                </pfx6:TheatersResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:TheatersReq/pfx6:operations='UPDATE'">
+                <pfx6:TheatersResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;THEATERS  DETAILS  ARE  UPDATED  SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo">
+                        <pfx6:TheatersInfo>
+                            <pfx6:TheaterId>
+                                <xsl:value-of select="pfx6:TheaterId"/>
+                            </pfx6:TheaterId>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Street>
+                                <xsl:value-of select="pfx6:Street"/>
+                            </pfx6:Street>
+                            <pfx6:city>
+                                <xsl:value-of select="pfx6:city"/>
+                            </pfx6:city>
+                            <pfx6:State>
+                                <xsl:value-of select="pfx6:State"/>
+                            </pfx6:State>
+                            <pfx6:pincode>
+                                <xsl:value-of select="pfx6:pincode"/>
+                            </pfx6:pincode>
+                        </pfx6:TheatersInfo>
+                    </xsl:for-each>
+                </pfx6:TheatersResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:TheatersReq/pfx6:operations='DELETE'">
+                <pfx6:TheatersResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;THEATERS  DETAILS  ARE  DELETED  SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo">
+                        <pfx6:TheatersInfo>
+                            <pfx6:TheaterId>
+                                <xsl:value-of select="pfx6:TheaterId"/>
+                            </pfx6:TheaterId>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Street>
+                                <xsl:value-of select="pfx6:Street"/>
+                            </pfx6:Street>
+                            <pfx6:city>
+                                <xsl:value-of select="pfx6:city"/>
+                            </pfx6:city>
+                            <pfx6:State>
+                                <xsl:value-of select="pfx6:State"/>
+                            </pfx6:State>
+                            <pfx6:pincode>
+                                <xsl:value-of select="pfx6:pincode"/>
+                            </pfx6:pincode>
+                        </pfx6:TheatersInfo>
+                    </xsl:for-each>
+                </pfx6:TheatersResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx6:TheatersResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;FAILED&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;FAILED TO PERFPRM OPRATIONS&quot;"/>
+                    </pfx6:message>
+                </pfx6:TheatersResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx6:TheatersResp"/>
+    <pd:endX>608</pd:endX>
+    <pd:endY>137</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511860428</pd:targetNamespace>
+    <pd:activity name="add_Theaters_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>398</pd:x>
+        <pd:y>35</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  SCP_THEATERS(THEATER_ID,TH_NAME,ADDRESS,STREET,CITY,STATE,PINCODE) VALUES(?,?,?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>THEATER_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>TH_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STREET</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CITY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STATE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PINCODE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <THEATER_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </THEATER_ID>
+                <TH_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </TH_NAME>
+                <ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ADDRESS>
+                <STREET>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Street)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Street"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STREET>
+                <CITY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:city)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:city"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CITY>
+                <STATE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:State)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:State"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STATE>
+                <PINCODE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:pincode)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:pincode"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PINCODE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>83</pd:x>
+        <pd:y>260</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/theaterId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/theaterId"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId,'^[A-Za-z0-9_-]+$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/theaterId-prprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/theaterIdprprfmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/Name"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/name"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/address"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/address"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_Theaters_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>341</pd:x>
+        <pd:y>132</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT THEATER_ID  FROM   SCP_THEATERS</statement>
+            <QueryOutputCachedSchemaColumns>THEATER_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Theaters_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>462</pd:x>
+        <pd:y>130</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_THEATERS
+  SET   TH_NAME= ?,ADDRESS = ?,STREET = ? ,CITY =? ,STATE = ? ,PINCODE=? 
+WHERE   THEATER_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>TH_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STREET</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CITY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STATE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PINCODE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>THEATER_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <TH_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </TH_NAME>
+                <ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ADDRESS>
+                <STREET>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Street)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Street"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STREET>
+                <CITY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:city)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:city"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CITY>
+                <STATE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:State)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:State"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STATE>
+                <PINCODE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:pincode)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:pincode"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PINCODE>
+                <THEATER_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </THEATER_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_Theaters_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>391</pd:x>
+        <pd:y>258</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE FROM SCP_THEATERS   WHERE  THEATER_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>THEATER_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <THEATER_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId)">
+                            <xsl:value-of select="$Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </THEATER_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>196</pd:x>
+        <pd:y>136</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_Theaters_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_Theaters_details</pd:from>
+        <pd:to>Update_Theaters_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Theaters_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_Theaters_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId) !=0 and 
+
+custom_func:matchRegex($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:TheaterId,'^[A-Za-z0-9_-]+$')  and 
+
+string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:name)!=0 and 
+
+string-length($Start/pfx6:TheatersReq/pfx6:TheatersInfo[1]/pfx6:Address)!=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_Theaters_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:TheatersReq/pfx6:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_Theaters_details</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:TheatersReq/pfx6:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_Theaters_details</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:TheatersReq/pfx6:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="AdminResp" type="AdminResptype"/>
+	<xs:complexType name="AdminResptype">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="data" type="dataType"/>
+	<xs:complexType name="dataType">
+		<xs:sequence>
+			<xs:element ref="TourismDetails"/>
+			<xs:element ref="StudentDetails"/>
+			<xs:element ref="JokseekersDetails"/>
+			<xs:element ref="BusinessDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TourismDetails" type="TourismDetailsType"/>
+	<xs:element name="StudentDetails" type="StudentDetailsType"/>
+	<xs:element name="JokseekersDetails" type="JokseekersDetailsType"/>
+	<xs:element name="BusinessDetails" type="BusinessDetailsType"/>
+	<xs:complexType name="TourismDetailsType">
+		<xs:sequence>
+			<xs:element ref="Hotels"/>
+			<xs:element ref="Restaurants"/>
+			<xs:element ref="TouristsAttractions"/>
+			<xs:element ref="ATMS"/>
+			<xs:element ref="Theaters"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Hotels" type="xs:string"/>
+	<xs:element name="Restaurants" type="xs:string"/>
+	<xs:element name="TouristsAttractions" type="xs:string"/>
+	<xs:element name="ATMS" type="xs:string"/>
+	<xs:element name="Theaters" type="xs:string"/>
+	<xs:complexType name="StudentDetailsType">
+		<xs:sequence>
+			<xs:element ref="Educational_Institutes"/>
+			<xs:element ref="Libraries"/>
+			<xs:element ref="CoachingCenters"/>
+			<xs:element ref="Universities"/>
+			<xs:element ref="Colleges"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Educational_Institutes" type="xs:string"/>
+	<xs:element name="Libraries" type="xs:string"/>
+	<xs:element name="CoachingCenters" type="xs:string"/>
+	<xs:element name="Universities" type="xs:string"/>
+	<xs:element name="Colleges" type="xs:string"/>
+	<xs:complexType name="JokseekersDetailsType">
+		<xs:sequence>
+			<xs:element ref="Freshers_graduates"/>
+			<xs:element ref="Experience"/>
+			<xs:element ref="PartTime_Jobs"/>
+			<xs:element ref="Freelancers"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Freshers_graduates" type="xs:string"/>
+	<xs:element name="Experience" type="xs:string"/>
+	<xs:element name="PartTime_Jobs" type="xs:string"/>
+	<xs:element name="Freelancers" type="xs:string"/>
+	<xs:complexType name="BusinessDetailsType">
+		<xs:sequence>
+			<xs:element ref="News"/>
+			<xs:element ref="Trade_Centers"/>
+			<xs:element ref="Industries"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="News" type="xs:string"/>
+	<xs:element name="Trade_Centers" type="xs:string"/>
+	<xs:element name="Industries" type="xs:string"/>
+</xs:schema>

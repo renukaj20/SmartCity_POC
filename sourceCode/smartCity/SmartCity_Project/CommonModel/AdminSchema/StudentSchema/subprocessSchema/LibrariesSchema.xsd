@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/library.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/library.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="LibrariesReq" type="LibrariesReqType"/>
+	<xs:complexType name="LibrariesReqType">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="LibrariesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="LibrariesInfo" type="LibrariesInfoType"/>
+	<xs:complexType name="LibrariesInfoType">
+		<xs:sequence>
+			<xs:element ref="lib_name"/>
+			<xs:element ref="locations"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="category"/>
+			<xs:element ref="fees"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="lib_name" type="xs:string"/>
+	<xs:element name="locations" type="xs:string"/>
+	<xs:element name="contact_no" type="xs:string"/>
+	<xs:element name="category" type="xs:string"/>
+	<xs:element name="fees" type="xs:string"/>
+	<xs:element name="LibrariesResp" type="LibrariesRespType"/>
+	<xs:complexType name="LibrariesRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="meessage"/>
+			<xs:element ref="LibrariesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="meessage" type="xs:string"/>
+</xs:schema>

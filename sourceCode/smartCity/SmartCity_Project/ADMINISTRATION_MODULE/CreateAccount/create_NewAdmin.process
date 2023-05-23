@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns3="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/Create_NewAdminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/Create_NewAdminResp.xsd"/>
+    <pd:name>SmartCity_Project/ADMINISTRATION_MODULE/CreateAccount/create_NewAdmin.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:createnewAccReq"/>
+    <pd:startX>82</pd:startX>
+    <pd:startY>98</pd:startY>
+    <pd:returnBindings>
+        <pfx2:createnewaccResp>
+            <pfx2:status>
+                <xsl:value-of select="&quot;SUCCESS&quot;"/>
+            </pfx2:status>
+            <pfx2:message>
+                <xsl:value-of select="&quot;new  admin account is successfully created&quot;"/>
+            </pfx2:message>
+            <pfx2:newacc>
+                <pfx2:adminid>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:AdminId"/>
+                </pfx2:adminid>
+                <pfx2:password>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Password"/>
+                </pfx2:password>
+                <pfx2:confirmpassword>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Confirmpassword"/>
+                </pfx2:confirmpassword>
+                <pfx2:firstname>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:FirstName"/>
+                </pfx2:firstname>
+                <pfx2:emailid>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:EmailId"/>
+                </pfx2:emailid>
+                <pfx2:mob_num>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Mob_num"/>
+                </pfx2:mob_num>
+                <pfx2:address>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Address"/>
+                </pfx2:address>
+            </pfx2:newacc>
+        </pfx2:createnewaccResp>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx2:createnewaccResp"/>
+    <pd:endX>677</pd:endX>
+    <pd:endY>100</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1680178548636</pd:targetNamespace>
+    <pd:activity name="create_newAdmin">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>424</pd:x>
+        <pd:y>99</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  ADMINLOGIN(ADMINID,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,EMAILID,MOB_NUM,ADDRESS) VALUES(?,?,?,?,?,?,?)</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>ADMINID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PASSWORD</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONFIRMPASSWORD</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FIRSTNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>EMAILID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <ADMINID>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:AdminId"/>
+                </ADMINID>
+                <PASSWORD>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Password"/>
+                </PASSWORD>
+                <CONFIRMPASSWORD>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Confirmpassword"/>
+                </CONFIRMPASSWORD>
+                <FIRSTNAME>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:FirstName"/>
+                </FIRSTNAME>
+                <EMAILID>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:EmailId"/>
+                </EMAILID>
+                <MOB_NUM>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Mob_num"/>
+                </MOB_NUM>
+                <ADDRESS>
+                    <xsl:value-of select="$Start/pfx:createnewAccReq/pfx:Address"/>
+                </ADDRESS>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>554</pd:x>
+        <pd:y>100</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ApplictionName">
+                    <ns1:ApplictionName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ApplictionName"/>
+                    </ns1:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ProcessName">
+                    <ns1:ProcessName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ProcessName"/>
+                    </ns1:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:CorrelationID">
+                    <ns1:CorrelationID>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:CorrelationID"/>
+                    </ns1:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Status">
+                    <ns1:Status>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Status"/>
+                    </ns1:Status>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:LogType">
+                    <ns1:LogType>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:LogType"/>
+                    </ns1:LogType>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Current_Timestamp">
+                    <ns1:Current_Timestamp>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Current_Timestamp"/>
+                    </ns1:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Payload">
+                    <ns1:Payload>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Payload"/>
+                    </ns1:Payload>
+                </xsl:if>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>84</pd:x>
+        <pd:y>217</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:AdminId,'[A-Za-z][A-Za-z0-9_]{7,9}'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;invalid adminid&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;101&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:Password,'[A-Za-z0-9]{8}'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;invalid password&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;102&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:EmailId,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;invalid email id&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;103&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:Mob_num,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;invalid mob num&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;104&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;no records are found&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;105&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>290</pd:x>
+        <pd:y>98</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <ns1:ApplictionName>
+                    <xsl:value-of select="&quot;administration&quot;"/>
+                </ns1:ApplictionName>
+                <ns1:ProcessName>
+                    <xsl:value-of select="&quot;create_newAdmin&quot;"/>
+                </ns1:ProcessName>
+                <ns1:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </ns1:CorrelationID>
+                <ns1:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </ns1:Status>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </ns1:LogType>
+                <ns1:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </ns1:Current_Timestamp>
+                <ns1:Payload>
+                    <xsl:value-of select="string($Start/pfx:createnewAccReq)"/>
+                </ns1:Payload>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Set_UUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>200</pd:x>
+        <pd:y>99</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>create_newAdmin</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>create_newAdmin</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:createnewAccReq/pfx:Password = $Start/pfx:createnewAccReq/pfx:Confirmpassword</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Set_UUID</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:AdminId,'[A-Za-z][A-Za-z0-9_]{7,9}') and
+custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:Password,'[A-Za-z0-9]{8}') and 
+custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:EmailId,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]') and
+custom_func:matchRegex($Start/pfx:createnewAccReq/pfx:Mob_num,'^[0-9]{10}$')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Set_UUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

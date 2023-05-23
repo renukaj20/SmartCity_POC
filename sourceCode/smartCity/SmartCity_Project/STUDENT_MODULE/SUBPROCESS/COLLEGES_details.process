@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx8="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/college.xsd" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd3" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/CollegesSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/college.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/subprocessSchema/CollegesSchema.xsd"/>
+    <pd:name>SmartCity_Project/STUDENT_MODULE/SUBPROCESS/COLLEGES_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx8:CollegeReq"/>
+    <pd:startX>46</pd:startX>
+    <pd:startY>201</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx8:CollegeReq/pfx8:operations='INSERT'">
+                <pfx8:CollegeResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:message>
+                        <xsl:value-of select="&quot;colleges details are added successfully&quot;"/>
+                    </pfx8:message>
+                    <xsl:for-each select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo">
+                        <pfx8:CollegesInfo>
+                            <pfx8:college_Id>
+                                <xsl:value-of select="pfx8:college_Id"/>
+                            </pfx8:college_Id>
+                            <pfx8:college_name>
+                                <xsl:value-of select="pfx8:college_name"/>
+                            </pfx8:college_name>
+                            <pfx8:college_address>
+                                <xsl:value-of select="pfx8:college_address"/>
+                            </pfx8:college_address>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:foundedyear>
+                                <xsl:value-of select="pfx8:foundedyear"/>
+                            </pfx8:foundedyear>
+                            <pfx8:stream>
+                                <xsl:value-of select="pfx8:stream"/>
+                            </pfx8:stream>
+                            <pfx8:ranking>
+                                <xsl:value-of select="pfx8:ranking"/>
+                            </pfx8:ranking>
+                        </pfx8:CollegesInfo>
+                    </xsl:for-each>
+                </pfx8:CollegeResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx8:CollegeReq/pfx8:operations='UPDATE'">
+                <pfx8:CollegeResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:message>
+                        <xsl:value-of select="&quot;colleges details are  UPDATED successfully&quot;"/>
+                    </pfx8:message>
+                    <xsl:for-each select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo">
+                        <pfx8:CollegesInfo>
+                            <pfx8:college_Id>
+                                <xsl:value-of select="pfx8:college_Id"/>
+                            </pfx8:college_Id>
+                            <pfx8:college_name>
+                                <xsl:value-of select="pfx8:college_name"/>
+                            </pfx8:college_name>
+                            <pfx8:college_address>
+                                <xsl:value-of select="pfx8:college_address"/>
+                            </pfx8:college_address>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:foundedyear>
+                                <xsl:value-of select="pfx8:foundedyear"/>
+                            </pfx8:foundedyear>
+                            <pfx8:stream>
+                                <xsl:value-of select="pfx8:stream"/>
+                            </pfx8:stream>
+                            <pfx8:ranking>
+                                <xsl:value-of select="pfx8:ranking"/>
+                            </pfx8:ranking>
+                        </pfx8:CollegesInfo>
+                    </xsl:for-each>
+                </pfx8:CollegeResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx8:CollegeReq/pfx8:operations='DELETE'">
+                <pfx8:CollegeResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:message>
+                        <xsl:value-of select="&quot;colleges details are deleted successfully&quot;"/>
+                    </pfx8:message>
+                    <xsl:for-each select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo">
+                        <pfx8:CollegesInfo>
+                            <pfx8:college_Id>
+                                <xsl:value-of select="pfx8:college_Id"/>
+                            </pfx8:college_Id>
+                            <pfx8:college_name>
+                                <xsl:value-of select="pfx8:college_name"/>
+                            </pfx8:college_name>
+                            <pfx8:college_address>
+                                <xsl:value-of select="pfx8:college_address"/>
+                            </pfx8:college_address>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:foundedyear>
+                                <xsl:value-of select="pfx8:foundedyear"/>
+                            </pfx8:foundedyear>
+                            <pfx8:stream>
+                                <xsl:value-of select="pfx8:stream"/>
+                            </pfx8:stream>
+                            <pfx8:ranking>
+                                <xsl:value-of select="pfx8:ranking"/>
+                            </pfx8:ranking>
+                        </pfx8:CollegesInfo>
+                    </xsl:for-each>
+                </pfx8:CollegeResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx8:CollegeResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx8:status>
+                    <pfx8:message>
+                        <xsl:value-of select="&quot;failed to perform operations&quot;"/>
+                    </pfx8:message>
+                </pfx8:CollegeResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx8:CollegeResp"/>
+    <pd:endX>582</pd:endX>
+    <pd:endY>203</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511815178</pd:targetNamespace>
+    <pd:activity name="add_COLLEGES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>338</pd:x>
+        <pd:y>118</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO SYSTEM.SCP_COLLEGES (C_ID,C_NAME,C_ADDRESS,CONTACT_NO,FOUNDED_YEAR,STREAM,RANK) VALUES(?,?,?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>C_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>C_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>C_ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FOUNDED_YEAR</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STREAM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RANK</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <C_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_ID>
+                <C_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_name)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_NAME>
+                <C_ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_address)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_ADDRESS>
+                <CONTACT_NO>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CONTACT_NO>
+                <FOUNDED_YEAR>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </FOUNDED_YEAR>
+                <STREAM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:stream)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:stream"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STREAM>
+                <RANK>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RANK>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>48</pd:x>
+        <pd:y>327</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/collgId-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/collgIdcode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id,'^[A-Za-z0-9_-]+$') )">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/collgId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/collgIdproperfrmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not( custom_func:matchRegex($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/contactno-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/contactnoCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/foundyearr-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/foundyear-code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/raking-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/ranking-code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_COLLEGES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>281</pd:x>
+        <pd:y>203</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT C_ID  FROM   SCP_COLLEGES
+</statement>
+            <QueryOutputCachedSchemaColumns>C_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_COLLEGES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>417</pd:x>
+        <pd:y>204</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_COLLEGES
+  SET    C_NAME = ?,C_ADDRESS = ?,CONTACT_NO = ? ,FOUNDED_YEAR=? ,STREAM = ?,RANK = ? 
+  WHERE    C_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>C_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>C_ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FOUNDED_YEAR</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STREAM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RANK</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>C_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <C_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_name)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_NAME>
+                <C_ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_address)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_ADDRESS>
+                <CONTACT_NO>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CONTACT_NO>
+                <FOUNDED_YEAR>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </FOUNDED_YEAR>
+                <STREAM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:stream)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:stream"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STREAM>
+                <RANK>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RANK>
+                <C_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_COLLEGES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>331</pd:x>
+        <pd:y>322</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE    FROM  SCP_COLLEGES   WHERE  C_ID = ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>C_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <C_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id)">
+                            <xsl:value-of select="$Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </C_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>152</pd:x>
+        <pd:y>201</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_COLLEGES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_COLLEGES_details</pd:from>
+        <pd:to>Update_COLLEGES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_COLLEGES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_COLLEGES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate </pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>custom_func:matchRegex($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_Id,'^[A-Za-z0-9_-]+$')  and 
+
+string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:college_name)  !=0  and 
+
+ custom_func:matchRegex($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:contact_no,'^[0-9]{10}$') and 
+
+string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:foundedyear)  !=0 and 
+
+string-length($Start/pfx8:CollegeReq/pfx8:CollegesInfo[1]/pfx8:ranking) !=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_COLLEGES_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:CollegeReq/pfx8:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_COLLEGES_details</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:CollegeReq/pfx8:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_COLLEGES_details</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:CollegeReq/pfx8:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

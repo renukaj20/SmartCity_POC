@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository:repository xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002">
+    <enterpriseArchive>
+        <sharedArchive name="Shared Archive">
+            <resourceType>shared.archive.resource</resourceType>
+            <authorProperty>admin</authorProperty>
+        </sharedArchive>
+        <processArchive name="Process Archive">
+            <resourceType>process.archive.resource</resourceType>
+            <authorProperty>admin</authorProperty>
+            <processProperty>/SmartCity_Project/BUSINESS_MODULE/MAINPROCESS/UPLOAD_BUSINESS_DETAILS.process,/SmartCity_Project/ADMINISTRATION_MODULE/login/Wait_Process.process,/SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/AdminProxy_Service.process,/SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/Admin_LoginRest.process,/SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/Create_AccountRestService0.process,/SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/NewAccount_Proxy_Service.process,/SmartCity_Project/BUSINESS_MODULE/MAINPROCESS/BusinessProxy_Service.process,/SmartCity_Project/JOBSEEKERS_MODULE/main/JobseekerProxy_Service.process,/SmartCity_Project/JOBSEEKERS_MODULE/main/UPLOADING_JOBSEEKERS_DETAILS.process,/SmartCity_Project/STUDENT_MODULE/MAINPROCESS/StudentProxy_Service.process,/SmartCity_Project/STUDENT_MODULE/MAINPROCESS/UPLOAD_STUDENT_DETAILS.process,/SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/TourismProxy_Service.process,/SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/Upload_ToursimDetails.process,/SmartCity_Project/USER_MODULE/BUSINESS/GET_BUSINESS_DETAILS.process,/SmartCity_Project/USER_MODULE/JOBSEEKERS/GET_JOBSEEKERS_DETAILS.process,/SmartCity_Project/USER_MODULE/MAIN_PROCESS/Restser_User.process,/SmartCity_Project/USER_MODULE/STUDENT/GET_STUDENT_DETAILS.process,/SmartCity_Project/USER_MODULE/TOURISM/GET_TOURISM_DETAILS.process</processProperty>
+        </processArchive>
+        <versionProperty>2</versionProperty>
+        <authorProperty>admin</authorProperty>
+        <addServiceSettableGvars>true</addServiceSettableGvars>
+        <name>smatcity</name>
+        <designer>
+            <lockedProperties/>
+            <fixedChildren/>
+            <resourceDescriptions/>
+        </designer>
+        <fileLocationProperty>C:\smatcity\Deployables\EAR\SmartCity.ear</fileLocationProperty>
+    </enterpriseArchive>
+</Repository:repository>

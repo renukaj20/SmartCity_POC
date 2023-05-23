@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:pfx10="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/university.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx9="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd2" xmlns:pfx8="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentReq.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserRequest.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/subprocessSchema/LibrariesSchema.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/university.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/subprocessSchema/UniversitesSchema.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/STUDENT/main/subprocess/UNIVERSITIES_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx8:UserReq"/>
+    <pd:startX>151</pd:startX>
+    <pd:startY>215</pd:startY>
+    <pd:returnBindings>
+        <pfx10:UniversitesResp>
+            <pfx10:status>
+                <xsl:value-of select="&quot;SUCCESS&quot;"/>
+            </pfx10:status>
+            <pfx10:message>
+                <xsl:value-of select="&quot;Universities details are fetched successfully&quot;"/>
+            </pfx10:message>
+            <xsl:for-each select="$fetch_UNIVERSITIES_details/resultSet/Record">
+                <pfx10:UniversitesInfo>
+                    <pfx10:university_id>
+                        <xsl:value-of select="U_ID"/>
+                    </pfx10:university_id>
+                    <pfx10:university_name>
+                        <xsl:value-of select="U_NAME"/>
+                    </pfx10:university_name>
+                    <pfx10:universiy_address>
+                        <xsl:value-of select="U_ADDRESS"/>
+                    </pfx10:universiy_address>
+                    <pfx10:contact_no>
+                        <xsl:value-of select="CONTACT_NO"/>
+                    </pfx10:contact_no>
+                    <pfx10:foundedyear>
+                        <xsl:value-of select="FOUNDED_YEAR"/>
+                    </pfx10:foundedyear>
+                    <pfx10:courses>
+                        <xsl:value-of select="COURSES"/>
+                    </pfx10:courses>
+                    <pfx10:stream>
+                        <xsl:value-of select="STREAM"/>
+                    </pfx10:stream>
+                    <pfx10:coursetype>
+                        <xsl:value-of select="COURSE_TYPE"/>
+                    </pfx10:coursetype>
+                </pfx10:UniversitesInfo>
+            </xsl:for-each>
+        </pfx10:UniversitesResp>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx10:UniversitesResp"/>
+    <pd:endX>477</pd:endX>
+    <pd:endY>214</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511815178</pd:targetNamespace>
+    <pd:activity name="fetch_UNIVERSITIES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>328</pd:x>
+        <pd:y>216</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT   *    FROM   SCP_UNIVERSITIES 
+</statement>
+            <QueryOutputCachedSchemaColumns>U_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>U_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>U_ADDRESS</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CONTACT_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>FOUNDED_YEAR</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>COURSES</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>COURSE_TYPE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STREAM</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>fetch_UNIVERSITIES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_UNIVERSITIES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

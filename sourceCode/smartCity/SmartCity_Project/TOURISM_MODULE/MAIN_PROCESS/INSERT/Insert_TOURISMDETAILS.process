@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:ns12="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:ns5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd4" xmlns:ns6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels.xsd" xmlns:ns7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Tourist_attraction.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels/Schema.xsd" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd" xmlns:ns4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd3" xmlns:ns3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd2" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx9="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" xmlns:pfx8="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/ToursimReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/ToursimReq.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/INSERT/Insert_TOURISMDETAILS.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx5:TourismReq"/>
+    <pd:startX>49</pd:startX>
+    <pd:startY>219</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:hotels)">
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="$hotels_details/ns6:HotelResp/ns6:status"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="$hotels_details/ns6:HotelResp/ns6:message"/>
+                    </pfx9:message>
+                    <pfx9:TourismInfo>
+                        <xsl:for-each select="$hotels_details/ns6:HotelResp/ns6:hotelsInfo">
+                            <pfx9:hotels>
+                                <pfx9:Hotel_id>
+                                    <xsl:value-of select="ns6:Hotel_id"/>
+                                </pfx9:Hotel_id>
+                                <pfx9:Hotel_name>
+                                    <xsl:value-of select="ns6:Hotel_name"/>
+                                </pfx9:Hotel_name>
+                                <pfx9:Address>
+                                    <xsl:value-of select="ns6:Address"/>
+                                </pfx9:Address>
+                                <pfx9:mob_no>
+                                    <xsl:value-of select="ns6:mob_no"/>
+                                </pfx9:mob_no>
+                                <pfx9:rating>
+                                    <xsl:value-of select="ns6:rating"/>
+                                </pfx9:rating>
+                                <pfx9:price>
+                                    <xsl:value-of select="ns6:price"/>
+                                </pfx9:price>
+                            </pfx9:hotels>
+                        </xsl:for-each>
+                    </pfx9:TourismInfo>
+                </pfx9:TourismResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:TouristAttractions)">
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="$Tourists_Attractionsdetails/ns7:TouristAttractionsResp/ns7:status"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="$Tourists_Attractionsdetails/ns7:TouristAttractionsResp/ns7:message"/>
+                    </pfx9:message>
+                    <pfx9:TourismInfo>
+                        <xsl:for-each select="$Tourists_Attractionsdetails/ns7:TouristAttractionsResp/ns7:TouristAttractionsInfo">
+                            <pfx9:TouristAttractions>
+                                <pfx9:tourattraction_id>
+                                    <xsl:value-of select="ns7:tourattraction_id"/>
+                                </pfx9:tourattraction_id>
+                                <pfx9:name>
+                                    <xsl:value-of select="ns7:name"/>
+                                </pfx9:name>
+                                <pfx9:category>
+                                    <xsl:value-of select="ns7:category"/>
+                                </pfx9:category>
+                                <pfx9:Address>
+                                    <xsl:value-of select="ns7:Address"/>
+                                </pfx9:Address>
+                                <pfx9:mob_no>
+                                    <xsl:value-of select="ns7:mob_no"/>
+                                </pfx9:mob_no>
+                                <pfx9:price>
+                                    <xsl:value-of select="ns7:price"/>
+                                </pfx9:price>
+                                <pfx9:rating>
+                                    <xsl:value-of select="ns7:rating"/>
+                                </pfx9:rating>
+                            </pfx9:TouristAttractions>
+                        </xsl:for-each>
+                    </pfx9:TourismInfo>
+                </pfx9:TourismResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Restaurants)">
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="$Restaurant_details/pfx6:RestaurantsResp/pfx6:status"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="$Restaurant_details/pfx6:RestaurantsResp/pfx6:message"/>
+                    </pfx9:message>
+                    <pfx9:TourismInfo>
+                        <xsl:for-each select="$Restaurant_details/pfx6:RestaurantsResp/pfx6:RestaurantsInfo">
+                            <pfx9:Restaurants>
+                                <pfx9:Restaurant_id>
+                                    <xsl:value-of select="pfx6:Restaurant_id"/>
+                                </pfx9:Restaurant_id>
+                                <pfx9:name>
+                                    <xsl:value-of select="pfx6:name"/>
+                                </pfx9:name>
+                                <pfx9:address>
+                                    <xsl:value-of select="pfx6:address"/>
+                                </pfx9:address>
+                                <pfx9:mob_no>
+                                    <xsl:value-of select="pfx6:mob_no"/>
+                                </pfx9:mob_no>
+                                <pfx9:rating>
+                                    <xsl:value-of select="pfx6:rating"/>
+                                </pfx9:rating>
+                                <pfx9:price>
+                                    <xsl:value-of select="pfx6:price"/>
+                                </pfx9:price>
+                            </pfx9:Restaurants>
+                        </xsl:for-each>
+                    </pfx9:TourismInfo>
+                </pfx9:TourismResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:ATMs)">
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="$ATMS_details/pfx7:ATMsResp/pfx7:status"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="$ATMS_details/pfx7:ATMsResp/pfx7:message"/>
+                    </pfx9:message>
+                    <pfx9:TourismInfo>
+                        <xsl:for-each select="$ATMS_details/pfx7:ATMsResp/pfx7:ATMSInfo">
+                            <pfx9:ATMs>
+                                <pfx9:Atm_id>
+                                    <xsl:value-of select="pfx7:Atm_id"/>
+                                </pfx9:Atm_id>
+                                <pfx9:Atm_name>
+                                    <xsl:value-of select="pfx7:Atm_name"/>
+                                </pfx9:Atm_name>
+                                <pfx9:Address>
+                                    <xsl:value-of select="pfx7:Address"/>
+                                </pfx9:Address>
+                                <pfx9:Mob_num>
+                                    <xsl:value-of select="pfx7:Mob_num"/>
+                                </pfx9:Mob_num>
+                                <pfx9:hours>
+                                    <xsl:value-of select="pfx7:hours"/>
+                                </pfx9:hours>
+                            </pfx9:ATMs>
+                        </xsl:for-each>
+                    </pfx9:TourismInfo>
+                </pfx9:TourismResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Theaters)">
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="$Theaters_details/pfx8:TheatersResp/pfx8:status"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="$Theaters_details/pfx8:TheatersResp/pfx8:message"/>
+                    </pfx9:message>
+                    <pfx9:TourismInfo>
+                        <xsl:for-each select="$Theaters_details/pfx8:TheatersResp/pfx8:TheatersInfo">
+                            <pfx9:Theaters>
+                                <pfx9:TheaterId>
+                                    <xsl:value-of select="pfx8:TheaterId"/>
+                                </pfx9:TheaterId>
+                                <pfx9:name>
+                                    <xsl:value-of select="pfx8:name"/>
+                                </pfx9:name>
+                                <pfx9:Address>
+                                    <xsl:value-of select="pfx8:Address"/>
+                                </pfx9:Address>
+                                <pfx9:Street>
+                                    <xsl:value-of select="pfx8:Street"/>
+                                </pfx9:Street>
+                                <pfx9:city>
+                                    <xsl:value-of select="pfx8:city"/>
+                                </pfx9:city>
+                                <pfx9:State>
+                                    <xsl:value-of select="pfx8:State"/>
+                                </pfx9:State>
+                                <pfx9:pincode>
+                                    <xsl:value-of select="pfx8:pincode"/>
+                                </pfx9:pincode>
+                            </pfx9:Theaters>
+                        </xsl:for-each>
+                    </pfx9:TourismInfo>
+                </pfx9:TourismResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx9:TourismResp>
+                    <pfx9:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx9:status>
+                    <pfx9:message>
+                        <xsl:value-of select="&quot;no records found&quot;"/>
+                    </pfx9:message>
+                </pfx9:TourismResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx9:TourismResp"/>
+    <pd:endX>904</pd:endX>
+    <pd:endY>218</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <correlatn_ID>
+            <xsd:element name="correlatn_ID" type="xsd:string"/>
+        </correlatn_ID>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1680514281890</pd:targetNamespace>
+    <pd:activity name="hotels_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>514</pd:x>
+        <pd:y>43</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/SUBPROCESS/hotels_details.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <ns6:HotelReq>
+                <ns6:operations>
+                    <xsl:value-of select="$Start/pfx5:TourismReq/pfx5:operations"/>
+                </ns6:operations>
+                <xsl:for-each select="$Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:hotels">
+                    <ns6:hotelsInfo>
+                        <ns6:Hotel_id>
+                            <xsl:value-of select="pfx5:Hotel_id"/>
+                        </ns6:Hotel_id>
+                        <ns6:Hotel_name>
+                            <xsl:value-of select="pfx5:Hotel_name"/>
+                        </ns6:Hotel_name>
+                        <ns6:Address>
+                            <xsl:value-of select="pfx5:Address"/>
+                        </ns6:Address>
+                        <ns6:mob_no>
+                            <xsl:value-of select="pfx5:mob_no"/>
+                        </ns6:mob_no>
+                        <ns6:rating>
+                            <xsl:value-of select="pfx5:rating"/>
+                        </ns6:rating>
+                        <ns6:price>
+                            <xsl:value-of select="pfx5:price"/>
+                        </ns6:price>
+                    </ns6:hotelsInfo>
+                </xsl:for-each>
+            </ns6:HotelReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Tourists_Attractionsdetails">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>518</pd:x>
+        <pd:y>133</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Tourists_Attractionsdetails.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <ns7:TouristAttractionsReq>
+                <ns7:operations>
+                    <xsl:value-of select="$Start/pfx5:TourismReq/pfx5:operations"/>
+                </ns7:operations>
+                <xsl:for-each select="$Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:TouristAttractions">
+                    <ns7:TouristAttractionsInfo>
+                        <ns7:tourattraction_id>
+                            <xsl:value-of select="pfx5:tourattraction_id"/>
+                        </ns7:tourattraction_id>
+                        <ns7:name>
+                            <xsl:value-of select="pfx5:name"/>
+                        </ns7:name>
+                        <ns7:category>
+                            <xsl:value-of select="pfx5:category"/>
+                        </ns7:category>
+                        <ns7:Address>
+                            <xsl:value-of select="pfx5:Address"/>
+                        </ns7:Address>
+                        <ns7:mob_no>
+                            <xsl:value-of select="pfx5:mob_no"/>
+                        </ns7:mob_no>
+                        <ns7:price>
+                            <xsl:value-of select="pfx5:price"/>
+                        </ns7:price>
+                        <ns7:rating>
+                            <xsl:value-of select="pfx5:rating"/>
+                        </ns7:rating>
+                    </ns7:TouristAttractionsInfo>
+                </xsl:for-each>
+            </ns7:TouristAttractionsReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Restaurant_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>514</pd:x>
+        <pd:y>214</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Restaurant_details.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <pfx6:RestaurantsReq>
+                <pfx6:operations>
+                    <xsl:value-of select="$Start/pfx5:TourismReq/pfx5:operations"/>
+                </pfx6:operations>
+                <xsl:for-each select="$Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Restaurants">
+                    <pfx6:RestaurantsInfo>
+                        <pfx6:Restaurant_id>
+                            <xsl:value-of select="pfx5:Restaurant_id"/>
+                        </pfx6:Restaurant_id>
+                        <pfx6:name>
+                            <xsl:value-of select="pfx5:name"/>
+                        </pfx6:name>
+                        <pfx6:address>
+                            <xsl:value-of select="pfx5:address"/>
+                        </pfx6:address>
+                        <pfx6:mob_no>
+                            <xsl:value-of select="pfx5:mob_no"/>
+                        </pfx6:mob_no>
+                        <pfx6:rating>
+                            <xsl:value-of select="pfx5:rating"/>
+                        </pfx6:rating>
+                        <pfx6:price>
+                            <xsl:value-of select="pfx5:price"/>
+                        </pfx6:price>
+                    </pfx6:RestaurantsInfo>
+                </xsl:for-each>
+            </pfx6:RestaurantsReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="ATMS_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>512</pd:x>
+        <pd:y>307</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/SUBPROCESS/ATMS_details.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <pfx7:ATMsReq>
+                <pfx7:operations>
+                    <xsl:value-of select="$Start/pfx5:TourismReq/pfx5:operations"/>
+                </pfx7:operations>
+                <xsl:for-each select="$Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:ATMs">
+                    <pfx7:ATMSInfo>
+                        <pfx7:Atm_id>
+                            <xsl:value-of select="pfx5:Atm_id"/>
+                        </pfx7:Atm_id>
+                        <pfx7:Atm_name>
+                            <xsl:value-of select="pfx5:Atm_name"/>
+                        </pfx7:Atm_name>
+                        <pfx7:Address>
+                            <xsl:value-of select="pfx5:Address"/>
+                        </pfx7:Address>
+                        <pfx7:Mob_num>
+                            <xsl:value-of select="pfx5:Mob_num"/>
+                        </pfx7:Mob_num>
+                        <pfx7:hours>
+                            <xsl:value-of select="pfx5:hours"/>
+                        </pfx7:hours>
+                    </pfx7:ATMSInfo>
+                </xsl:for-each>
+            </pfx7:ATMsReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Theaters_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>510</pd:x>
+        <pd:y>392</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Theaters_details.process</processName>
+            <spawn>false</spawn>
+        </config>
+        <pd:inputBindings>
+            <pfx8:TheatersReq>
+                <pfx8:operations>
+                    <xsl:value-of select="$Start/pfx5:TourismReq/pfx5:operations"/>
+                </pfx8:operations>
+                <xsl:for-each select="$Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Theaters">
+                    <pfx8:TheatersInfo>
+                        <pfx8:TheaterId>
+                            <xsl:value-of select="pfx5:TheaterId"/>
+                        </pfx8:TheaterId>
+                        <pfx8:name>
+                            <xsl:value-of select="pfx5:name"/>
+                        </pfx8:name>
+                        <pfx8:Address>
+                            <xsl:value-of select="pfx5:Address"/>
+                        </pfx8:Address>
+                        <pfx8:Street>
+                            <xsl:value-of select="pfx5:Street"/>
+                        </pfx8:Street>
+                        <pfx8:city>
+                            <xsl:value-of select="pfx5:city"/>
+                        </pfx8:city>
+                        <pfx8:State>
+                            <xsl:value-of select="pfx5:State"/>
+                        </pfx8:State>
+                        <pfx8:pincode>
+                            <xsl:value-of select="pfx5:pincode"/>
+                        </pfx8:pincode>
+                    </pfx8:TheatersInfo>
+                </xsl:for-each>
+            </pfx8:TheatersReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>817</pd:x>
+        <pd:y>442</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>275</pd:x>
+        <pd:y>220</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns12:LogHandler>
+                <ns12:ApplictionName>
+                    <xsl:value-of select="&quot;Tourism  module&quot;"/>
+                </ns12:ApplictionName>
+                <ns12:ProcessName>
+                    <xsl:value-of select="&quot;Insert Tourism  module&quot;"/>
+                </ns12:ProcessName>
+                <ns12:CorrelationID>
+                    <xsl:value-of select="$correlatn_ID/correlatn_ID"/>
+                </ns12:CorrelationID>
+                <ns12:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </ns12:Status>
+                <ns12:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </ns12:LogType>
+                <ns12:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </ns12:Current_Timestamp>
+                <ns12:Payload>
+                    <xsl:value-of select="string($Start/pfx5:TourismReq)"/>
+                </ns12:Payload>
+            </ns12:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>769</pd:x>
+        <pd:y>218</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns12:LogHandler>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:ApplictionName">
+                    <ns12:ApplictionName>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:ApplictionName"/>
+                    </ns12:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:ProcessName">
+                    <ns12:ProcessName>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:ProcessName"/>
+                    </ns12:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:CorrelationID">
+                    <ns12:CorrelationID>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:CorrelationID"/>
+                    </ns12:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:Status">
+                    <ns12:Status>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:Status"/>
+                    </ns12:Status>
+                </xsl:if>
+                <ns12:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </ns12:LogType>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:Current_Timestamp">
+                    <ns12:Current_Timestamp>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:Current_Timestamp"/>
+                    </ns12:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/ns12:LogHandler/ns12:Payload">
+                    <ns12:Payload>
+                        <xsl:value-of select="$startlog/ns12:LogHandler/ns12:Payload"/>
+                    </ns12:Payload>
+                </xsl:if>
+            </ns12:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="setUUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>162</pd:x>
+        <pd:y>220</pd:y>
+        <config>
+            <variableName>correlatn_ID</variableName>
+        </config>
+        <pd:inputBindings>
+            <correlatn_ID>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </correlatn_ID>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Restaurant_details</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>hotels_details</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Tourists_Attractionsdetails</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>ATMS_details</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Theaters_details</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>setUUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>setUUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Restaurant_details</pd:to>
+        <pd:xpathDescription>If Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Restaurants)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Tourists_Attractionsdetails</pd:to>
+        <pd:xpathDescription>If Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:TouristAttractions)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>hotels_details</pd:to>
+        <pd:xpathDescription>If Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:hotels)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>ATMS_details</pd:to>
+        <pd:xpathDescription>If Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:ATMs)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Theaters_details</pd:to>
+        <pd:xpathDescription>If Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Theaters)</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="ATMsReq" type="ATMsReqType"/>
+	<xs:complexType name="ATMsReqType">
+		<xs:sequence>
+			<xs:element ref="operations" minOccurs="0"/>
+			<xs:element ref="ATMSInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="ATMSInfo" type="ATMSInfoType"/>
+	<xs:complexType name="ATMSInfoType">
+		<xs:sequence>
+			<xs:element ref="Atm_id"/>
+			<xs:element ref="Atm_name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="Mob_num"/>
+			<xs:element ref="hours"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ATMsResp" type="ATMsResptype"/>
+	<xs:complexType name="ATMsResptype">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="ATMSInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="Atm_id" type="xs:string"/>
+	<xs:element name="Atm_name" type="xs:string"/>
+	<xs:element name="Address" type="xs:string"/>
+	<xs:element name="Mob_num" type="xs:string"/>
+	<xs:element name="hours" type="xs:string"/>
+</xs:schema>

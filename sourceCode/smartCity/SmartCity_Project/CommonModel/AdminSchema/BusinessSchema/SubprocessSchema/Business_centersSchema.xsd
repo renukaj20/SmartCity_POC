@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="Business_centersReq" type="Business_centersReqtype"/>
+	<xs:complexType name="Business_centersReqtype">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="Business_centersInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="Business_centersInfo" type="Business_centersInfo"/>
+	<xs:complexType name="Business_centersInfo">
+		<xs:sequence>
+			<xs:element ref="Center_name"/>
+			<xs:element ref="Locations"/>
+			<xs:element ref="Descriptions"/>
+			<xs:element ref="Contact_email"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Center_name" type="xs:string"/>
+	<xs:element name="Locations" type="xs:string"/>
+	<xs:element name="Descriptions" type="xs:string"/>
+	<xs:element name="Contact_email" type="xs:string"/>
+	<xs:element name="Business_centersResp" type="Business_centersRespType"/>
+	<xs:complexType name="Business_centersRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="Business_centersInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+</xs:schema>

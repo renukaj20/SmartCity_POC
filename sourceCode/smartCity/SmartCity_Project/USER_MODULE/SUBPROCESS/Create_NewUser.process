@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Create_Newuser.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Adminschema/Create_NewAdminReq.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/Create_NewAdminResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Create_Newuser.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/Newuser/Create_Newuser.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/SUBPROCESS/Create_NewUser.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx3:Create_NewuserReq"/>
+    <pd:startX>114</pd:startX>
+    <pd:startY>62</pd:startY>
+    <pd:returnBindings>
+        <pfx3:Create_NewuserResp>
+            <pfx3:status>
+                <xsl:value-of select="&quot;SUCCESS&quot;"/>
+            </pfx3:status>
+            <pfx3:message>
+                <xsl:value-of select="&quot;New user is created successfully&quot;"/>
+            </pfx3:message>
+        </pfx3:Create_NewuserResp>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:Create_NewuserResp"/>
+    <pd:endX>449</pd:endX>
+    <pd:endY>65</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680178548636</pd:targetNamespace>
+    <pd:activity name="create_newUser">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>291</pd:x>
+        <pd:y>64</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>INSERT INTO  USERLOGIN(USERID,PASSWORD,FIRSTNAME,EMAILID,MOB_NUM,ADDRESS) VALUES(?,?,?,?,?,?)</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>USERID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PASSWORD</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FIRSTNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>EMAILID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <USERID>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:userid"/>
+                </USERID>
+                <PASSWORD>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:password"/>
+                </PASSWORD>
+                <FIRSTNAME>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:firstname"/>
+                </FIRSTNAME>
+                <EMAILID>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:emailid"/>
+                </EMAILID>
+                <MOB_NUM>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:mob_no"/>
+                </MOB_NUM>
+                <ADDRESS>
+                    <xsl:value-of select="$Start/pfx3:Create_NewuserReq/pfx3:address"/>
+                </ADDRESS>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>116</pd:x>
+        <pd:y>169</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx3:Create_NewuserReq/pfx3:userid) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/UserId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/UserId"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:userid,'[A-Za-z][A-Za-z0-9_]{7,9}'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/UserIdprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/UserIdprprfrmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx3:Create_NewuserReq/pfx3:password)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/password"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/password"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:password,'[A-Za-z0-9]{1,8}'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/passwordprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/passwordprprfrmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:emailid,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/Email"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/email"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:mob_no,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/contactno-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/contactnoCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>create_newUser</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>create_newUser</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx3:Create_NewuserReq/pfx3:userid)!=0 and
+custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:userid,'[A-Za-z][A-Za-z0-9_]{7,9}') and
+string-length($Start/pfx3:Create_NewuserReq/pfx3:password)!=0
+and
+custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:password,'[A-Za-z0-9]{1,8}') and 
+custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:emailid,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]') and
+custom_func:matchRegex($Start/pfx3:Create_NewuserReq/pfx3:mob_no,'^[0-9]{10}$')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

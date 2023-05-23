@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx8="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/library.xsd" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd2" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentReq.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/StudentResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/LibrariesSchema.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/library.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/subprocessSchema/LibrariesSchema.xsd"/>
+    <pd:name>SmartCity_Project/STUDENT_MODULE/SUBPROCESS/LIBRARIES_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx8:LibrariesReq"/>
+    <pd:startX>58</pd:startX>
+    <pd:startY>159</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx8:LibrariesReq/pfx8:operations='INSERT'">
+                <pfx8:LibrariesResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:meessage>
+                        <xsl:value-of select="&quot;libraries details are inserted successfully&quot;"/>
+                    </pfx8:meessage>
+                    <xsl:for-each select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo">
+                        <pfx8:LibrariesInfo>
+                            <pfx8:lib_name>
+                                <xsl:value-of select="pfx8:lib_name"/>
+                            </pfx8:lib_name>
+                            <pfx8:locations>
+                                <xsl:value-of select="pfx8:locations"/>
+                            </pfx8:locations>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:category>
+                                <xsl:value-of select="pfx8:category"/>
+                            </pfx8:category>
+                            <pfx8:fees>
+                                <xsl:value-of select="pfx8:fees"/>
+                            </pfx8:fees>
+                        </pfx8:LibrariesInfo>
+                    </xsl:for-each>
+                </pfx8:LibrariesResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx8:LibrariesReq/pfx8:operations='UPDATE'">
+                <pfx8:LibrariesResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:meessage>
+                        <xsl:value-of select="&quot;libraries details are updated successfully&quot;"/>
+                    </pfx8:meessage>
+                    <xsl:for-each select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo">
+                        <pfx8:LibrariesInfo>
+                            <pfx8:lib_name>
+                                <xsl:value-of select="pfx8:lib_name"/>
+                            </pfx8:lib_name>
+                            <pfx8:locations>
+                                <xsl:value-of select="pfx8:locations"/>
+                            </pfx8:locations>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:category>
+                                <xsl:value-of select="pfx8:category"/>
+                            </pfx8:category>
+                            <pfx8:fees>
+                                <xsl:value-of select="pfx8:fees"/>
+                            </pfx8:fees>
+                        </pfx8:LibrariesInfo>
+                    </xsl:for-each>
+                </pfx8:LibrariesResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx8:LibrariesReq/pfx8:operations='DELETE'">
+                <pfx8:LibrariesResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx8:status>
+                    <pfx8:meessage>
+                        <xsl:value-of select="&quot;libraries details are deleted  successfully&quot;"/>
+                    </pfx8:meessage>
+                    <xsl:for-each select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo">
+                        <pfx8:LibrariesInfo>
+                            <pfx8:lib_name>
+                                <xsl:value-of select="pfx8:lib_name"/>
+                            </pfx8:lib_name>
+                            <pfx8:locations>
+                                <xsl:value-of select="pfx8:locations"/>
+                            </pfx8:locations>
+                            <pfx8:contact_no>
+                                <xsl:value-of select="pfx8:contact_no"/>
+                            </pfx8:contact_no>
+                            <pfx8:category>
+                                <xsl:value-of select="pfx8:category"/>
+                            </pfx8:category>
+                            <pfx8:fees>
+                                <xsl:value-of select="pfx8:fees"/>
+                            </pfx8:fees>
+                        </pfx8:LibrariesInfo>
+                    </xsl:for-each>
+                </pfx8:LibrariesResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx8:LibrariesResp>
+                    <pfx8:status>
+                        <xsl:value-of select="&quot;FAILED&quot;"/>
+                    </pfx8:status>
+                    <pfx8:meessage>
+                        <xsl:value-of select="&quot;FAILED TO PERFORM OPERATION&quot;"/>
+                    </pfx8:meessage>
+                </pfx8:LibrariesResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx8:LibrariesResp"/>
+    <pd:endX>632</pd:endX>
+    <pd:endY>162</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511815178</pd:targetNamespace>
+    <pd:activity name="add_LIBRARIES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>385</pd:x>
+        <pd:y>38</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO   SYSTEM.SCP_LIBRARIES  (LIB_NAME,LOCATIONS,CONTACT_NO,CATEGORY,FEES)   VALUES(?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>LIB_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FEES</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <LIB_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:lib_name)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:lib_name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </LIB_NAME>
+                <LOCATIONS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:locations)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:locations"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </LOCATIONS>
+                <CONTACT_NO>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:contact_no)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:contact_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CONTACT_NO>
+                <CATEGORY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CATEGORY>
+                <FEES>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:fees)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:fees"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </FEES>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>58</pd:x>
+        <pd:y>293</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:lib_name) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/libname-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/libname"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/category"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/category"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:contact_no,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/libcontactno"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/libcontactno"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:fees) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/fees"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/fees"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="FETCH_LIBRARIES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>317</pd:x>
+        <pd:y>162</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT  CATEGORY   FROM   SCP_LIBRARIES  
+</statement>
+            <QueryOutputCachedSchemaColumns>CATEGORY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_LIBRARIES_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>447</pd:x>
+        <pd:y>161</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_LIBRARIES
+  SET LIB_NAME = ?,LOCATIONS = ?,CONTACT_NO = ?,CATEGORY = ? ,FEES = ? 
+  WHERE CATEGORY = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>LIB_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>FEES</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <LIB_NAME>
+                    <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:lib_name"/>
+                </LIB_NAME>
+                <LOCATIONS>
+                    <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:locations"/>
+                </LOCATIONS>
+                <CONTACT_NO>
+                    <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:contact_no"/>
+                </CONTACT_NO>
+                <CATEGORY>
+                    <xsl:choose>
+                        <xsl:when test="exists($FETCH_LIBRARIES_details/resultSet/Record[1]/CATEGORY)">
+                            <xsl:value-of select="$FETCH_LIBRARIES_details/resultSet/Record[1]/CATEGORY"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CATEGORY>
+                <FEES>
+                    <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:fees"/>
+                </FEES>
+                <CATEGORY>
+                    <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category"/>
+                </CATEGORY>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="DELETE_LIBRARIES_DETAILS">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>395</pd:x>
+        <pd:y>283</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE FROM SCP_LIBRARIES   WHERE  CATEGORY = ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <CATEGORY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category)">
+                            <xsl:value-of select="$Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CATEGORY>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>176</pd:x>
+        <pd:y>160</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_LIBRARIES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FETCH_LIBRARIES_details</pd:from>
+        <pd:to>Update_LIBRARIES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_LIBRARIES_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>DELETE_LIBRARIES_DETAILS</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:lib_name) !=0 and 
+
+custom_func:matchRegex($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:contact_no,'^[0-9]{10}$') and 
+
+string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:category) !=0 and 
+
+string-length($Start/pfx8:LibrariesReq/pfx8:LibrariesInfo[1]/pfx8:fees) !=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_LIBRARIES_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:LibrariesReq/pfx8:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>FETCH_LIBRARIES_details</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:LibrariesReq/pfx8:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>DELETE_LIBRARIES_DETAILS</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx8:LibrariesReq/pfx8:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

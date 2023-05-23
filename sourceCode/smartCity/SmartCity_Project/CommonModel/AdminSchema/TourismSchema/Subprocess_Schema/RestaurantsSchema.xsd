@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="RestaurantsReq" type="RestaurantsReqType"/>
+	<xs:complexType name="RestaurantsReqType">
+		<xs:sequence>
+			<xs:element ref="operations" minOccurs="0"/>
+			<xs:element ref="RestaurantsInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="RestaurantsInfo" type="RestaurantsInfoType"/>
+	<xs:complexType name="RestaurantsInfoType">
+		<xs:sequence>
+			<xs:element ref="Restaurant_id"/>
+			<xs:element ref="name"/>
+			<xs:element ref="address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="rating"/>
+			<xs:element ref="price"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Restaurant_id" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="address" type="xs:string"/>
+	<xs:element name="mob_no" type="xs:string"/>
+	<xs:element name="rating" type="xs:string"/>
+	<xs:element name="price" type="xs:string"/>
+	<xs:element name="RestaurantsResp" type="RestaurantsRespType"/>
+	<xs:complexType name="RestaurantsRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="RestaurantsInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+</xs:schema>

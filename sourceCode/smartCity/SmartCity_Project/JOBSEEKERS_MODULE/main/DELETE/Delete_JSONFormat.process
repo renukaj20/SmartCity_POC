@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/JobseekersSchema/JobsseekersReq.xsd"/>
+    <pd:name>SmartCity_Project/JOBSEEKERS_MODULE/main/DELETE/Delete_JSONFormat.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:convert"/>
+    <pd:startX>150</pd:startX>
+    <pd:startY>65</pd:startY>
+    <pd:returnBindings>
+        <payload>
+            <xsl:value-of select="$JSONResp/ns2:ActivityOutputClass/jsonString"/>
+        </payload>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="payload" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>657</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1681378581199</pd:targetNamespace>
+    <pd:activity name="JSONReq">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>263</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityOutputEditor ref="ns:JobseekersReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx:convert/pfx:payload"/>
+                </jsonString>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JSONResp">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>542</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="ns:JobseekersResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <ns:JobseekersResp>
+                    <ns:Status>
+                        <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:Status"/>
+                    </ns:Status>
+                    <ns:message>
+                        <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:message"/>
+                    </ns:message>
+                    <ns:JobseekersInfo>
+                        <ns:JobId>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:JobId"/>
+                        </ns:JobId>
+                        <ns:Role>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Role"/>
+                        </ns:Role>
+                        <ns:postedDate>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:postedDate"/>
+                        </ns:postedDate>
+                        <ns:Company>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Company"/>
+                        </ns:Company>
+                        <ns:Industries>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Industries"/>
+                        </ns:Industries>
+                        <ns:location>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:location"/>
+                        </ns:location>
+                        <ns:Experience>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Experience"/>
+                        </ns:Experience>
+                        <ns:Job_Type>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Job_Type"/>
+                        </ns:Job_Type>
+                        <ns:Job_description>
+                            <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Job_description"/>
+                        </ns:Job_description>
+                        <ns:Requirements>
+                            <ns:degree>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:degree"/>
+                            </ns:degree>
+                            <ns:skills>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:skills"/>
+                            </ns:skills>
+                            <ns:year_of_exp>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:year_of_exp"/>
+                            </ns:year_of_exp>
+                        </ns:Requirements>
+                        <ns:Contact_no>
+                            <ns:name>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:name"/>
+                            </ns:name>
+                            <ns:email>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:email"/>
+                            </ns:email>
+                            <ns:phone>
+                                <xsl:value-of select="$DELETE_JobseekersDetails/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:phone"/>
+                            </ns:phone>
+                        </ns:Contact_no>
+                    </ns:JobseekersInfo>
+                </ns:JobseekersResp>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="DELETE_JobseekersDetails">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>395</pd:x>
+        <pd:y>62</pd:y>
+        <config>
+            <processName>/SmartCity_Project/JOBSEEKERS_MODULE/main/DELETE/DELETE_JobseekersDetails.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns:JobseekersReq>
+                <xsl:if test="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:Operations">
+                    <ns:Operations>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:Operations"/>
+                    </ns:Operations>
+                </xsl:if>
+                <ns:JobseekersInfo>
+                    <ns:JobId>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:JobId"/>
+                    </ns:JobId>
+                    <ns:Role>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Role"/>
+                    </ns:Role>
+                    <ns:postedDate>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:postedDate"/>
+                    </ns:postedDate>
+                    <ns:Company>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Company"/>
+                    </ns:Company>
+                    <ns:Industries>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Industries"/>
+                    </ns:Industries>
+                    <ns:location>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:location"/>
+                    </ns:location>
+                    <ns:Experience>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Experience"/>
+                    </ns:Experience>
+                    <ns:Job_Type>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Job_Type"/>
+                    </ns:Job_Type>
+                    <ns:Job_description>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Job_description"/>
+                    </ns:Job_description>
+                    <ns:Requirements>
+                        <ns:degree>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:degree"/>
+                        </ns:degree>
+                        <ns:skills>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:skills"/>
+                        </ns:skills>
+                        <ns:year_of_exp>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:year_of_exp"/>
+                        </ns:year_of_exp>
+                    </ns:Requirements>
+                    <ns:Contact_no>
+                        <ns:name>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:name"/>
+                        </ns:name>
+                        <ns:email>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:email"/>
+                        </ns:email>
+                        <ns:phone>
+                            <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:phone"/>
+                        </ns:phone>
+                    </ns:Contact_no>
+                </ns:JobseekersInfo>
+            </ns:JobseekersReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JSONReq</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JSONResp</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JSONReq</pd:from>
+        <pd:to>DELETE_JobseekersDetails</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>DELETE_JobseekersDetails</pd:from>
+        <pd:to>JSONResp</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

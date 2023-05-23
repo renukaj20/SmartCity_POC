@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="uploadInfoResp" type="uploadInfoTypeResp"/>
+	<xs:complexType name="uploadInfoTypeResp">
+		<xs:sequence>
+			<xs:element ref="status" minOccurs="0"/>
+			<xs:element ref="payload" minOccurs="0"/>
+			<xs:element ref="Smartcity_Details"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="payload" type="xs:string"/>
+	<xs:element name="Smartcity_Details" type="Smartcity_DetailsType"/>
+	<xs:complexType name="Smartcity_DetailsType">
+		<xs:sequence>
+			<xs:element ref="Data"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Data" type="DataType"/>
+	<xs:complexType name="DataType">
+		<xs:choice>
+			<xs:element ref="Hotels" minOccurs="0"/>
+			<xs:element ref="Restaurants" minOccurs="0"/>
+			<xs:element ref="TouristAttractions" minOccurs="0"/>
+			<xs:element ref="ATMs" minOccurs="0"/>
+			<xs:element ref="Theaters" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="Restaurants" type="RestaurantsType"/>
+	<xs:element name="TouristAttractions" type="TouristAttractionsType"/>
+	<xs:element name="ATMs" type="ATMsType"/>
+	<xs:element name="Theaters" type="TheatersType"/>
+	<xs:element name="Hotels" type="HotelsType"/>
+	<xs:complexType name="HotelsType">
+		<xs:sequence>
+			<xs:element ref="Hotel_id"/>
+			<xs:element ref="Hotel_name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="rating"/>
+			<xs:element ref="price"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RestaurantsType">
+		<xs:sequence>
+			<xs:element ref="Restaurant_id"/>
+			<xs:element ref="name"/>
+			<xs:element ref="address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="rating"/>
+			<xs:element ref="price"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TouristAttractionsType">
+		<xs:sequence>
+			<xs:element ref="tourattraction_id"/>
+			<xs:element ref="name"/>
+			<xs:element ref="category"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="price"/>
+			<xs:element ref="rating"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ATMsType">
+		<xs:sequence>
+			<xs:element ref="cardno"/>
+			<xs:element ref="pin"/>
+			<xs:element ref="acc_no"/>
+			<xs:element ref="acc_type"/>
+			<xs:element ref="transationtype"/>
+			<xs:element ref="amount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TheatersType">
+		<xs:sequence>
+			<xs:element ref="TheaterId"/>
+			<xs:element ref="name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="Street"/>
+			<xs:element ref="city"/>
+			<xs:element ref="State"/>
+			<xs:element ref="pincode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Hotel_id" type="xs:string"/>
+	<xs:element name="Hotel_name" type="xs:string"/>
+	<xs:element name="Address" type="xs:string"/>
+	<xs:element name="mob_no" type="xs:string"/>
+	<xs:element name="rating" type="xs:string"/>
+	<xs:element name="price" type="xs:string"/>
+	<xs:element name="Restaurant_id" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="address" type="xs:string"/>
+	<xs:element name="tourattraction_id" type="xs:string"/>
+	<xs:element name="category" type="xs:string"/>
+	<xs:element name="cardno" type="xs:string"/>
+	<xs:element name="pin" type="xs:string"/>
+	<xs:element name="acc_no" type="xs:string"/>
+	<xs:element name="acc_type" type="xs:string"/>
+	<xs:element name="transationtype" type="xs:string"/>
+	<xs:element name="amount" type="xs:string"/>
+	<xs:element name="TheaterId" type="xs:string"/>
+	<xs:element name="Street" type="xs:string"/>
+	<xs:element name="city" type="xs:string"/>
+	<xs:element name="State" type="xs:string"/>
+	<xs:element name="pincode" type="xs:string"/>
+</xs:schema>

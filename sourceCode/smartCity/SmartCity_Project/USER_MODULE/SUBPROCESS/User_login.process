@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd3" xmlns:pfx6="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd3" schemaLocation="/SmartCity_Schema/CommonModel/schema/Adminschema/adminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" schemaLocation="/SmartCity_Schema/CommonModel/schema/Adminschema/adminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/Adminschema/adminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Adminschema/adminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserLoginReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserLoginResp.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/SUBPROCESS/User_login.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx4:UserLoginReq"/>
+    <pd:startX>154</pd:startX>
+    <pd:startY>89</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="exists($User_login/resultSet/Record[1]/USERID) and &#xA;exists($User_login/resultSet/Record[1]/PASSWORD)">
+                <pfx5:UserLoginResp>
+                    <pfx5:status>
+                        <xsl:value-of select="&quot;Userid successfully login&quot;"/>
+                    </pfx5:status>
+                    <pfx5:message>
+                        <xsl:value-of select="&quot; userid and password is vaild&quot;"/>
+                    </pfx5:message>
+                </pfx5:UserLoginResp>
+            </xsl:when>
+            <xsl:when test="not(exists($User_login/resultSet/Record[1]/USERID)) and&#xA;not(exists( $User_login/resultSet/Record[1]/PASSWORD))">
+                <pfx5:UserLoginResp>
+                    <pfx5:status>
+                        <xsl:value-of select="&quot;User failed to login&quot;"/>
+                    </pfx5:status>
+                    <pfx5:message>
+                        <xsl:value-of select="&quot; userid and password is invaild&quot;"/>
+                    </pfx5:message>
+                </pfx5:UserLoginResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx5:UserLoginResp>
+                    <pfx5:status>
+                        <xsl:value-of select="&quot;User details is not present &quot;"/>
+                    </pfx5:status>
+                    <pfx5:message>
+                        <xsl:value-of select="&quot;please create a new account for User login&quot;"/>
+                    </pfx5:message>
+                </pfx5:UserLoginResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx5:UserLoginResp"/>
+    <pd:endX>497</pd:endX>
+    <pd:endY>91</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1679654323535</pd:targetNamespace>
+    <pd:activity name="User_login">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>320</pd:x>
+        <pd:y>89</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>select     userid,password  
+ from       USERLOGIN
+where     userid=?   and    password =?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>userid</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>password</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <QueryOutputCachedSchemaColumns>USERID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PASSWORD</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <userid>
+                    <xsl:value-of select="$Start/pfx4:UserLoginReq/pfx4:userid"/>
+                </userid>
+                <password>
+                    <xsl:value-of select="$Start/pfx4:UserLoginReq/pfx4:password"/>
+                </password>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate-Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>156</pd:x>
+        <pd:y>200</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <xsl:when test="string-length($Start/pfx4:UserLoginReq/pfx4:userid)=0">
+                    <pfx6:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/UserId"/>
+                        </message>
+                        <xsl:if test="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/UserId">
+                            <messageCode>
+                                <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/UserId"/>
+                            </messageCode>
+                        </xsl:if>
+                    </pfx6:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx4:UserLoginReq/pfx4:userid,'[A-Za-z][A-Za-z0-9_]{7,9}') )">
+                    <pfx6:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/UserIdprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/UserIdprprfrmt"/>
+                        </messageCode>
+                    </pfx6:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx4:UserLoginReq/pfx4:password)=0">
+                    <pfx6:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/password"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/password"/>
+                        </messageCode>
+                    </pfx6:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx4:UserLoginReq/pfx4:password,'[A-Za-z0-9]{1,8}'))">
+                    <pfx6:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/passwordprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/passwordprprfrmt"/>
+                        </messageCode>
+                    </pfx6:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <pfx6:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </pfx6:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>User_login</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx4:UserLoginReq/pfx4:userid) !=0 and 
+custom_func:matchRegex($Start/pfx4:UserLoginReq/pfx4:userid,'[A-Za-z][A-Za-z0-9_]{7,9}') and 
+string-length($Start/pfx4:UserLoginReq/pfx4:password) !=0 and
+custom_func:matchRegex($Start/pfx4:UserLoginReq/pfx4:password,'[A-Za-z0-9]{1,8}')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>User_login</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate-Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/Create_NewAdminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/Create_NewAdminReq.xsd"/>
+    <pd:name>SmartCity_Project/ADMINISTRATION_MODULE/CreateAccount/Jsonformat_Acc.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:convert"/>
+    <pd:startX>140</pd:startX>
+    <pd:startY>104</pd:startY>
+    <pd:returnBindings>
+        <PAYLOAD>
+            <xsl:value-of select="$Render-JSON/ns2:ActivityOutputClass/jsonString"/>
+        </PAYLOAD>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="PAYLOAD" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>583</pd:endX>
+    <pd:endY>102</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1681388461088</pd:targetNamespace>
+    <pd:activity name="Render JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>468</pd:x>
+        <pd:y>102</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="pfx3:createnewaccResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <pfx3:createnewaccResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:message"/>
+                    </pfx3:message>
+                    <pfx3:newacc>
+                        <pfx3:adminid>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:adminid"/>
+                        </pfx3:adminid>
+                        <pfx3:password>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:password"/>
+                        </pfx3:password>
+                        <pfx3:confirmpassword>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:confirmpassword"/>
+                        </pfx3:confirmpassword>
+                        <pfx3:firstname>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:firstname"/>
+                        </pfx3:firstname>
+                        <pfx3:emailid>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:emailid"/>
+                        </pfx3:emailid>
+                        <pfx3:mob_num>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:mob_num"/>
+                        </pfx3:mob_num>
+                        <pfx3:address>
+                            <xsl:value-of select="$create_NewAdmin/pfx3:createnewaccResp/pfx3:newacc/pfx3:address"/>
+                        </pfx3:address>
+                    </pfx3:newacc>
+                </pfx3:createnewaccResp>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="create_NewAdmin">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>349</pd:x>
+        <pd:y>104</pd:y>
+        <config>
+            <processName>/SmartCity_Project/ADMINISTRATION_MODULE/CreateAccount/create_NewAdmin.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx2:createnewAccReq>
+                <pfx2:AdminId>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:AdminId"/>
+                </pfx2:AdminId>
+                <pfx2:Password>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:Password"/>
+                </pfx2:Password>
+                <pfx2:Confirmpassword>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:Confirmpassword"/>
+                </pfx2:Confirmpassword>
+                <pfx2:FirstName>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:FirstName"/>
+                </pfx2:FirstName>
+                <pfx2:EmailId>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:EmailId"/>
+                </pfx2:EmailId>
+                <pfx2:Mob_num>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:Mob_num"/>
+                </pfx2:Mob_num>
+                <pfx2:Address>
+                    <xsl:value-of select="$ParseJSON_Req/ns2:ActivityOutputClass/pfx2:createnewAccReq/pfx2:Address"/>
+                </pfx2:Address>
+            </pfx2:createnewAccReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="ParseJSON_Req">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>235</pd:x>
+        <pd:y>103</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityOutputEditor ref="pfx2:createnewAccReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx:convert/pfx:payload"/>
+                </jsonString>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Render JSON</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>create_NewAdmin</pd:from>
+        <pd:to>Render JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>ParseJSON_Req</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>ParseJSON_Req</pd:from>
+        <pd:to>create_NewAdmin</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

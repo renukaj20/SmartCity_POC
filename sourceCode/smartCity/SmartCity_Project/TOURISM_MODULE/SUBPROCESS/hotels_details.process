@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Hotel_schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" schemaLocation="/Common_Framework_Sh/LogException_schema/Exception.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/Hotel_schema.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/SUBPROCESS/hotels_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx7:HotelReq"/>
+    <pd:startX>79</pd:startX>
+    <pd:startY>147</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx7:HotelReq/pfx7:operations= 'INSERT'">
+                <pfx7:HotelResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;HOTEL DETAILS are inserted successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:HotelReq/pfx7:hotelsInfo">
+                        <pfx7:hotelsInfo>
+                            <pfx7:Hotel_id>
+                                <xsl:value-of select="pfx7:Hotel_id"/>
+                            </pfx7:Hotel_id>
+                            <pfx7:Hotel_name>
+                                <xsl:value-of select="pfx7:Hotel_name"/>
+                            </pfx7:Hotel_name>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                        </pfx7:hotelsInfo>
+                    </xsl:for-each>
+                </pfx7:HotelResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx7:HotelReq/pfx7:operations= 'UPDATE'">
+                <pfx7:HotelResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;HOTEL DETAILS are  updated successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:HotelReq/pfx7:hotelsInfo">
+                        <pfx7:hotelsInfo>
+                            <pfx7:Hotel_id>
+                                <xsl:value-of select="pfx7:Hotel_id"/>
+                            </pfx7:Hotel_id>
+                            <pfx7:Hotel_name>
+                                <xsl:value-of select="pfx7:Hotel_name"/>
+                            </pfx7:Hotel_name>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                        </pfx7:hotelsInfo>
+                    </xsl:for-each>
+                </pfx7:HotelResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx7:HotelReq/pfx7:operations= 'DELETE'">
+                <pfx7:HotelResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;HOTEL DETAILS are deleted successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:HotelReq/pfx7:hotelsInfo">
+                        <pfx7:hotelsInfo>
+                            <pfx7:Hotel_id>
+                                <xsl:value-of select="pfx7:Hotel_id"/>
+                            </pfx7:Hotel_id>
+                            <pfx7:Hotel_name>
+                                <xsl:value-of select="pfx7:Hotel_name"/>
+                            </pfx7:Hotel_name>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                        </pfx7:hotelsInfo>
+                    </xsl:for-each>
+                </pfx7:HotelResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx7:HotelResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;no records found&quot;"/>
+                    </pfx7:message>
+                </pfx7:HotelResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx7:HotelResp"/>
+    <pd:endX>668</pd:endX>
+    <pd:endY>150</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680455764011</pd:targetNamespace>
+    <pd:activity name="add_hoteldetails">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>426</pd:x>
+        <pd:y>35</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  SCP_HOTELS(HOTELID,HOTELNAME,HOTELADDRESS,MOB_NO,RATING,PRICE) VALUES(?,?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>HOTELID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOTELNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOTELADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <HOTELID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id)">
+                            <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </HOTELID>
+                <HOTELNAME>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_name"/>
+                </HOTELNAME>
+                <HOTELADDRESS>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Address"/>
+                </HOTELADDRESS>
+                <MOB_NO>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:mob_no"/>
+                </MOB_NO>
+                <RATING>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:rating"/>
+                </RATING>
+                <PRICE>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:price"/>
+                </PRICE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>78</pd:x>
+        <pd:y>261</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id) =0">
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/hotelid-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/hotelid"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id,'^[A-Za-z0-9_-]+$'))">
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/hotel-proprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/hotelid-prperfrmt"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_name) =0">
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/hotel-name"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/hotelname"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:mob_no, '^[0-9]{10}$'))">
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/hotel-cntactno"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/hotel-cntactno"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:rating) =0">
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/rating"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/ranking-code"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <pfx2:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </pfx2:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Fetch_hoteldetails">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>367</pd:x>
+        <pd:y>154</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT  *   FROM   SCP_HOTELS  </statement>
+            <Prepared_Param_DataType/>
+            <QueryOutputCachedSchemaColumns>HOTELID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>HOTELNAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>HOTELADDRESS</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>MOB_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>RATING</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PRICE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_hoteldetails">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>527</pd:x>
+        <pd:y>151</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>UPDATE   SCP_HOTELS
+  SET  HOTELNAME = ?,HOTELADDRESS = ?,MOB_NO = ? ,RATING =? ,PRICE = ? 
+  WHERE  HOTELID = ?
+</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>HOTELNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOTELADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOTELID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <HOTELNAME>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_name"/>
+                </HOTELNAME>
+                <HOTELADDRESS>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Address"/>
+                </HOTELADDRESS>
+                <MOB_NO>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:mob_no"/>
+                </MOB_NO>
+                <RATING>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:rating"/>
+                </RATING>
+                <PRICE>
+                    <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:price"/>
+                </PRICE>
+                <HOTELID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Fetch_hoteldetails/resultSet/Record[1]/HOTELID)">
+                            <xsl:value-of select="$Fetch_hoteldetails/resultSet/Record[1]/HOTELID"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </HOTELID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Delete_hoteldetails">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>430</pd:x>
+        <pd:y>268</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>HOTELID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE FROM SCP_HOTELS   WHERE  HOTELID = ? </statement>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <HOTELID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id)">
+                            <xsl:value-of select="$Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </HOTELID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>203</pd:x>
+        <pd:y>150</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_hoteldetails</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Fetch_hoteldetails</pd:from>
+        <pd:to>Update_hoteldetails</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_hoteldetails</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Delete_hoteldetails</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_hoteldetails</pd:to>
+        <pd:xpathDescription>INSERT'</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:HotelReq/pfx7:operations ='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>Fetch_hoteldetails</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:HotelReq/pfx7:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>Delete_hoteldetails</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:HotelReq/pfx7:operations='DELETE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id) !=0
+and
+custom_func:matchRegex($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_id,'^[A-Za-z0-9_-]+$')
+and  
+string-length($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:Hotel_name) !=0   and 
+
+custom_func:matchRegex($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:mob_no, '^[0-9]{10}$') and 
+  
+string($Start/pfx7:HotelReq/pfx7:hotelsInfo[1]/pfx7:rating) !=0</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

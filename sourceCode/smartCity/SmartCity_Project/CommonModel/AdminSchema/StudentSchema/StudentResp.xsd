@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="StudentDetailsResp" type="StudentDetailsRespTyp"/>
+	<xs:element name="Status" type="xs:string"/>
+	<xs:element name="Message" type="xs:string"/>
+	<xs:element name="Data" type="DataType"/>
+	<xs:complexType name="DataType">
+		<xs:sequence>
+			<xs:element ref="StudentDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudentDetails" type="StudentDetailsType"/>
+	<xs:element name="Edu.Institutes" type="Edu.InstitutesType"/>
+	<xs:element name="Libraries" type="LibrariesType"/>
+	<xs:element name="Univerties" type="UnivertiesType"/>
+	<xs:element name="Colleges" type="CollegesType"/>
+	<xs:complexType name="StudentDetailsType">
+		<xs:choice>
+			<xs:element ref="Edu.Institutes" minOccurs="0"/>
+			<xs:element ref="Libraries" minOccurs="0"/>
+			<xs:element ref="Univerties" minOccurs="0"/>
+			<xs:element ref="Colleges" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="StudentDetailsRespTyp">
+		<xs:sequence>
+			<xs:element ref="Status"/>
+			<xs:element ref="Message"/>
+			<xs:element ref="StudentDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Edu.InstitutesType">
+		<xs:sequence>
+			<xs:element ref="Instit_Id"/>
+			<xs:element ref="InstitName"/>
+			<xs:element ref="Instit_address"/>
+			<xs:element ref="Instit_mobnum"/>
+			<xs:element ref="Instit_locations"/>
+			<xs:element ref="specialzation"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Instit_Id" type="xs:string"/>
+	<xs:element name="InstitName" type="xs:string"/>
+	<xs:element name="Instit_address" type="xs:string"/>
+	<xs:element name="Instit_mobnum" type="xs:string"/>
+	<xs:element name="Instit_locations" type="xs:string"/>
+	<xs:element name="specialzation" type="xs:string"/>
+	<xs:complexType name="LibrariesType">
+		<xs:sequence>
+			<xs:element ref="lib_name"/>
+			<xs:element ref="locations"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="category"/>
+			<xs:element ref="fees"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="lib_name" type="xs:string"/>
+	<xs:element name="locations" type="xs:string"/>
+	<xs:element name="contact_no" type="xs:string"/>
+	<xs:element name="category" type="xs:string"/>
+	<xs:element name="fees" type="xs:string"/>
+	<xs:complexType name="UnivertiesType">
+		<xs:sequence>
+			<xs:element ref="university_id"/>
+			<xs:element ref="university_name"/>
+			<xs:element ref="universiy_address"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="foundedyear"/>
+			<xs:element ref="courses"/>
+			<xs:element ref="stream"/>
+			<xs:element ref="coursetype"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="university_name" type="xs:string"/>
+	<xs:element name="universiy_address" type="xs:string"/>
+	<xs:element name="foundedyear" type="xs:string"/>
+	<xs:element name="courses" type="xs:string"/>
+	<xs:element name="stream" type="xs:string"/>
+	<xs:element name="coursetype" type="xs:string"/>
+	<xs:complexType name="CollegesType">
+		<xs:sequence>
+			<xs:element ref="college_Id"/>
+			<xs:element ref="college_name"/>
+			<xs:element ref="college_address"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="foundedyear"/>
+			<xs:element ref="stream"/>
+			<xs:element ref="ranking"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="college_name" type="xs:string"/>
+	<xs:element name="college_address" type="xs:string"/>
+	<xs:element name="ranking" type="xs:string"/>
+	<xs:element name="college_Id" type="xs:string"/>
+	<xs:element name="university_id" type="xs:string"/>
+</xs:schema>

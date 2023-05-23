@@ -1,0 +1,501 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>AdminId</name>
+			<value>"Admin Id should  not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>AdminIdprprfrmt</name>
+			<value>"Admin Id should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>Atm-cntactno</name>
+			<value>"Atm contact no should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601398</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>Atms-address</name>
+			<value>"atms address should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>Email</name>
+			<value>"Email should  be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>InstitId-msg</name>
+			<value>"Instit_Id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>InstitIdfrmt-msg</name>
+			<value>"Instit_Id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601405</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>Institame-msg</name>
+			<value>"Instit name should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>Name</name>
+			<value>"name should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>No-records</name>
+			<value>no records are found"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601404</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>UserId</name>
+			<value>"User Id should  not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>UserIdprprfrmt</name>
+			<value>"User Id should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>YOE</name>
+			<value>"year of exp should no be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601405</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>address</name>
+			<value>"address should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>atm-name</name>
+			<value>"atm-name  should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601398</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>atmid-prprfrmt</name>
+			<value>"atm id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>atmsId</name>
+			<value>"atmsId  should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>category</name>
+			<value>"category should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601405</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>center-name</name>
+			<value>"center name should not be emty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>collgId</name>
+			<value>"college id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>collgId-msg</name>
+			<value>"college II should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>company</name>
+			<value>"Company should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>contact-mailmsg</name>
+			<value>"contact email does not match" </value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601394</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>contactno-msg</name>
+			<value>"contact no should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601401</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>degree</name>
+			<value>"degree should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601393</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>descriptn-msg</name>
+			<value>"description should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>experience</name>
+			<value>"Experience shoul not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601392</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>fees</name>
+			<value>"fees should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>foundyearr-msg</name>
+			<value>"found year shpuld not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>hotel-cntactno</name>
+			<value>"mobno does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>hotel-name</name>
+			<value>"hotel name should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>hotel-proprfrmt</name>
+			<value>"hotel id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601392</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>hotelid-msg</name>
+			<value>"Hotel id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>industries</name>
+			<value>"Industries should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>industry-idmsg</name>
+			<value>"industry id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601393</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>industry-nameMsg</name>
+			<value>"industry name should not  be empty "</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601405</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>instit-contact</name>
+			<value>"institutes contact no should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>jobIdprprfrmt</name>
+			<value>"job Id should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>jobid</name>
+			<value>"Job Id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601393</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>jobtype</name>
+			<value>"JobType should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601394</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>libcontactno</name>
+			<value>"library contact no does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601396</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>libname-msg</name>
+			<value>"library name should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>location</name>
+			<value>"Locations should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>password</name>
+			<value>"password should not  be empty "</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601404</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>passwordprprfrmt</name>
+			<value>"password should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601404</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>phoneno</name>
+			<value>"Phone number should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601404</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>pub-dtmsg</name>
+			<value>"publishedDate should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601397</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>pub-properfrmt</name>
+			<value>"publishedDate should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>pubDate</name>
+			<value>"Published date should be iin proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>raking-msg</name>
+			<value>"ranking shoul not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>rating</name>
+			<value>"rating should not be match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601395</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>restId</name>
+			<value>"restaurants Id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601406</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>restIdprprfrmt</name>
+			<value>"restaurant id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>role</name>
+			<value>"Role should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601399</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>specialzation</name>
+			<value>"specialzation should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>stream</name>
+			<value>"stream should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>theaterId</name>
+			<value>"Id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601394</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>theaterId-prprfrmt</name>
+			<value>"Id does not match"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>titlemsg</name>
+			<value>"title should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601402</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>uniIdfrmtmsg</name>
+			<value>"University Id should be in proper format"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601401</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>uniIdmsg</name>
+			<value>"University Id should not be empty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601392</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>uniName</name>
+			<value>"University  name should not be emoty"</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1684836601403</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>

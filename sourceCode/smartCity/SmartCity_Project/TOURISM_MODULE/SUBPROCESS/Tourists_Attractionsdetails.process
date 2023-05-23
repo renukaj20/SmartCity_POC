@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx8="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Tourist_attraction.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/ToursimReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Tourists_attractnSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Tourist_attraction.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/Tourists_attractnSchema.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Tourists_Attractionsdetails.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx7:TouristAttractionsReq"/>
+    <pd:startX>49</pd:startX>
+    <pd:startY>178</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx7:TouristAttractionsReq/pfx7:operations='INSERT'">
+                <pfx7:TouristAttractionsResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;Toursits Attraction details are inserted successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo">
+                        <pfx7:TouristAttractionsInfo>
+                            <pfx7:tourattraction_id>
+                                <xsl:value-of select="pfx7:tourattraction_id"/>
+                            </pfx7:tourattraction_id>
+                            <pfx7:name>
+                                <xsl:value-of select="pfx7:name"/>
+                            </pfx7:name>
+                            <pfx7:category>
+                                <xsl:value-of select="pfx7:category"/>
+                            </pfx7:category>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                        </pfx7:TouristAttractionsInfo>
+                    </xsl:for-each>
+                </pfx7:TouristAttractionsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx7:TouristAttractionsReq/pfx7:operations='UPDATE'">
+                <pfx7:TouristAttractionsResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;Toursits Attraction details are updated successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo">
+                        <pfx7:TouristAttractionsInfo>
+                            <pfx7:tourattraction_id>
+                                <xsl:value-of select="pfx7:tourattraction_id"/>
+                            </pfx7:tourattraction_id>
+                            <pfx7:name>
+                                <xsl:value-of select="pfx7:name"/>
+                            </pfx7:name>
+                            <pfx7:category>
+                                <xsl:value-of select="pfx7:category"/>
+                            </pfx7:category>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                        </pfx7:TouristAttractionsInfo>
+                    </xsl:for-each>
+                </pfx7:TouristAttractionsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx7:TouristAttractionsReq/pfx7:operations='DELETE'">
+                <pfx7:TouristAttractionsResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;Toursits Attraction details are  deleted successfully&quot;"/>
+                    </pfx7:message>
+                    <xsl:for-each select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo">
+                        <pfx7:TouristAttractionsInfo>
+                            <pfx7:tourattraction_id>
+                                <xsl:value-of select="pfx7:tourattraction_id"/>
+                            </pfx7:tourattraction_id>
+                            <pfx7:name>
+                                <xsl:value-of select="pfx7:name"/>
+                            </pfx7:name>
+                            <pfx7:category>
+                                <xsl:value-of select="pfx7:category"/>
+                            </pfx7:category>
+                            <pfx7:Address>
+                                <xsl:value-of select="pfx7:Address"/>
+                            </pfx7:Address>
+                            <pfx7:mob_no>
+                                <xsl:value-of select="pfx7:mob_no"/>
+                            </pfx7:mob_no>
+                            <pfx7:price>
+                                <xsl:value-of select="pfx7:price"/>
+                            </pfx7:price>
+                            <pfx7:rating>
+                                <xsl:value-of select="pfx7:rating"/>
+                            </pfx7:rating>
+                        </pfx7:TouristAttractionsInfo>
+                    </xsl:for-each>
+                </pfx7:TouristAttractionsResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx7:TouristAttractionsResp>
+                    <pfx7:status>
+                        <xsl:value-of select="&quot;FAILED&quot;"/>
+                    </pfx7:status>
+                    <pfx7:message>
+                        <xsl:value-of select="&quot;Failed to perform operations&quot;"/>
+                    </pfx7:message>
+                </pfx7:TouristAttractionsResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx7:TouristAttractionsResp"/>
+    <pd:endX>553</pd:endX>
+    <pd:endY>181</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511497881</pd:targetNamespace>
+    <pd:activity name="add_Tourists_attraction_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>340</pd:x>
+        <pd:y>83</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  SCP_TOURISTS_ATTRACTN (T_ATTRACTION_ID,CATEGORY,TOURISTS_ATTRRACTIONNAME,ADDRESS,MOB_NUM,RATING,PRICE) VALUES(?,?,?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>T_ATTRACTION_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>TOURISTS_ATTRRACTIONNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <T_ATTRACTION_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </T_ATTRACTION_ID>
+                <CATEGORY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CATEGORY>
+                <TOURISTS_ATTRRACTIONNAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </TOURISTS_ATTRRACTIONNAME>
+                <ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ADDRESS>
+                <MOB_NUM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:mob_no)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:mob_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </MOB_NUM>
+                <RATING>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RATING>
+                <PRICE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:price)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:price"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PRICE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>49</pd:x>
+        <pd:y>295</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id) =0">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id,'^[A-Za-z0-9_-]+$'))">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name) =0">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category) =0">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address) =0">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating) =0">
+                    <ns:ActivityInput/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_Tourists_attraction">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>293</pd:x>
+        <pd:y>178</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>SELECT T_ATTRACTION_ID FROM   SCP_TOURISTS_ATTRACTN </statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <QueryOutputCachedSchemaColumns>T_ATTRACTION_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Tourists_attraction">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>424</pd:x>
+        <pd:y>177</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_TOURISTS_ATTRACTN
+  SET   CATEGORY= ?,TOURISTS_ATTRRACTIONNAME = ?,ADDRESS=?,MOB_NO = ? ,RATING =? ,PRICE = ? 
+  WHERE T_ATTRACTION_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>TOURISTS_ATTRRACTIONNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>T_ATTRACTION_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <CATEGORY>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CATEGORY>
+                <TOURISTS_ATTRRACTIONNAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </TOURISTS_ATTRRACTIONNAME>
+                <ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ADDRESS>
+                <MOB_NO>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:mob_no)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:mob_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </MOB_NO>
+                <RATING>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RATING>
+                <PRICE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:price)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:price"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PRICE>
+                <T_ATTRACTION_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </T_ATTRACTION_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_Tourists_attraction">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>349</pd:x>
+        <pd:y>294</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>DELETE FROM SCP_TOURISTS_ATTRACTN    WHERE  T_ATTRACTION_ID = ? </statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>T_ATTRACTION_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <T_ATTRACTION_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id)">
+                            <xsl:value-of select="$Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </T_ATTRACTION_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>154</pd:x>
+        <pd:y>180</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_Tourists_attraction_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_Tourists_attraction</pd:from>
+        <pd:to>Update_Tourists_attraction</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Tourists_attraction</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_Tourists_attraction</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id)!=0   and 
+
+custom_func:matchRegex($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:tourattraction_id,'^[A-Za-z0-9_-]+$')    and 
+
+string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:name) !=0  and 
+
+string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:category) !=0  and 
+
+string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:Address) !=0  and
+  
+string-length($Start/pfx7:TouristAttractionsReq/pfx7:TouristAttractionsInfo[1]/pfx7:rating) !=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_Tourists_attraction_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:TouristAttractionsReq/pfx7:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_Tourists_attraction</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:TouristAttractionsReq/pfx7:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_Tourists_attraction</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx7:TouristAttractionsReq/pfx7:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="TheatersReq" type="TheatersReqType"/>
+	<xs:complexType name="TheatersReqType">
+		<xs:sequence>
+			<xs:element ref="operations" minOccurs="0"/>
+			<xs:element ref="TheatersInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TheatersInfo" type="TheatersInfotype"/>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:complexType name="TheatersInfotype">
+		<xs:sequence>
+			<xs:element ref="TheaterId"/>
+			<xs:element ref="name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="Street"/>
+			<xs:element ref="city"/>
+			<xs:element ref="State"/>
+			<xs:element ref="pincode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TheaterId" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="Address" type="xs:string"/>
+	<xs:element name="Street" type="xs:string"/>
+	<xs:element name="city" type="xs:string"/>
+	<xs:element name="State" type="xs:string"/>
+	<xs:element name="pincode" type="xs:string"/>
+	<xs:element name="TheatersResp" type="TheatersResp"/>
+	<xs:complexType name="TheatersResp">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="TheatersInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+</xs:schema>

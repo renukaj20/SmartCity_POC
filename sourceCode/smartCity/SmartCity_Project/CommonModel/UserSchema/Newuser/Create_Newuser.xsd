@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Create_Newuser.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Create_Newuser.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="Create_NewuserReq" type="Create_NewuserReqType"/>
+	<xs:complexType name="Create_NewuserReqType">
+		<xs:sequence>
+			<xs:element ref="userid"/>
+			<xs:element ref="password"/>
+			<xs:element ref="firstname"/>
+			<xs:element ref="emailid"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="address"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="userid" type="xs:string"/>
+	<xs:element name="password" type="xs:string"/>
+	<xs:element name="firstname" type="xs:string"/>
+	<xs:element name="emailid" type="xs:string"/>
+	<xs:element name="mob_no" type="xs:string"/>
+	<xs:element name="address" type="xs:string"/>
+	<xs:element name="Create_NewuserResp" type="Create_NewuserRespType"/>
+	<xs:complexType name="Create_NewuserRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+</xs:schema>

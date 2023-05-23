@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>Notify_Configuration</name>
+    <resourceType>ae.shared.notifySharedConfig</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <localOnly>false</localOnly>
+        <xsdString>
+            <xsd:element name="message" type="xsd:string"/>
+        </xsdString>
+    </config>
+</BWSharedResource>

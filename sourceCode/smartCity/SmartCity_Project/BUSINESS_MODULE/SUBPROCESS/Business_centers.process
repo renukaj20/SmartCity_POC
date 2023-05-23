@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Business_centersSchema.xsd"/>
+    <pd:name>SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Business_centers.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx2:Business_centersReq"/>
+    <pd:startX>116</pd:startX>
+    <pd:startY>192</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx2:Business_centersReq/pfx2:operations='INSERT'">
+                <pfx2:Business_centersResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Business news are inserted successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:Business_centersInfo>
+                        <pfx2:Center_name>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                        </pfx2:Center_name>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:Business_centersInfo>
+                </pfx2:Business_centersResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx2:Business_centersReq/pfx2:operations='UPDATE'">
+                <pfx2:Business_centersResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Business news are updated successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:Business_centersInfo>
+                        <pfx2:Center_name>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                        </pfx2:Center_name>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:Business_centersInfo>
+                </pfx2:Business_centersResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx2:Business_centersReq/pfx2:operations='DELETE'">
+                <pfx2:Business_centersResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Business news are deleted successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:Business_centersInfo>
+                        <pfx2:Center_name>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                        </pfx2:Center_name>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:Business_centersInfo>
+                </pfx2:Business_centersResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx2:Business_centersResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;no rrecords found&quot;"/>
+                    </pfx2:message>
+                </pfx2:Business_centersResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx2:Business_centersResp"/>
+    <pd:endX>635</pd:endX>
+    <pd:endY>188</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680789039206</pd:targetNamespace>
+    <pd:activity name="ADD_Business_centers">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>421</pd:x>
+        <pd:y>111</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO SYSTEM.SCP_BUSINESSCENTERS (CENTERS_NAME,DESCRIPTIONS,LOCATIONS,CONTACT_EMAIL) VALUES(?,?,?,?)</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>CENTERS_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_EMAIL</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <CENTERS_NAME>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                </CENTERS_NAME>
+                <DESCRIPTIONS>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions"/>
+                </DESCRIPTIONS>
+                <LOCATIONS>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Locations"/>
+                </LOCATIONS>
+                <CONTACT_EMAIL>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email"/>
+                </CONTACT_EMAIL>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>118</pd:x>
+        <pd:y>325</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/center-name"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/centername-code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/descriptn-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/descrptn_code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/contact-mailmsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/contactmailCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="FETCH_Business_centers">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>369</pd:x>
+        <pd:y>188</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT CENTERS_NAME  FROM   SCP_BUSINESSCENTERS </statement>
+            <QueryOutputCachedSchemaColumns>CENTERS_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Business_centers">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>498</pd:x>
+        <pd:y>189</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_BUSINESSCENTERS
+  SET     CENTERS_NAME = ?,DESCRIPTIONS = ?,LOCATIONS = ?,CONTACT_EMAIL =?  
+  WHERE CENTERS_NAME = ?
+</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>CENTERS_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_EMAIL</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CENTERS_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <CENTERS_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($FETCH_Business_centers/resultSet/Record[1]/CENTERS_NAME)">
+                            <xsl:value-of select="$FETCH_Business_centers/resultSet/Record[1]/CENTERS_NAME"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CENTERS_NAME>
+                <DESCRIPTIONS>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions"/>
+                </DESCRIPTIONS>
+                <LOCATIONS>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Locations"/>
+                </LOCATIONS>
+                <CONTACT_EMAIL>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email"/>
+                </CONTACT_EMAIL>
+                <CENTERS_NAME>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                </CENTERS_NAME>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="DELETE_Business_centers">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>428</pd:x>
+        <pd:y>301</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE    FROM    SCP_BUSINESSCENTERS   WHERE  CENTERS_NAME = ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>CENTERS_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <CENTERS_NAME>
+                    <xsl:value-of select="$Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name"/>
+                </CENTERS_NAME>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>240</pd:x>
+        <pd:y>191</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>ADD_Business_centers</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FETCH_Business_centers</pd:from>
+        <pd:to>Update_Business_centers</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Business_centers</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>DELETE_Business_centers</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>ADD_Business_centers</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:Business_centersReq/pfx2:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>FETCH_Business_centers</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:Business_centersReq/pfx2:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>DELETE_Business_centers</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:Business_centersReq/pfx2:operations='DELETE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate </pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Center_name) !=0 and 
+
+string-length($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Descriptions)  !=0 and
+
+
+custom_func:matchRegex($Start/pfx2:Business_centersReq/pfx2:Business_centersInfo/pfx2:Contact_email,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]')</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

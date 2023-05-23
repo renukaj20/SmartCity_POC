@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/university.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/university.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="UniversitesReq" type="UniversitesReqType"/>
+	<xs:complexType name="UniversitesReqType">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="UniversitesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="UniversitesInfo" type="UniversitesInfo"/>
+	<xs:complexType name="UniversitesInfo">
+		<xs:sequence>
+			<xs:element ref="university_id"/>
+			<xs:element ref="university_name"/>
+			<xs:element ref="universiy_address"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="foundedyear"/>
+			<xs:element ref="courses"/>
+			<xs:element ref="stream"/>
+			<xs:element ref="coursetype"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="university_name" type="xs:string"/>
+	<xs:element name="universiy_address" type="xs:string"/>
+	<xs:element name="contact_no" type="xs:string"/>
+	<xs:element name="foundedyear" type="xs:string"/>
+	<xs:element name="courses" type="xs:string"/>
+	<xs:element name="stream" type="xs:string"/>
+	<xs:element name="coursetype" type="xs:string"/>
+	<xs:element name="UniversitesResp" type="UniversitesResp"/>
+	<xs:complexType name="UniversitesResp">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="UniversitesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="university_id" type="xs:string"/>
+</xs:schema>

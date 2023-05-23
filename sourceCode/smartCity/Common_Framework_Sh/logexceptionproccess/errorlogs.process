@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" schemaLocation="/Common_Framework_Sh/Exception_schema/Exception.xsd"/>
+    <pd:name>Common_Framework_Sh/logexceptionproccess/errorlogs.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:ExceptionHandler"/>
+    <pd:startX>149</pd:startX>
+    <pd:startY>70</pd:startY>
+    <pd:returnBindings>
+        <pfx:ExceptionHandler>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:ApplictionName">
+                <pfx:ApplictionName>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:ApplictionName"/>
+                </pfx:ApplictionName>
+            </xsl:if>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:ProcessName">
+                <pfx:ProcessName>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:ProcessName"/>
+                </pfx:ProcessName>
+            </xsl:if>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:CorrelationID">
+                <pfx:CorrelationID>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:CorrelationID"/>
+                </pfx:CorrelationID>
+            </xsl:if>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:Status">
+                <pfx:Status>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Status"/>
+                </pfx:Status>
+            </xsl:if>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:LogType">
+                <pfx:LogType>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:LogType"/>
+                </pfx:LogType>
+            </xsl:if>
+            <xsl:if test="$Start/pfx:ExceptionHandler/pfx:Current_Timestamp">
+                <pfx:Current_Timestamp>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Current_Timestamp"/>
+                </pfx:Current_Timestamp>
+            </xsl:if>
+            <pfx:Payload>
+                <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Payload"/>
+            </pfx:Payload>
+            <pfx:Exception>
+                <pfx:ErrorCode>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorCode"/>
+                </pfx:ErrorCode>
+                <pfx:ErrorMsg>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorMsg"/>
+                </pfx:ErrorMsg>
+                <pfx:StackTrace>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:StackTrace"/>
+                </pfx:StackTrace>
+            </pfx:Exception>
+        </pfx:ExceptionHandler>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx:ExceptionHandler"/>
+    <pd:endX>446</pd:endX>
+    <pd:endY>70</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1679549107602</pd:targetNamespace>
+    <pd:activity name="EXCEPTIONLOGS">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>293</pd:x>
+        <pd:y>72</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO SYSTEM.SCP_EXCEPTIONLOGS (APPLICATIONNAME, PROCESSNAME,
+  CORRELATIONID, STATUS, LOGTYPE, CURRENT_TIMESTAMP1,
+  PAYLOAD, ERRORCODE, ERRORMESSAGE, STACKTRACE)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>APPLICATIONNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PROCESSNAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CORRELATIONID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STATUS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOGTYPE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CURRENT_TIMESTAMP1</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PAYLOAD</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ERRORCODE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ERRORMESSAGE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STACKTRACE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <APPLICATIONNAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:ApplictionName)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:ApplictionName"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </APPLICATIONNAME>
+                <PROCESSNAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:ProcessName)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:ProcessName"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PROCESSNAME>
+                <CORRELATIONID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:CorrelationID)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:CorrelationID"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CORRELATIONID>
+                <STATUS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:Status)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Status"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STATUS>
+                <LOGTYPE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:LogType)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:LogType"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </LOGTYPE>
+                <CURRENT_TIMESTAMP1>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:Current_Timestamp)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Current_Timestamp"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </CURRENT_TIMESTAMP1>
+                <PAYLOAD>
+                    <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Payload"/>
+                </PAYLOAD>
+                <ERRORCODE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorCode)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorCode"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ERRORCODE>
+                <ERRORMESSAGE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorMsg)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:ErrorMsg"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ERRORMESSAGE>
+                <STACKTRACE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx:ExceptionHandler/pfx:Exception/pfx:StackTrace)">
+                            <xsl:value-of select="$Start/pfx:ExceptionHandler/pfx:Exception/pfx:StackTrace"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </STACKTRACE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>EXCEPTIONLOGS</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>EXCEPTIONLOGS</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

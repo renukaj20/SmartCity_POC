@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd" xmlns:ns5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/institute.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:ns6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/college.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd2" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd3" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:ns4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/library.xsd" xmlns:ns3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/university.xsd" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/Schema.xsd4" xmlns:pfx7="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserRequest.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/StudentResp.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/STUDENT/main/Get_Student_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx4:UserReq"/>
+    <pd:startX>71</pd:startX>
+    <pd:startY>170</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx4:UserReq/pfx4:Search_criteria='EducationalInstitutes_details'">
+                <pfx7:StudentDetailsResp>
+                    <pfx7:Status>
+                        <xsl:value-of select="$EducationalInstitutes_details/ns5:Edu.InstitutesResp/ns5:Status"/>
+                    </pfx7:Status>
+                    <pfx7:Message>
+                        <xsl:value-of select="$EducationalInstitutes_details/ns5:Edu.InstitutesResp/ns5:message"/>
+                    </pfx7:Message>
+                    <pfx7:StudentDetails>
+                        <xsl:for-each select="$EducationalInstitutes_details/ns5:Edu.InstitutesResp/ns5:Edu.InstitutesInfo[1]">
+                            <pfx7:Edu.Institutes>
+                                <pfx7:Instit_Id>
+                                    <xsl:value-of select="ns5:Instit_Id"/>
+                                </pfx7:Instit_Id>
+                                <pfx7:InstitName>
+                                    <xsl:value-of select="ns5:InstitName"/>
+                                </pfx7:InstitName>
+                                <pfx7:Instit_address>
+                                    <xsl:value-of select="ns5:Instit_address"/>
+                                </pfx7:Instit_address>
+                                <pfx7:Instit_mobnum>
+                                    <xsl:value-of select="ns5:Instit_mobnum"/>
+                                </pfx7:Instit_mobnum>
+                                <pfx7:Instit_locations>
+                                    <xsl:value-of select="ns5:Instit_locations"/>
+                                </pfx7:Instit_locations>
+                                <pfx7:specialzation>
+                                    <xsl:value-of select="ns5:specialzation"/>
+                                </pfx7:specialzation>
+                            </pfx7:Edu.Institutes>
+                        </xsl:for-each>
+                    </pfx7:StudentDetails>
+                </pfx7:StudentDetailsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx4:UserReq/pfx4:Search_criteria='LIBRARIES_details'">
+                <pfx7:StudentDetailsResp>
+                    <pfx7:Status>
+                        <xsl:value-of select="$LIBRARIES_details/ns4:LibrariesResp/ns4:status"/>
+                    </pfx7:Status>
+                    <pfx7:Message>
+                        <xsl:value-of select="$LIBRARIES_details/ns4:LibrariesResp/ns4:meessage"/>
+                    </pfx7:Message>
+                    <pfx7:StudentDetails>
+                        <xsl:for-each select="$LIBRARIES_details/ns4:LibrariesResp/ns4:LibrariesInfo[1]">
+                            <pfx7:Libraries>
+                                <pfx7:lib_name>
+                                    <xsl:value-of select="ns4:lib_name"/>
+                                </pfx7:lib_name>
+                                <pfx7:locations>
+                                    <xsl:value-of select="ns4:locations"/>
+                                </pfx7:locations>
+                                <pfx7:contact_no>
+                                    <xsl:value-of select="ns4:contact_no"/>
+                                </pfx7:contact_no>
+                                <pfx7:category>
+                                    <xsl:value-of select="ns4:category"/>
+                                </pfx7:category>
+                                <pfx7:fees>
+                                    <xsl:value-of select="ns4:fees"/>
+                                </pfx7:fees>
+                            </pfx7:Libraries>
+                        </xsl:for-each>
+                    </pfx7:StudentDetails>
+                </pfx7:StudentDetailsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx4:UserReq/pfx4:Search_criteria = 'UNVERSITIES_details'">
+                <pfx7:StudentDetailsResp>
+                    <pfx7:Status>
+                        <xsl:value-of select="$UNIVERSITIES_details/ns3:UniversitesResp/ns3:status"/>
+                    </pfx7:Status>
+                    <pfx7:Message>
+                        <xsl:value-of select="$UNIVERSITIES_details/ns3:UniversitesResp/ns3:message"/>
+                    </pfx7:Message>
+                    <pfx7:StudentDetails>
+                        <xsl:for-each select="$UNIVERSITIES_details/ns3:UniversitesResp/ns3:UniversitesInfo[1]">
+                            <pfx7:Univerties>
+                                <pfx7:university_id>
+                                    <xsl:value-of select="ns3:university_id"/>
+                                </pfx7:university_id>
+                                <pfx7:university_name>
+                                    <xsl:value-of select="ns3:university_name"/>
+                                </pfx7:university_name>
+                                <pfx7:universiy_address>
+                                    <xsl:value-of select="ns3:universiy_address"/>
+                                </pfx7:universiy_address>
+                                <pfx7:contact_no>
+                                    <xsl:value-of select="ns3:contact_no"/>
+                                </pfx7:contact_no>
+                                <pfx7:foundedyear>
+                                    <xsl:value-of select="ns3:foundedyear"/>
+                                </pfx7:foundedyear>
+                                <pfx7:courses>
+                                    <xsl:value-of select="ns3:courses"/>
+                                </pfx7:courses>
+                                <pfx7:stream>
+                                    <xsl:value-of select="ns3:stream"/>
+                                </pfx7:stream>
+                                <pfx7:coursetype>
+                                    <xsl:value-of select="ns3:coursetype"/>
+                                </pfx7:coursetype>
+                            </pfx7:Univerties>
+                        </xsl:for-each>
+                    </pfx7:StudentDetails>
+                </pfx7:StudentDetailsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx4:UserReq/pfx4:Search_criteria='COLLEGES_details'">
+                <pfx7:StudentDetailsResp>
+                    <pfx7:Status>
+                        <xsl:value-of select="$COLLEGES_details/ns6:CollegeResp/ns6:status"/>
+                    </pfx7:Status>
+                    <pfx7:Message>
+                        <xsl:value-of select="$COLLEGES_details/ns6:CollegeResp/ns6:message"/>
+                    </pfx7:Message>
+                    <pfx7:StudentDetails>
+                        <xsl:for-each select="$COLLEGES_details/ns6:CollegeResp/ns6:CollegesInfo[1]">
+                            <pfx7:Colleges>
+                                <pfx7:college_Id>
+                                    <xsl:value-of select="ns6:college_Id"/>
+                                </pfx7:college_Id>
+                                <pfx7:college_name>
+                                    <xsl:value-of select="ns6:college_name"/>
+                                </pfx7:college_name>
+                                <pfx7:college_address>
+                                    <xsl:value-of select="ns6:college_address"/>
+                                </pfx7:college_address>
+                                <pfx7:contact_no>
+                                    <xsl:value-of select="ns6:contact_no"/>
+                                </pfx7:contact_no>
+                                <pfx7:foundedyear>
+                                    <xsl:value-of select="ns6:foundedyear"/>
+                                </pfx7:foundedyear>
+                                <pfx7:stream>
+                                    <xsl:value-of select="ns6:stream"/>
+                                </pfx7:stream>
+                                <pfx7:ranking>
+                                    <xsl:value-of select="ns6:ranking"/>
+                                </pfx7:ranking>
+                            </pfx7:Colleges>
+                        </xsl:for-each>
+                    </pfx7:StudentDetails>
+                </pfx7:StudentDetailsResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx7:StudentDetailsResp>
+                    <pfx7:Status>
+                        <xsl:value-of select="&quot;FAILED&quot;"/>
+                    </pfx7:Status>
+                    <pfx7:Message>
+                        <xsl:value-of select="&quot;FAILED TO PERFORM OPERTIONS&quot;"/>
+                    </pfx7:Message>
+                </pfx7:StudentDetailsResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx7:StudentDetailsResp"/>
+    <pd:endX>705</pd:endX>
+    <pd:endY>183</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1681750101316</pd:targetNamespace>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>269</pd:x>
+        <pd:y>173</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <ns1:ApplictionName>
+                    <xsl:value-of select="&quot;business_details&quot;"/>
+                </ns1:ApplictionName>
+                <ns1:ProcessName>
+                    <xsl:value-of select="&quot;Get_business_details&quot;"/>
+                </ns1:ProcessName>
+                <ns1:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </ns1:CorrelationID>
+                <ns1:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </ns1:Status>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </ns1:LogType>
+                <ns1:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </ns1:Current_Timestamp>
+                <ns1:Payload>
+                    <xsl:value-of select="string($Start/pfx4:UserReq/pfx4:Search_criteria)"/>
+                </ns1:Payload>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SET_UUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>175</pd:x>
+        <pd:y>171</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="EducationalInstitutes_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>432</pd:x>
+        <pd:y>36</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/STUDENT/main/subprocess/EducationalInstitutes_details.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx4:UserReq>
+                <pfx4:Search_criteria>
+                    <xsl:value-of select="$Start/pfx4:UserReq/pfx4:Search_criteria"/>
+                </pfx4:Search_criteria>
+            </pfx4:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="LIBRARIES_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>428</pd:x>
+        <pd:y>124</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/STUDENT/main/subprocess/LIBRARIES_details.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx4:UserReq>
+                <pfx4:Search_criteria>
+                    <xsl:value-of select="$Start/pfx4:UserReq/pfx4:Search_criteria"/>
+                </pfx4:Search_criteria>
+            </pfx4:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="UNIVERSITIES_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>436</pd:x>
+        <pd:y>220</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/STUDENT/main/subprocess/UNIVERSITIES_details.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx4:UserReq>
+                <pfx4:Search_criteria>
+                    <xsl:value-of select="$Start/pfx4:UserReq/pfx4:Search_criteria"/>
+                </pfx4:Search_criteria>
+            </pfx4:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="COLLEGES_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>433</pd:x>
+        <pd:y>310</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/STUDENT/main/subprocess/COLLEGES_details.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx4:UserReq>
+                <pfx4:Search_criteria>
+                    <xsl:value-of select="$Start/pfx4:UserReq/pfx4:Search_criteria"/>
+                </pfx4:Search_criteria>
+            </pfx4:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="end_log">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>583</pd:x>
+        <pd:y>180</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ApplictionName">
+                    <ns1:ApplictionName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ApplictionName"/>
+                    </ns1:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ProcessName">
+                    <ns1:ProcessName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ProcessName"/>
+                    </ns1:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:CorrelationID">
+                    <ns1:CorrelationID>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:CorrelationID"/>
+                    </ns1:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Status">
+                    <ns1:Status>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Status"/>
+                    </ns1:Status>
+                </xsl:if>
+                <ns1:LogType>
+                    <xsl:value-of select="'endlog'"/>
+                </ns1:LogType>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Current_Timestamp">
+                    <ns1:Current_Timestamp>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Current_Timestamp"/>
+                    </ns1:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Payload">
+                    <ns1:Payload>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Payload"/>
+                    </ns1:Payload>
+                </xsl:if>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SET_UUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SET_UUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>EducationalInstitutes_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx4:UserReq/pfx4:Search_criteria='EducationalInstitutes_details'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>LIBRARIES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx4:UserReq/pfx4:Search_criteria='LIBRARIES_details'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>UNIVERSITIES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx4:UserReq/pfx4:Search_criteria='UNIVERSITIES_details'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>COLLEGES_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx4:UserReq/pfx4:Search_criteria='COLLEGES_details'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>COLLEGES_details</pd:from>
+        <pd:to>end_log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>UNIVERSITIES_details</pd:from>
+        <pd:to>end_log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>LIBRARIES_details</pd:from>
+        <pd:to>end_log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>EducationalInstitutes_details</pd:from>
+        <pd:to>end_log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>end_log</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

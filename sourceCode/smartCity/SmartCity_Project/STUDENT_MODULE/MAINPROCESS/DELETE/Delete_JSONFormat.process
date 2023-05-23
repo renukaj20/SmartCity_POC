@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/StudentResp.xsd"/>
+    <pd:name>SmartCity_Project/STUDENT_MODULE/MAINPROCESS/DELETE/Delete_JSONFormat.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:convert"/>
+    <pd:startX>153</pd:startX>
+    <pd:startY>84</pd:startY>
+    <pd:returnBindings>
+        <PAYLOAD>
+            <xsl:value-of select="$JSON_Resp/ns2:ActivityOutputClass/jsonString"/>
+        </PAYLOAD>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="PAYLOAD" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>640</pd:endX>
+    <pd:endY>84</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1681213638251</pd:targetNamespace>
+    <pd:activity name="JSONReq">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>254</pd:x>
+        <pd:y>83</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>true</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx3:StudentetailsReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx:convert/pfx:payload"/>
+                </jsonString>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JSON_Resp">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>520</pd:x>
+        <pd:y>84</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="pfx3:StudentDetailsResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <pfx3:StudentDetailsResp>
+                    <pfx3:Status>
+                        <xsl:value-of select="$Delete_STUDENT_DETAILS/pfx3:StudentDetailsResp/pfx3:Status"/>
+                    </pfx3:Status>
+                    <pfx3:Message>
+                        <xsl:value-of select="$Delete_STUDENT_DETAILS/pfx3:StudentDetailsResp/pfx3:Message"/>
+                    </pfx3:Message>
+                    <pfx3:StudentDetails>
+                        <xsl:for-each select="$Delete_STUDENT_DETAILS/pfx3:StudentDetailsResp/pfx3:StudentDetails/pfx3:Edu.Institutes">
+                            <pfx3:Edu.Institutes>
+                                <pfx3:Instit_Id>
+                                    <xsl:value-of select="pfx3:Instit_Id"/>
+                                </pfx3:Instit_Id>
+                                <pfx3:InstitName>
+                                    <xsl:value-of select="pfx3:InstitName"/>
+                                </pfx3:InstitName>
+                                <pfx3:Instit_address>
+                                    <xsl:value-of select="pfx3:Instit_address"/>
+                                </pfx3:Instit_address>
+                                <pfx3:Instit_mobnum>
+                                    <xsl:value-of select="pfx3:Instit_mobnum"/>
+                                </pfx3:Instit_mobnum>
+                                <pfx3:Instit_locations>
+                                    <xsl:value-of select="pfx3:Instit_locations"/>
+                                </pfx3:Instit_locations>
+                                <pfx3:specialzation>
+                                    <xsl:value-of select="pfx3:specialzation"/>
+                                </pfx3:specialzation>
+                            </pfx3:Edu.Institutes>
+                        </xsl:for-each>
+                    </pfx3:StudentDetails>
+                </pfx3:StudentDetailsResp>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Delete_STUDENT_DETAILS">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>378</pd:x>
+        <pd:y>84</pd:y>
+        <config>
+            <processName>/SmartCity_Project/STUDENT_MODULE/MAINPROCESS/DELETE/Delete_STUDENT_DETAILS.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:StudentetailsReq>
+                <xsl:if test="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:operations">
+                    <pfx3:operations>
+                        <xsl:value-of select="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:operations"/>
+                    </pfx3:operations>
+                </xsl:if>
+                <pfx3:StudentetailsInfo>
+                    <xsl:for-each select="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:StudentetailsInfo/pfx3:Edu.Institutes">
+                        <pfx3:Edu.Institutes>
+                            <pfx3:Instit_Id>
+                                <xsl:value-of select="pfx3:Instit_Id"/>
+                            </pfx3:Instit_Id>
+                            <pfx3:InstitName>
+                                <xsl:value-of select="pfx3:InstitName"/>
+                            </pfx3:InstitName>
+                            <pfx3:Instit_address>
+                                <xsl:value-of select="pfx3:Instit_address"/>
+                            </pfx3:Instit_address>
+                            <pfx3:Instit_mobnum>
+                                <xsl:value-of select="pfx3:Instit_mobnum"/>
+                            </pfx3:Instit_mobnum>
+                            <pfx3:Instit_locations>
+                                <xsl:value-of select="pfx3:Instit_locations"/>
+                            </pfx3:Instit_locations>
+                            <pfx3:specialzation>
+                                <xsl:value-of select="pfx3:specialzation"/>
+                            </pfx3:specialzation>
+                        </pfx3:Edu.Institutes>
+                    </xsl:for-each>
+                    <xsl:for-each select="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:StudentetailsInfo/pfx3:Libraries">
+                        <pfx3:Libraries>
+                            <pfx3:lib_name>
+                                <xsl:value-of select="pfx3:lib_name"/>
+                            </pfx3:lib_name>
+                            <pfx3:locations>
+                                <xsl:value-of select="pfx3:locations"/>
+                            </pfx3:locations>
+                            <pfx3:contact_no>
+                                <xsl:value-of select="pfx3:contact_no"/>
+                            </pfx3:contact_no>
+                            <pfx3:category>
+                                <xsl:value-of select="pfx3:category"/>
+                            </pfx3:category>
+                            <pfx3:fees>
+                                <xsl:value-of select="pfx3:fees"/>
+                            </pfx3:fees>
+                        </pfx3:Libraries>
+                    </xsl:for-each>
+                    <xsl:for-each select="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:StudentetailsInfo/pfx3:Universities">
+                        <pfx3:Universities>
+                            <pfx3:university_id>
+                                <xsl:value-of select="pfx3:university_id"/>
+                            </pfx3:university_id>
+                            <pfx3:university_name>
+                                <xsl:value-of select="pfx3:university_name"/>
+                            </pfx3:university_name>
+                            <pfx3:universiy_address>
+                                <xsl:value-of select="pfx3:universiy_address"/>
+                            </pfx3:universiy_address>
+                            <pfx3:contact_no>
+                                <xsl:value-of select="pfx3:contact_no"/>
+                            </pfx3:contact_no>
+                            <pfx3:foundedyear>
+                                <xsl:value-of select="pfx3:foundedyear"/>
+                            </pfx3:foundedyear>
+                            <pfx3:courses>
+                                <xsl:value-of select="pfx3:courses"/>
+                            </pfx3:courses>
+                            <pfx3:stream>
+                                <xsl:value-of select="pfx3:stream"/>
+                            </pfx3:stream>
+                            <pfx3:coursetype>
+                                <xsl:value-of select="pfx3:coursetype"/>
+                            </pfx3:coursetype>
+                        </pfx3:Universities>
+                    </xsl:for-each>
+                    <xsl:for-each select="$JSONReq/ns2:ActivityOutputClass/pfx3:StudentetailsReq/pfx3:StudentetailsInfo/pfx3:Colleges">
+                        <pfx3:Colleges>
+                            <pfx3:college_Id>
+                                <xsl:value-of select="pfx3:college_Id"/>
+                            </pfx3:college_Id>
+                            <pfx3:college_name>
+                                <xsl:value-of select="pfx3:college_name"/>
+                            </pfx3:college_name>
+                            <pfx3:college_address>
+                                <xsl:value-of select="pfx3:college_address"/>
+                            </pfx3:college_address>
+                            <pfx3:contact_no>
+                                <xsl:value-of select="pfx3:contact_no"/>
+                            </pfx3:contact_no>
+                            <pfx3:foundedyear>
+                                <xsl:value-of select="pfx3:foundedyear"/>
+                            </pfx3:foundedyear>
+                            <pfx3:stream>
+                                <xsl:value-of select="pfx3:stream"/>
+                            </pfx3:stream>
+                            <pfx3:ranking>
+                                <xsl:value-of select="pfx3:ranking"/>
+                            </pfx3:ranking>
+                        </pfx3:Colleges>
+                    </xsl:for-each>
+                </pfx3:StudentetailsInfo>
+            </pfx3:StudentetailsReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JSONReq</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JSON_Resp</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JSONReq</pd:from>
+        <pd:to>Delete_STUDENT_DETAILS</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Delete_STUDENT_DETAILS</pd:from>
+        <pd:to>JSON_Resp</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

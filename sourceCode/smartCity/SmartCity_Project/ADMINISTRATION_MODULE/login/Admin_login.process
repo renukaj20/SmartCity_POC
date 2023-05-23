@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd3" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:pfx4="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd3" schemaLocation="/SmartCity_Schema/CommonModel/schema/Adminschema/adminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminReq.xsd"/>
+    <pd:name>SmartCity_Project/ADMINISTRATION_MODULE/login/Admin_login.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx3:AdminReq"/>
+    <pd:startX>95</pd:startX>
+    <pd:startY>92</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="exists($Admin_login/resultSet/Record/ADMINID) and &#xA;exists($Admin_login/resultSet/Record/PASSWORD)">
+                <pfx2:AdminResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Admin is successfully login&quot;"/>
+                    </pfx2:message>
+                </pfx2:AdminResp>
+            </xsl:when>
+            <xsl:when test="not(exists($Admin_login/resultSet/Record/ADMINID)) and&#xA;not(exists( $Admin_login/resultSet/Record[1]/PASSWORD))">
+                <pfx2:AdminResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;Failed&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Admin failed to login&quot;"/>
+                    </pfx2:message>
+                </pfx2:AdminResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx2:AdminResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;Admin details is not present &quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;please create a new account for admin login&quot;"/>
+                    </pfx2:message>
+                </pfx2:AdminResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx2:AdminResp"/>
+    <pd:endX>597</pd:endX>
+    <pd:endY>94</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1679654323535</pd:targetNamespace>
+    <pd:activity name="Admin_login">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>496</pd:x>
+        <pd:y>93</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>select     ADMINID, PASSWORD  from   ADMINLOGIN
+where   ADMINID=? and PASSWORD =?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>AdminId</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>password</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <QueryOutputCachedSchemaColumns>ADMINID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PASSWORD</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <AdminId>
+                    <xsl:value-of select="$Start/pfx3:AdminReq/pfx3:AdminId"/>
+                </AdminId>
+                <password>
+                    <xsl:value-of select="$Start/pfx3:AdminReq/pfx3:Password"/>
+                </password>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>98</pd:x>
+        <pd:y>213</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx3:AdminReq/pfx3:AdminId)=0">
+                    <pfx4:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/AdminId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/AdminId"/>
+                        </messageCode>
+                    </pfx4:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:AdminReq/pfx3:AdminId,'[A-Za-z][A-Za-z0-9_]{7,9}') )">
+                    <pfx4:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/AdminIdprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/AdminIdprprfrmt"/>
+                        </messageCode>
+                    </pfx4:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx3:AdminReq/pfx3:Password)=0">
+                    <pfx4:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/password"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/password"/>
+                        </messageCode>
+                    </pfx4:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:AdminReq/pfx3:Password,'[A-Za-z0-9]{1,8}'))">
+                    <pfx4:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/passwordprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/passwordprprfrmt"/>
+                        </messageCode>
+                    </pfx4:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <pfx4:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;cvb&quot;"/>
+                        </message>
+                    </pfx4:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Fetch_Admindetails">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>230</pd:x>
+        <pd:y>92</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>select    ADMINID, PASSWORD,STATUS   from   ADMINLOGIN
+</statement>
+            <QueryOutputCachedSchemaColumns>ADMINID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PASSWORD</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STATUS</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Map Data">
+        <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+        <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+        <pd:x>366</pd:x>
+        <pd:y>90</pd:y>
+        <config>
+            <element>
+                <xsd:element name="group">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="root" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="status" type="xsd:string" minOccurs="0"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </element>
+        </config>
+        <pd:inputBindings>
+            <group>
+                <xsl:variable name="var" select="for $var in $Fetch_Admindetails/resultSet/Record  return  $var/STATUS = 'INACTIVE'"/>
+                <xsl:for-each select="$var">
+                    <xsl:choose>
+                        <xsl:when test="$var = true()">
+                            <root>
+                                <status>
+                                    <xsl:value-of select="'true'"/>
+                                </status>
+                            </root>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <root>
+                                <status>
+                                    <xsl:value-of select="'false'"/>
+                                </status>
+                            </root>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </group>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate-Error-1">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>366</pd:x>
+        <pd:y>192</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <pfx4:ActivityInput>
+                <message>
+                    <xsl:value-of select="&quot;Admin in already logged  in &quot;"/>
+                </message>
+            </pfx4:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Fetch_Admindetails</pd:from>
+        <pd:to>Map Data</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Map Data</pd:from>
+        <pd:to>Admin_login</pd:to>
+        <pd:xpathDescription>contains</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>contains(tib:concat-sequence-format($Map-Data/group/root/status, ' , '),'false')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Map Data</pd:from>
+        <pd:to>Generate-Error-1</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Fetch_Admindetails</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx3:AdminReq/pfx3:AdminId) !=0   and 
+custom_func:matchRegex($Start/pfx3:AdminReq/pfx3:AdminId,'[A-Za-z][A-Za-z0-9_]{7,9}') and
+string-length($Start/pfx3:AdminReq/pfx3:Password) !=0 and
+custom_func:matchRegex($Start/pfx3:AdminReq/pfx3:Password,'[A-Za-z0-9]{1,8}')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Admin_login</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

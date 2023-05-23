@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="TourismResp" type="TourismRespType"/>
+	<xs:complexType name="TourismRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="TourismInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="TourismInfo" type="TourismInfoType"/>
+	<xs:complexType name="TourismInfoType">
+		<xs:choice>
+			<xs:element ref="hotels" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Restaurants" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="TouristAttractions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ATMs" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Theaters" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="hotels" type="hotelsType"/>
+	<xs:complexType name="hotelsType">
+		<xs:sequence>
+			<xs:element ref="Hotel_id"/>
+			<xs:element ref="Hotel_name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="rating"/>
+			<xs:element ref="price"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Hotel_id" type="xs:string"/>
+	<xs:element name="Hotel_name" type="xs:string"/>
+	<xs:element name="Address" type="xs:string"/>
+	<xs:element name="mob_no" type="xs:string"/>
+	<xs:element name="rating" type="xs:string"/>
+	<xs:element name="price" type="xs:string"/>
+	<xs:element name="Restaurants" type="RestaurantsType"/>
+	<xs:complexType name="RestaurantsType">
+		<xs:sequence>
+			<xs:element ref="Restaurant_id"/>
+			<xs:element ref="name"/>
+			<xs:element ref="address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="rating"/>
+			<xs:element ref="price"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Restaurant_id" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="address" type="xs:string"/>
+	<xs:element name="TouristAttractions" type="TouristAttractionsType"/>
+	<xs:element name="ATMs" type="ATMsType"/>
+	<xs:element name="Theaters" type="TheatersType"/>
+	<xs:complexType name="TouristAttractionsType">
+		<xs:sequence>
+			<xs:element ref="tourattraction_id"/>
+			<xs:element ref="name"/>
+			<xs:element ref="category"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="mob_no"/>
+			<xs:element ref="price"/>
+			<xs:element ref="rating"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="tourattraction_id" type="xs:string"/>
+	<xs:element name="category" type="xs:string"/>
+	<xs:complexType name="ATMsType">
+		<xs:sequence>
+			<xs:element ref="Atm_id"/>
+			<xs:element ref="Atm_name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="Mob_num"/>
+			<xs:element ref="hours"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TheatersType">
+		<xs:sequence>
+			<xs:element ref="TheaterId"/>
+			<xs:element ref="name"/>
+			<xs:element ref="Address"/>
+			<xs:element ref="Street"/>
+			<xs:element ref="city"/>
+			<xs:element ref="State"/>
+			<xs:element ref="pincode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Street" type="xs:string"/>
+	<xs:element name="city" type="xs:string"/>
+	<xs:element name="State" type="xs:string"/>
+	<xs:element name="pincode" type="xs:string"/>
+	<xs:element name="TheaterId" type="xs:string"/>
+	<xs:element name="Atm_id" type="xs:string"/>
+	<xs:element name="Atm_name" type="xs:string"/>
+	<xs:element name="Mob_num" type="xs:string"/>
+	<xs:element name="hours" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="NewsReq" type="NewsReqType"/>
+	<xs:complexType name="NewsReqType">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="NewsInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="NewsInfo" type="NewsInfoType"/>
+	<xs:complexType name="NewsInfoType">
+		<xs:sequence>
+			<xs:element ref="Title"/>
+			<xs:element ref="Description"/>
+			<xs:element ref="Published_Date"/>
+			<xs:element ref="Source"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Title" type="xs:string"/>
+	<xs:element name="Description" type="xs:string"/>
+	<xs:element name="Published_Date" type="xs:string"/>
+	<xs:element name="Source" type="xs:string"/>
+	<xs:element name="NewsResp" type="NewsRespType"/>
+	<xs:complexType name="NewsRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="NewsInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+</xs:schema>

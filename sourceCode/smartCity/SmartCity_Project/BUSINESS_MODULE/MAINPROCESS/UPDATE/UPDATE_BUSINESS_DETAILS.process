@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema1.xsd" xmlns:ns3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <pd:name>SmartCity_Project/BUSINESS_MODULE/MAINPROCESS/UPDATE/UPDATE_BUSINESS_DETAILS.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:BusinessReq"/>
+    <pd:startX>50</pd:startX>
+    <pd:startY>145</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News)">
+                <pfx:BusinessResp>
+                    <pfx:Status>
+                        <xsl:value-of select="$Business_News/ns3:NewsResp/ns3:status"/>
+                    </pfx:Status>
+                    <pfx:message>
+                        <xsl:value-of select="$Business_News/ns3:NewsResp/ns3:message"/>
+                    </pfx:message>
+                    <pfx:BusinessInfo>
+                        <xsl:for-each select="$Business_News/ns3:NewsResp/ns3:NewsInfo">
+                            <pfx:News>
+                                <pfx:Title>
+                                    <xsl:value-of select="ns3:Title"/>
+                                </pfx:Title>
+                                <pfx:Description>
+                                    <xsl:value-of select="ns3:Description"/>
+                                </pfx:Description>
+                                <pfx:Published_Date>
+                                    <xsl:value-of select="ns3:Published_Date"/>
+                                </pfx:Published_Date>
+                                <pfx:Source>
+                                    <xsl:value-of select="ns3:Source"/>
+                                </pfx:Source>
+                            </pfx:News>
+                        </xsl:for-each>
+                    </pfx:BusinessInfo>
+                </pfx:BusinessResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers)">
+                <pfx:BusinessResp>
+                    <pfx:Status>
+                        <xsl:value-of select="$Business_centers/ns2:Business_centersResp/ns2:status"/>
+                    </pfx:Status>
+                    <pfx:message>
+                        <xsl:value-of select="$Business_centers/ns2:Business_centersResp/ns2:message"/>
+                    </pfx:message>
+                    <pfx:BusinessInfo>
+                        <xsl:for-each select="$Business_centers/ns2:Business_centersResp/ns2:Business_centersInfo">
+                            <pfx:Business_centers>
+                                <pfx:Center_name>
+                                    <xsl:value-of select="ns2:Center_name"/>
+                                </pfx:Center_name>
+                                <pfx:Locations>
+                                    <xsl:value-of select="ns2:Locations"/>
+                                </pfx:Locations>
+                                <pfx:Descriptions>
+                                    <xsl:value-of select="ns2:Descriptions"/>
+                                </pfx:Descriptions>
+                                <pfx:Contact_email>
+                                    <xsl:value-of select="ns2:Contact_email"/>
+                                </pfx:Contact_email>
+                            </pfx:Business_centers>
+                        </xsl:for-each>
+                    </pfx:BusinessInfo>
+                </pfx:BusinessResp>
+            </xsl:when>
+            <xsl:when test="exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries)">
+                <pfx:BusinessResp>
+                    <pfx:Status>
+                        <xsl:value-of select="$Industries/ns:IndustriesResp/ns:status"/>
+                    </pfx:Status>
+                    <pfx:message>
+                        <xsl:value-of select="$Industries/ns:IndustriesResp/ns:message"/>
+                    </pfx:message>
+                    <pfx:BusinessInfo>
+                        <xsl:for-each select="$Industries">
+                            <pfx:Industries>
+                                <pfx:Industry_Id>
+                                    <xsl:value-of select="ns:IndustriesResp/ns:IndustriesInfo/ns:Industry_Id"/>
+                                </pfx:Industry_Id>
+                                <pfx:Industry_name>
+                                    <xsl:value-of select="ns:IndustriesResp/ns:IndustriesInfo/ns:Industry_name"/>
+                                </pfx:Industry_name>
+                                <pfx:Descriptions>
+                                    <xsl:value-of select="ns:IndustriesResp/ns:IndustriesInfo/ns:Descriptions"/>
+                                </pfx:Descriptions>
+                                <pfx:Locations>
+                                    <xsl:value-of select="ns:IndustriesResp/ns:IndustriesInfo/ns:Locations"/>
+                                </pfx:Locations>
+                                <pfx:Contact_email>
+                                    <xsl:value-of select="ns:IndustriesResp/ns:IndustriesInfo/ns:Contact_email"/>
+                                </pfx:Contact_email>
+                            </pfx:Industries>
+                        </xsl:for-each>
+                    </pfx:BusinessInfo>
+                </pfx:BusinessResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx:BusinessResp>
+                    <pfx:Status>
+                        <xsl:value-of select="&quot;no records found&quot;"/>
+                    </pfx:Status>
+                    <pfx:message>
+                        <xsl:value-of select="&quot;no records found&quot;"/>
+                    </pfx:message>
+                </pfx:BusinessResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx:BusinessResp"/>
+    <pd:endX>658</pd:endX>
+    <pd:endY>151</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1680787829515</pd:targetNamespace>
+    <pd:activity name="Business_News">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>378</pd:x>
+        <pd:y>46</pd:y>
+        <config>
+            <processName>/SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Business_News.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns3:NewsReq>
+                <ns3:operations>
+                    <xsl:value-of select="$Start/pfx:BusinessReq/pfx:Operations"/>
+                </ns3:operations>
+                <ns3:NewsInfo>
+                    <ns3:Title>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News/pfx:Title"/>
+                    </ns3:Title>
+                    <ns3:Description>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News/pfx:Description"/>
+                    </ns3:Description>
+                    <ns3:Published_Date>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News/pfx:Published_Date"/>
+                    </ns3:Published_Date>
+                    <ns3:Source>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News/pfx:Source"/>
+                    </ns3:Source>
+                </ns3:NewsInfo>
+            </ns3:NewsReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Business_centers">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>379</pd:x>
+        <pd:y>149</pd:y>
+        <config>
+            <processName>/SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Business_centers.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns2:Business_centersReq>
+                <ns2:operations>
+                    <xsl:value-of select="$Start/pfx:BusinessReq/pfx:Operations"/>
+                </ns2:operations>
+                <ns2:Business_centersInfo>
+                    <ns2:Center_name>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers/pfx:Center_name"/>
+                    </ns2:Center_name>
+                    <ns2:Locations>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers/pfx:Locations"/>
+                    </ns2:Locations>
+                    <ns2:Descriptions>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers/pfx:Descriptions"/>
+                    </ns2:Descriptions>
+                    <ns2:Contact_email>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers/pfx:Contact_email"/>
+                    </ns2:Contact_email>
+                </ns2:Business_centersInfo>
+            </ns2:Business_centersReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Industries">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>376</pd:x>
+        <pd:y>249</pd:y>
+        <config>
+            <processName>/SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Industries.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns:IndustriesReq>
+                <ns:operations>
+                    <xsl:value-of select="$Start/pfx:BusinessReq/pfx:Operations"/>
+                </ns:operations>
+                <ns:IndustriesInfo>
+                    <ns:Industry_Id>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries/pfx:Industry_Id"/>
+                    </ns:Industry_Id>
+                    <ns:Industry_name>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries/pfx:Industry_name"/>
+                    </ns:Industry_name>
+                    <ns:Descriptions>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries/pfx:Descriptions"/>
+                    </ns:Descriptions>
+                    <ns:Locations>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries/pfx:Locations"/>
+                    </ns:Locations>
+                    <ns:Contact_email>
+                        <xsl:value-of select="$Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries/pfx:Contact_email"/>
+                    </ns:Contact_email>
+                </ns:IndustriesInfo>
+            </ns:IndustriesReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>535</pd:x>
+        <pd:y>339</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>237</pd:x>
+        <pd:y>146</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <ns1:ApplictionName>
+                    <xsl:value-of select="&quot;Business_Details&quot;"/>
+                </ns1:ApplictionName>
+                <ns1:ProcessName>
+                    <xsl:value-of select="&quot;update_Business_Details&quot;"/>
+                </ns1:ProcessName>
+                <ns1:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </ns1:CorrelationID>
+                <ns1:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </ns1:Status>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </ns1:LogType>
+                <ns1:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </ns1:Current_Timestamp>
+                <ns1:Payload>
+                    <xsl:value-of select="string($Start/pfx:BusinessReq)"/>
+                </ns1:Payload>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SetUUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>136</pd:x>
+        <pd:y>146</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>525</pd:x>
+        <pd:y>151</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ApplictionName">
+                    <ns1:ApplictionName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ApplictionName"/>
+                    </ns1:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ProcessName">
+                    <ns1:ProcessName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ProcessName"/>
+                    </ns1:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:CorrelationID">
+                    <ns1:CorrelationID>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:CorrelationID"/>
+                    </ns1:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Status">
+                    <ns1:Status>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Status"/>
+                    </ns1:Status>
+                </xsl:if>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </ns1:LogType>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Current_Timestamp">
+                    <ns1:Current_Timestamp>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Current_Timestamp"/>
+                    </ns1:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Payload">
+                    <ns1:Payload>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Payload"/>
+                    </ns1:Payload>
+                </xsl:if>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Business_News</pd:to>
+        <pd:xpathDescription>if  Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:News)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Business_centers</pd:to>
+        <pd:xpathDescription>if  Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Business_centers)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SetUUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SetUUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Industries</pd:to>
+        <pd:xpathDescription>if  Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($Start/pfx:BusinessReq/pfx:BusinessInfo/pfx:Industries)</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Business_News</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Business_centers</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Industries</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

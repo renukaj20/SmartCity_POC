@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/institute.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/institute.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="Edu.InstitutesReq" type="Edu.InstitutesReq"/>
+	<xs:complexType name="Edu.InstitutesReq">
+		<xs:sequence>
+			<xs:element ref="operations" minOccurs="0"/>
+			<xs:element ref="Edu.InstitutesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="Edu.InstitutesInfo" type="Edu.InstitutesInfoType"/>
+	<xs:complexType name="Edu.InstitutesInfoType">
+		<xs:sequence>
+			<xs:element ref="Instit_Id"/>
+			<xs:element ref="InstitName"/>
+			<xs:element ref="Instit_address"/>
+			<xs:element ref="Instit_mobnum"/>
+			<xs:element ref="Instit_locations"/>
+			<xs:element ref="specialzation"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InstitName" type="xs:string"/>
+	<xs:element name="Instit_address" type="xs:string"/>
+	<xs:element name="Instit_mobnum" type="xs:string"/>
+	<xs:element name="Instit_locations" type="xs:string"/>
+	<xs:element name="specialzation" type="xs:string"/>
+	<xs:element name="Edu.InstitutesResp" type="Edu.InstitutesRespType"/>
+	<xs:complexType name="Edu.InstitutesRespType">
+		<xs:sequence>
+			<xs:element ref="Status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="Edu.InstitutesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="Instit_Id" type="xs:string"/>
+</xs:schema>

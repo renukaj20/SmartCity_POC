@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="AdminReq" type="AdminReqType"/>
+	<xs:complexType name="AdminReqType">
+		<xs:sequence>
+			<xs:element ref="AdminId"/>
+			<xs:element ref="Password"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Password" type="xs:string"/>
+	<xs:element name="AdminId" type="xs:string"/>
+</xs:schema>

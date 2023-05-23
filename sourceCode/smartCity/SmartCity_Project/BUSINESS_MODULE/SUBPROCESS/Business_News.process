@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Business_centersSchema.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/BusinessSchema/SubprocessSchema/NewsSchema.xsd"/>
+    <pd:name>SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Business_News.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx3:NewsReq"/>
+    <pd:startX>105</pd:startX>
+    <pd:startY>161</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx3:NewsReq/pfx3:operations='INSERT'">
+                <pfx3:NewsResp>
+                    <pfx3:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="&quot;Business news are inserted successfully&quot;"/>
+                    </pfx3:message>
+                    <pfx3:NewsInfo>
+                        <pfx3:Title>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title"/>
+                        </pfx3:Title>
+                        <pfx3:Description>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description"/>
+                        </pfx3:Description>
+                        <pfx3:Published_Date>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                        </pfx3:Published_Date>
+                        <pfx3:Source>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Source"/>
+                        </pfx3:Source>
+                    </pfx3:NewsInfo>
+                </pfx3:NewsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx3:NewsReq/pfx3:operations='UPDATE'">
+                <pfx3:NewsResp>
+                    <pfx3:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="&quot;Business news are updated  successfully&quot;"/>
+                    </pfx3:message>
+                    <pfx3:NewsInfo>
+                        <pfx3:Title>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title"/>
+                        </pfx3:Title>
+                        <pfx3:Description>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description"/>
+                        </pfx3:Description>
+                        <pfx3:Published_Date>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                        </pfx3:Published_Date>
+                        <pfx3:Source>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Source"/>
+                        </pfx3:Source>
+                    </pfx3:NewsInfo>
+                </pfx3:NewsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx3:NewsReq/pfx3:operations='DELETE'">
+                <pfx3:NewsResp>
+                    <pfx3:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="&quot;Business news are updated  successfully&quot;"/>
+                    </pfx3:message>
+                    <pfx3:NewsInfo>
+                        <pfx3:Title>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title"/>
+                        </pfx3:Title>
+                        <pfx3:Description>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description"/>
+                        </pfx3:Description>
+                        <pfx3:Published_Date>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                        </pfx3:Published_Date>
+                        <pfx3:Source>
+                            <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Source"/>
+                        </pfx3:Source>
+                    </pfx3:NewsInfo>
+                </pfx3:NewsResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx3:NewsResp>
+                    <pfx3:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="&quot;no records  found&quot;"/>
+                    </pfx3:message>
+                </pfx3:NewsResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:NewsResp"/>
+    <pd:endX>675</pd:endX>
+    <pd:endY>168</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680788987043</pd:targetNamespace>
+    <pd:activity name="add_Business_News">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>441</pd:x>
+        <pd:y>67</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO SYSTEM.SCP_BUSINESSNEWS (TITLE,DESCRIPTION,PUBLISHED_DATE,SOURCE) VALUES(?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>TITLE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTION</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PUBLISHED_DATE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>SOURCE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <TITLE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title"/>
+                </TITLE>
+                <DESCRIPTION>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description"/>
+                </DESCRIPTION>
+                <PUBLISHED_DATE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                </PUBLISHED_DATE>
+                <SOURCE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Source"/>
+                </SOURCE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>109</pd:x>
+        <pd:y>282</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/titlemsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/titlecode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/descriptn-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/descrptn_code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/pub-dtmsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/pub-dtcode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date,'^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/pub-properfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/pub-date-format-code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="&quot;no records found&quot;"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="&quot;105&quot;"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_Business_News">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>372</pd:x>
+        <pd:y>160</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT   PUBLISHED_DATE  FROM   SCP_BUSINESSNEWS</statement>
+            <QueryOutputCachedSchemaColumns>PUBLISHED_DATE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Business_News">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>518</pd:x>
+        <pd:y>160</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_BUSINESSNEWS
+  SET   TITLE = ?, DESCRIPTION = ? ,SOURCE = ? 
+  WHERE    PUBLISHED_DATE = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>TITLE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTION</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>SOURCE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PUBLISHED_DATE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <TITLE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title"/>
+                </TITLE>
+                <DESCRIPTION>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description"/>
+                </DESCRIPTION>
+                <SOURCE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Source"/>
+                </SOURCE>
+                <PUBLISHED_DATE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                </PUBLISHED_DATE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_Business_News">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>447</pd:x>
+        <pd:y>276</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>DELETE FROM SCP_BUSINESSNEWS    WHERE  PUBLISHED_DATE = ? </statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>PUBLISHED_DATE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <PUBLISHED_DATE>
+                    <xsl:value-of select="$Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date"/>
+                </PUBLISHED_DATE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>220</pd:x>
+        <pd:y>162</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_Business_News</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_Business_News</pd:from>
+        <pd:to>Update_Business_News</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Business_News</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_Business_News</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription> validate_date</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Title)!=0  and
+
+string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date) !=0   and 
+
+string-length($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Description)!=0   and
+
+custom_func:matchRegex($Start/pfx3:NewsReq/pfx3:NewsInfo/pfx3:Published_Date,'^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_Business_News</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx3:NewsReq/pfx3:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_Business_News</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx3:NewsReq/pfx3:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_Business_News</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx3:NewsReq/pfx3:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/JobseekersSchema/JobsseekersReq.xsd"/>
+    <pd:name>SmartCity_Project/JOBSEEKERS_MODULE/main/DELETE/DELETE_JobseekersDetails.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="ns:JobseekersReq"/>
+    <pd:startX>59</pd:startX>
+    <pd:startY>90</pd:startY>
+    <pd:returnBindings>
+        <ns:JobseekersResp>
+            <ns:Status>
+                <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:Status"/>
+            </ns:Status>
+            <ns:message>
+                <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:message"/>
+            </ns:message>
+            <ns:JobseekersInfo>
+                <ns:JobId>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:JobId"/>
+                </ns:JobId>
+                <ns:Role>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Role"/>
+                </ns:Role>
+                <ns:postedDate>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:postedDate"/>
+                </ns:postedDate>
+                <ns:Company>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Company"/>
+                </ns:Company>
+                <ns:Industries>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Industries"/>
+                </ns:Industries>
+                <ns:location>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:location"/>
+                </ns:location>
+                <ns:Experience>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Experience"/>
+                </ns:Experience>
+                <ns:Job_Type>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Job_Type"/>
+                </ns:Job_Type>
+                <ns:Job_description>
+                    <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Job_description"/>
+                </ns:Job_description>
+                <ns:Requirements>
+                    <ns:degree>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:degree"/>
+                    </ns:degree>
+                    <ns:skills>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:skills"/>
+                    </ns:skills>
+                    <ns:year_of_exp>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Requirements/ns:year_of_exp"/>
+                    </ns:year_of_exp>
+                </ns:Requirements>
+                <ns:Contact_no>
+                    <ns:name>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:name"/>
+                    </ns:name>
+                    <ns:email>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:email"/>
+                    </ns:email>
+                    <ns:phone>
+                        <xsl:value-of select="$Jobseeker/ns:JobseekersResp/ns:JobseekersInfo/ns:Contact_no/ns:phone"/>
+                    </ns:phone>
+                </ns:Contact_no>
+            </ns:JobseekersInfo>
+        </ns:JobseekersResp>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="ns:JobseekersResp"/>
+    <pd:endX>577</pd:endX>
+    <pd:endY>93</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1681062775681</pd:targetNamespace>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>534</pd:x>
+        <pd:y>284</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Jobseeker">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>357</pd:x>
+        <pd:y>92</pd:y>
+        <config>
+            <processName>/SmartCity_Project/JOBSEEKERS_MODULE/subprocess/Jobseeker.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns:JobseekersReq>
+                <xsl:if test="$Start/ns:JobseekersReq/ns:Operations">
+                    <ns:Operations>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:Operations"/>
+                    </ns:Operations>
+                </xsl:if>
+                <ns:JobseekersInfo>
+                    <ns:JobId>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:JobId"/>
+                    </ns:JobId>
+                    <ns:Role>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Role"/>
+                    </ns:Role>
+                    <ns:postedDate>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:postedDate"/>
+                    </ns:postedDate>
+                    <ns:Company>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Company"/>
+                    </ns:Company>
+                    <ns:Industries>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Industries"/>
+                    </ns:Industries>
+                    <ns:location>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:location"/>
+                    </ns:location>
+                    <ns:Experience>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Experience"/>
+                    </ns:Experience>
+                    <ns:Job_Type>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Job_Type"/>
+                    </ns:Job_Type>
+                    <ns:Job_description>
+                        <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Job_description"/>
+                    </ns:Job_description>
+                    <ns:Requirements>
+                        <ns:degree>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:degree"/>
+                        </ns:degree>
+                        <ns:skills>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:skills"/>
+                        </ns:skills>
+                        <ns:year_of_exp>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Requirements/ns:year_of_exp"/>
+                        </ns:year_of_exp>
+                    </ns:Requirements>
+                    <ns:Contact_no>
+                        <ns:name>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:name"/>
+                        </ns:name>
+                        <ns:email>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:email"/>
+                        </ns:email>
+                        <ns:phone>
+                            <xsl:value-of select="$Start/ns:JobseekersReq/ns:JobseekersInfo/ns:Contact_no/ns:phone"/>
+                        </ns:phone>
+                    </ns:Contact_no>
+                </ns:JobseekersInfo>
+            </ns:JobseekersReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>243</pd:x>
+        <pd:y>91</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:LogHandler>
+                <pfx:ApplictionName>
+                    <xsl:value-of select="&quot;JobseekerDetails&quot;"/>
+                </pfx:ApplictionName>
+                <pfx:ProcessName>
+                    <xsl:value-of select="&quot;DELETE_JobseekersDetails&quot;"/>
+                </pfx:ProcessName>
+                <pfx:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </pfx:CorrelationID>
+                <pfx:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </pfx:Status>
+                <pfx:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </pfx:LogType>
+                <pfx:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </pfx:Current_Timestamp>
+                <pfx:Payload>
+                    <xsl:value-of select="string($Start/ns:JobseekersReq)"/>
+                </pfx:Payload>
+            </pfx:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>465</pd:x>
+        <pd:y>92</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:LogHandler>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:ApplictionName">
+                    <pfx:ApplictionName>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:ApplictionName"/>
+                    </pfx:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:ProcessName">
+                    <pfx:ProcessName>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:ProcessName"/>
+                    </pfx:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:CorrelationID">
+                    <pfx:CorrelationID>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:CorrelationID"/>
+                    </pfx:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:Status">
+                    <pfx:Status>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:Status"/>
+                    </pfx:Status>
+                </xsl:if>
+                <pfx:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </pfx:LogType>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:Current_Timestamp">
+                    <pfx:Current_Timestamp>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:Current_Timestamp"/>
+                    </pfx:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/pfx:LogHandler/pfx:Payload">
+                    <pfx:Payload>
+                        <xsl:value-of select="$startlog/pfx:LogHandler/pfx:Payload"/>
+                    </pfx:Payload>
+                </xsl:if>
+            </pfx:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SetUUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>144</pd:x>
+        <pd:y>91</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Jobseeker</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Jobseeker</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SetUUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SetUUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

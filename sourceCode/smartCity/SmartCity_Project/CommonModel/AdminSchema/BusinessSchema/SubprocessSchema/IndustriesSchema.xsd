@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema1.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema1.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="IndustriesReq" type="IndustriesReqType"/>
+	<xs:complexType name="IndustriesReqType">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="IndustriesInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="IndustriesInfo" type="IndustriesInfoType"/>
+	<xs:complexType name="IndustriesInfoType">
+		<xs:sequence>
+			<xs:element ref="Industry_Id"/>
+			<xs:element ref="Industry_name"/>
+			<xs:element ref="Descriptions"/>
+			<xs:element ref="Locations"/>
+			<xs:element ref="Contact_email"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Industry_name" type="xs:string"/>
+	<xs:element name="Descriptions" type="xs:string"/>
+	<xs:element name="Locations" type="xs:string"/>
+	<xs:element name="Contact_email" type="xs:string"/>
+	<xs:element name="IndustriesResp" type="IndustriesRespType"/>
+	<xs:complexType name="IndustriesRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="IndustriesInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="Industry_Id" type="xs:string"/>
+</xs:schema>

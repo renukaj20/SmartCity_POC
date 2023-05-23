@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="createnewAccReq" type="createnewAccReqType"/>
+	<xs:complexType name="createnewAccReqType">
+		<xs:sequence>
+			<xs:element ref="AdminId"/>
+			<xs:element ref="Password"/>
+			<xs:element ref="Confirmpassword"/>
+			<xs:element ref="FirstName"/>
+			<xs:element ref="EmailId"/>
+			<xs:element ref="Mob_num"/>
+			<xs:element ref="Address"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Confirmpassword" type="xs:string"/>
+	<xs:element name="FirstName" type="xs:string"/>
+	<xs:element name="EmailId" type="xs:string"/>
+	<xs:element name="Mob_num" type="xs:string"/>
+	<xs:element name="Address" type="xs:string"/>
+	<xs:element name="AdminId" type="xs:string"/>
+	<xs:element name="Password" type="xs:string"/>
+</xs:schema>

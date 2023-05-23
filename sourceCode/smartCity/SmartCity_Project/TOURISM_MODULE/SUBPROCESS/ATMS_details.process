@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd3" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/ATMSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/ATMSchema.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/SUBPROCESS/ATMS_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx6:ATMsReq"/>
+    <pd:startX>63</pd:startX>
+    <pd:startY>187</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx6:ATMsReq/pfx6:operations='INSERT'">
+                <pfx6:ATMsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;ATMS DETAILS ARE INSERTED SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo">
+                        <pfx6:ATMSInfo>
+                            <pfx6:Atm_id>
+                                <xsl:value-of select="pfx6:Atm_id"/>
+                            </pfx6:Atm_id>
+                            <pfx6:Atm_name>
+                                <xsl:value-of select="pfx6:Atm_name"/>
+                            </pfx6:Atm_name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Mob_num>
+                                <xsl:value-of select="pfx6:Mob_num"/>
+                            </pfx6:Mob_num>
+                            <pfx6:hours>
+                                <xsl:value-of select="pfx6:hours"/>
+                            </pfx6:hours>
+                        </pfx6:ATMSInfo>
+                    </xsl:for-each>
+                </pfx6:ATMsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:ATMsReq/pfx6:operations='UPDATE'">
+                <pfx6:ATMsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;ATMS DETAILS ARE  UPDATED SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo">
+                        <pfx6:ATMSInfo>
+                            <pfx6:Atm_id>
+                                <xsl:value-of select="pfx6:Atm_id"/>
+                            </pfx6:Atm_id>
+                            <pfx6:Atm_name>
+                                <xsl:value-of select="pfx6:Atm_name"/>
+                            </pfx6:Atm_name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Mob_num>
+                                <xsl:value-of select="pfx6:Mob_num"/>
+                            </pfx6:Mob_num>
+                            <pfx6:hours>
+                                <xsl:value-of select="pfx6:hours"/>
+                            </pfx6:hours>
+                        </pfx6:ATMSInfo>
+                    </xsl:for-each>
+                </pfx6:ATMsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:ATMsReq/pfx6:operations='DELETE'">
+                <pfx6:ATMsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;ATMS DETAILS ARE  DELETED  SUCCESSFULLY&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo">
+                        <pfx6:ATMSInfo>
+                            <pfx6:Atm_id>
+                                <xsl:value-of select="pfx6:Atm_id"/>
+                            </pfx6:Atm_id>
+                            <pfx6:Atm_name>
+                                <xsl:value-of select="pfx6:Atm_name"/>
+                            </pfx6:Atm_name>
+                            <pfx6:Address>
+                                <xsl:value-of select="pfx6:Address"/>
+                            </pfx6:Address>
+                            <pfx6:Mob_num>
+                                <xsl:value-of select="pfx6:Mob_num"/>
+                            </pfx6:Mob_num>
+                            <pfx6:hours>
+                                <xsl:value-of select="pfx6:hours"/>
+                            </pfx6:hours>
+                        </pfx6:ATMSInfo>
+                    </xsl:for-each>
+                </pfx6:ATMsResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx6:ATMsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;failed to perform operations&quot;"/>
+                    </pfx6:message>
+                </pfx6:ATMsResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx6:ATMsResp"/>
+    <pd:endX>594</pd:endX>
+    <pd:endY>190</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511815178</pd:targetNamespace>
+    <pd:activity name="add_ATMS_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>356</pd:x>
+        <pd:y>84</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  SCP_ATMS(ATM_ID,ATM_NAME,ADDRESS,MOB_NUM,HOURS) VALUES(?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>ATM_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ATM_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOURS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <ATM_ID>
+                    <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id"/>
+                </ATM_ID>
+                <ATM_NAME>
+                    <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_name"/>
+                </ATM_NAME>
+                <ADDRESS>
+                    <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Address"/>
+                </ADDRESS>
+                <MOB_NUM>
+                    <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Mob_num"/>
+                </MOB_NUM>
+                <HOURS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:hours)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:hours"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </HOURS>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>65</pd:x>
+        <pd:y>312</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/atmsId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/atmsId"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/atmid-prprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/atmid-prprfrmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_name) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/atm-name"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/atm-name"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Address) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/Atms-address"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/atm-addr"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Mob_num, '^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/Atm-cntactno"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/atm-contno"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_ATMS_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>299</pd:x>
+        <pd:y>189</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT   ATM_ID  FROM  SCP_ATMS 
+</statement>
+            <QueryOutputCachedSchemaColumns>ATM_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_ATMs_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>441</pd:x>
+        <pd:y>187</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_ATMS
+  SET   ATM_NAME = ?, ADDRESS= ?, MOB_NUM = ?, HOURS =?   WHERE  ATM_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>ATM_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>HOURS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ATM_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <ATM_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_name)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ATM_NAME>
+                <ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Address)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ADDRESS>
+                <MOB_NUM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Mob_num)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Mob_num"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </MOB_NUM>
+                <HOURS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:hours)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:hours"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </HOURS>
+                <ATM_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id)">
+                            <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </ATM_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_ATMd_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>367</pd:x>
+        <pd:y>325</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE  FROM  SCP_ATMS   WHERE  ATM_ID = ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>ATM_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <ATM_ID>
+                    <xsl:value-of select="$Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id"/>
+                </ATM_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>174</pd:x>
+        <pd:y>187</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_ATMS_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_ATMS_details</pd:from>
+        <pd:to>Update_ATMs_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_ATMs_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_ATMd_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>VALIDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id) !=0    and  
+
+custom_func:matchRegex($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_id,'[A-Za-z0-9_-]+$')      and 
+
+string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Atm_name) !=0  and 
+
+string-length($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Address) !=0  and 
+
+custom_func:matchRegex($Start/pfx6:ATMsReq/pfx6:ATMSInfo[1]/pfx6:Mob_num, '^[0-9]{10}$')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_ATMS_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:ATMsReq/pfx6:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_ATMS_details</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:ATMsReq/pfx6:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_ATMd_details</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:ATMsReq/pfx6:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

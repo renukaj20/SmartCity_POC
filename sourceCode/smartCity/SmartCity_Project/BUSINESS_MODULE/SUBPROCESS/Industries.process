@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema1.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/Schema1.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/SubprocessSchema/IndustriesSchema.xsd"/>
+    <pd:name>SmartCity_Project/BUSINESS_MODULE/SUBPROCESS/Industries.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx2:IndustriesReq"/>
+    <pd:startX>98</pd:startX>
+    <pd:startY>132</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx2:IndustriesReq/pfx2:operations='INSERT'">
+                <pfx2:IndustriesResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Industries details are deleted successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:IndustriesInfo>
+                        <pfx2:Industry_Id>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                        </pfx2:Industry_Id>
+                        <pfx2:Industry_name>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name"/>
+                        </pfx2:Industry_name>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:IndustriesInfo>
+                </pfx2:IndustriesResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx2:IndustriesReq/pfx2:operations='UPDATE'">
+                <pfx2:IndustriesResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Industries details are updated successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:IndustriesInfo>
+                        <pfx2:Industry_Id>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                        </pfx2:Industry_Id>
+                        <pfx2:Industry_name>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name"/>
+                        </pfx2:Industry_name>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:IndustriesInfo>
+                </pfx2:IndustriesResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx2:IndustriesReq/pfx2:operations='DELETE'">
+                <pfx2:IndustriesResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;success&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;Industries details are deleted successfully&quot;"/>
+                    </pfx2:message>
+                    <pfx2:IndustriesInfo>
+                        <pfx2:Industry_Id>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                        </pfx2:Industry_Id>
+                        <pfx2:Industry_name>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name"/>
+                        </pfx2:Industry_name>
+                        <pfx2:Descriptions>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions"/>
+                        </pfx2:Descriptions>
+                        <pfx2:Locations>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Locations"/>
+                        </pfx2:Locations>
+                        <pfx2:Contact_email>
+                            <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email"/>
+                        </pfx2:Contact_email>
+                    </pfx2:IndustriesInfo>
+                </pfx2:IndustriesResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx2:IndustriesResp>
+                    <pfx2:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx2:status>
+                    <pfx2:message>
+                        <xsl:value-of select="&quot;no records found&quot;"/>
+                    </pfx2:message>
+                </pfx2:IndustriesResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx2:IndustriesResp"/>
+    <pd:endX>628</pd:endX>
+    <pd:endY>133</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680789075056</pd:targetNamespace>
+    <pd:activity name="ADD_Industries">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>404</pd:x>
+        <pd:y>45</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO SYSTEM.SCP_INDUSTRIES (INDUSTRY_ID,INDUSTRY_NAME,DESCRIPTIONS,LOCATIONS,CONTACT_EMAIL) VALUES(?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>INDUSTRY_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>INDUSTRY_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_EMAIL</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <INDUSTRY_ID>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                </INDUSTRY_ID>
+                <INDUSTRY_NAME>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name"/>
+                </INDUSTRY_NAME>
+                <DESCRIPTIONS>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions"/>
+                </DESCRIPTIONS>
+                <LOCATIONS>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Locations"/>
+                </LOCATIONS>
+                <CONTACT_EMAIL>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email"/>
+                </CONTACT_EMAIL>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>102</pd:x>
+        <pd:y>258</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id,'[A-Za-z][A-Za-z0-9_]{7,9}'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/industry-idmsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/industry-idCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/descriptn-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/descrptn_code"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/contact-mailmsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/contactmailCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/industry-nameMsg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/industry-nameCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/No-records"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/No-recordsCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="FETCH_Industries">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>358</pd:x>
+        <pd:y>130</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT INDUSTRY_ID  FROM   SCP_INDUSTRIES 
+</statement>
+            <QueryOutputCachedSchemaColumns>INDUSTRY_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Industries">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>478</pd:x>
+        <pd:y>128</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_INDUSTRIES
+  SET INDUSTRY_ID = ?,INDUSTRY_NAME = ?,DESCRIPTIONS = ?,LOCATIONS = ? ,CONTACT_EMAIL =?
+  WHERE INDUSTRY_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>INDUSTRY_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>INDUSTRY_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>DESCRIPTIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LOCATIONS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CONTACT_EMAIL</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>INDUSTRY_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <INDUSTRY_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($FETCH_Industries/resultSet/Record[1]/INDUSTRY_ID)">
+                            <xsl:value-of select="$FETCH_Industries/resultSet/Record[1]/INDUSTRY_ID"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </INDUSTRY_ID>
+                <INDUSTRY_NAME>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name"/>
+                </INDUSTRY_NAME>
+                <DESCRIPTIONS>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions"/>
+                </DESCRIPTIONS>
+                <LOCATIONS>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Locations"/>
+                </LOCATIONS>
+                <CONTACT_EMAIL>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email"/>
+                </CONTACT_EMAIL>
+                <INDUSTRY_ID>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                </INDUSTRY_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="DELETE_Industries">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>399</pd:x>
+        <pd:y>241</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE FROM SCP_INDUSTRIES   WHERE  INDUSTRY_ID = ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>INDUSTRY_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <INDUSTRY_ID>
+                    <xsl:value-of select="$Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id"/>
+                </INDUSTRY_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>211</pd:x>
+        <pd:y>133</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>ADD_Industries</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FETCH_Industries</pd:from>
+        <pd:to>Update_Industries</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Industries</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>DELETE_Industries</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>custom_func:matchRegex($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_Id,'[A-Za-z][A-Za-z0-9_]{7,9}')   and 
+
+string-length($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Industry_name) !=0 and 
+
+string-length($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Descriptions) !=0 and 
+
+custom_func:matchRegex($Start/pfx2:IndustriesReq/pfx2:IndustriesInfo/pfx2:Contact_email,'[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[a-zA-Z]')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>ADD_Industries</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:IndustriesReq/pfx2:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>FETCH_Industries</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:IndustriesReq/pfx2:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>DELETE_Industries</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx2:IndustriesReq/pfx2:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

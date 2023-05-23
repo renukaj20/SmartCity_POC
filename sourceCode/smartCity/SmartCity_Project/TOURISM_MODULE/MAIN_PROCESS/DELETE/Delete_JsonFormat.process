@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/ToursimReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/ToursimReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/TourismResp.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/DELETE/Delete_JsonFormat.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx4:convert"/>
+    <pd:startX>143</pd:startX>
+    <pd:startY>141</pd:startY>
+    <pd:returnBindings>
+        <payload>
+            <xsl:value-of select="$Render-JSON/ns:ActivityOutputClass/jsonString"/>
+        </payload>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="payload" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>598</pd:endX>
+    <pd:endY>141</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680692496685</pd:targetNamespace>
+    <pd:activity name="Parse JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>258</pd:x>
+        <pd:y>143</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>true</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx5:TourismReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx4:convert/pfx4:payload"/>
+                </jsonString>
+            </ns:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Render JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>495</pd:x>
+        <pd:y>142</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="ns1:TourismResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInputClass>
+                <ns1:TourismResp>
+                    <ns1:status>
+                        <xsl:value-of select="$DELETE_TOURISMDETAILS/ns1:TourismResp/ns1:status"/>
+                    </ns1:status>
+                    <ns1:message>
+                        <xsl:value-of select="$DELETE_TOURISMDETAILS/ns1:TourismResp/ns1:message"/>
+                    </ns1:message>
+                    <ns1:TourismInfo>
+                        <xsl:for-each select="$DELETE_TOURISMDETAILS/ns1:TourismResp/ns1:TourismInfo/ns1:hotels">
+                            <ns1:hotels>
+                                <ns1:Hotel_id>
+                                    <xsl:value-of select="ns1:Hotel_id"/>
+                                </ns1:Hotel_id>
+                                <ns1:Hotel_name>
+                                    <xsl:value-of select="ns1:Hotel_name"/>
+                                </ns1:Hotel_name>
+                                <ns1:Address>
+                                    <xsl:value-of select="ns1:Address"/>
+                                </ns1:Address>
+                                <ns1:mob_no>
+                                    <xsl:value-of select="ns1:mob_no"/>
+                                </ns1:mob_no>
+                                <ns1:rating>
+                                    <xsl:value-of select="ns1:rating"/>
+                                </ns1:rating>
+                                <ns1:price>
+                                    <xsl:value-of select="ns1:price"/>
+                                </ns1:price>
+                            </ns1:hotels>
+                        </xsl:for-each>
+                    </ns1:TourismInfo>
+                </ns1:TourismResp>
+            </ns:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="DELETE_TOURISMDETAILS">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>378</pd:x>
+        <pd:y>142</pd:y>
+        <config>
+            <processName>/SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/DELETE/DELETE_TOURISMDETAILS.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx5:TourismReq>
+                <pfx5:operations>
+                    <xsl:value-of select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:operations"/>
+                </pfx5:operations>
+                <pfx5:TourismInfo>
+                    <xsl:for-each select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:TourismInfo/pfx5:hotels">
+                        <pfx5:hotels>
+                            <pfx5:Hotel_id>
+                                <xsl:value-of select="pfx5:Hotel_id"/>
+                            </pfx5:Hotel_id>
+                            <pfx5:Hotel_name>
+                                <xsl:value-of select="pfx5:Hotel_name"/>
+                            </pfx5:Hotel_name>
+                            <pfx5:Address>
+                                <xsl:value-of select="pfx5:Address"/>
+                            </pfx5:Address>
+                            <pfx5:mob_no>
+                                <xsl:value-of select="pfx5:mob_no"/>
+                            </pfx5:mob_no>
+                            <pfx5:rating>
+                                <xsl:value-of select="pfx5:rating"/>
+                            </pfx5:rating>
+                            <pfx5:price>
+                                <xsl:value-of select="pfx5:price"/>
+                            </pfx5:price>
+                        </pfx5:hotels>
+                    </xsl:for-each>
+                    <xsl:for-each select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Restaurants">
+                        <pfx5:Restaurants>
+                            <pfx5:Restaurant_id>
+                                <xsl:value-of select="pfx5:Restaurant_id"/>
+                            </pfx5:Restaurant_id>
+                            <pfx5:name>
+                                <xsl:value-of select="pfx5:name"/>
+                            </pfx5:name>
+                            <pfx5:address>
+                                <xsl:value-of select="pfx5:address"/>
+                            </pfx5:address>
+                            <pfx5:mob_no>
+                                <xsl:value-of select="pfx5:mob_no"/>
+                            </pfx5:mob_no>
+                            <pfx5:rating>
+                                <xsl:value-of select="pfx5:rating"/>
+                            </pfx5:rating>
+                            <pfx5:price>
+                                <xsl:value-of select="pfx5:price"/>
+                            </pfx5:price>
+                        </pfx5:Restaurants>
+                    </xsl:for-each>
+                    <xsl:for-each select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:TourismInfo/pfx5:TouristAttractions">
+                        <pfx5:TouristAttractions>
+                            <pfx5:tourattraction_id>
+                                <xsl:value-of select="pfx5:tourattraction_id"/>
+                            </pfx5:tourattraction_id>
+                            <pfx5:name>
+                                <xsl:value-of select="pfx5:name"/>
+                            </pfx5:name>
+                            <pfx5:category>
+                                <xsl:value-of select="pfx5:category"/>
+                            </pfx5:category>
+                            <pfx5:Address>
+                                <xsl:value-of select="pfx5:Address"/>
+                            </pfx5:Address>
+                            <pfx5:mob_no>
+                                <xsl:value-of select="pfx5:mob_no"/>
+                            </pfx5:mob_no>
+                            <pfx5:price>
+                                <xsl:value-of select="pfx5:price"/>
+                            </pfx5:price>
+                            <pfx5:rating>
+                                <xsl:value-of select="pfx5:rating"/>
+                            </pfx5:rating>
+                        </pfx5:TouristAttractions>
+                    </xsl:for-each>
+                    <xsl:for-each select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:TourismInfo/pfx5:ATMs">
+                        <pfx5:ATMs>
+                            <pfx5:Atm_id>
+                                <xsl:value-of select="pfx5:Atm_id"/>
+                            </pfx5:Atm_id>
+                            <pfx5:Atm_name>
+                                <xsl:value-of select="pfx5:Atm_name"/>
+                            </pfx5:Atm_name>
+                            <pfx5:Address>
+                                <xsl:value-of select="pfx5:Address"/>
+                            </pfx5:Address>
+                            <pfx5:Mob_num>
+                                <xsl:value-of select="pfx5:Mob_num"/>
+                            </pfx5:Mob_num>
+                            <pfx5:hours>
+                                <xsl:value-of select="pfx5:hours"/>
+                            </pfx5:hours>
+                        </pfx5:ATMs>
+                    </xsl:for-each>
+                    <xsl:for-each select="$Parse-JSON/ns:ActivityOutputClass/pfx5:TourismReq/pfx5:TourismInfo/pfx5:Theaters">
+                        <pfx5:Theaters>
+                            <pfx5:TheaterId>
+                                <xsl:value-of select="pfx5:TheaterId"/>
+                            </pfx5:TheaterId>
+                            <pfx5:name>
+                                <xsl:value-of select="pfx5:name"/>
+                            </pfx5:name>
+                            <pfx5:Address>
+                                <xsl:value-of select="pfx5:Address"/>
+                            </pfx5:Address>
+                            <pfx5:Street>
+                                <xsl:value-of select="pfx5:Street"/>
+                            </pfx5:Street>
+                            <pfx5:city>
+                                <xsl:value-of select="pfx5:city"/>
+                            </pfx5:city>
+                            <pfx5:State>
+                                <xsl:value-of select="pfx5:State"/>
+                            </pfx5:State>
+                            <pfx5:pincode>
+                                <xsl:value-of select="pfx5:pincode"/>
+                            </pfx5:pincode>
+                        </pfx5:Theaters>
+                    </xsl:for-each>
+                </pfx5:TourismInfo>
+            </pfx5:TourismReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Parse JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Render JSON</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse JSON</pd:from>
+        <pd:to>DELETE_TOURISMDETAILS</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>DELETE_TOURISMDETAILS</pd:from>
+        <pd:to>Render JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

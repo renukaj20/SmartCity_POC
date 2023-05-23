@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/UserSchema/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="UserLoginReq" type="UserLoginReqType"/>
+	<xs:complexType name="UserLoginReqType">
+		<xs:sequence>
+			<xs:element ref="userid"/>
+			<xs:element ref="password"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="password">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Za-z0-9]{0,8}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="userid" type="xs:string"/>
+</xs:schema>

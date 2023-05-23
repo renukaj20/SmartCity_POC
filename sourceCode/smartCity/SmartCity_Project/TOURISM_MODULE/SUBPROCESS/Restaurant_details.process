@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd2" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/TourismResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Main_UploadInformation.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Main_Upload_newInfo/Upload_newInfoResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/RestaurantsSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/RestaurantsSchema.xsd"/>
+    <pd:name>SmartCity_Project/TOURISM_MODULE/SUBPROCESS/Restaurant_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx6:RestaurantsReq"/>
+    <pd:startX>54</pd:startX>
+    <pd:startY>144</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx6:RestaurantsReq/pfx6:operations='INSERT'">
+                <pfx6:RestaurantsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;Restaurants details are inserted successfully&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo">
+                        <pfx6:RestaurantsInfo>
+                            <pfx6:Restaurant_id>
+                                <xsl:value-of select="pfx6:Restaurant_id"/>
+                            </pfx6:Restaurant_id>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:address>
+                                <xsl:value-of select="pfx6:address"/>
+                            </pfx6:address>
+                            <pfx6:mob_no>
+                                <xsl:value-of select="pfx6:mob_no"/>
+                            </pfx6:mob_no>
+                            <pfx6:rating>
+                                <xsl:value-of select="pfx6:rating"/>
+                            </pfx6:rating>
+                            <pfx6:price>
+                                <xsl:value-of select="pfx6:price"/>
+                            </pfx6:price>
+                        </pfx6:RestaurantsInfo>
+                    </xsl:for-each>
+                </pfx6:RestaurantsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:RestaurantsReq/pfx6:operations='UPDATE'">
+                <pfx6:RestaurantsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;Restaurants details are updated successfully&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo">
+                        <pfx6:RestaurantsInfo>
+                            <pfx6:Restaurant_id>
+                                <xsl:value-of select="pfx6:Restaurant_id"/>
+                            </pfx6:Restaurant_id>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:address>
+                                <xsl:value-of select="pfx6:address"/>
+                            </pfx6:address>
+                            <pfx6:mob_no>
+                                <xsl:value-of select="pfx6:mob_no"/>
+                            </pfx6:mob_no>
+                            <pfx6:rating>
+                                <xsl:value-of select="pfx6:rating"/>
+                            </pfx6:rating>
+                            <pfx6:price>
+                                <xsl:value-of select="pfx6:price"/>
+                            </pfx6:price>
+                        </pfx6:RestaurantsInfo>
+                    </xsl:for-each>
+                </pfx6:RestaurantsResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx6:RestaurantsReq/pfx6:operations='DELETE'">
+                <pfx6:RestaurantsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;SUCCESS&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;Restaurants details are deleted  successfully&quot;"/>
+                    </pfx6:message>
+                    <xsl:for-each select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo">
+                        <pfx6:RestaurantsInfo>
+                            <pfx6:Restaurant_id>
+                                <xsl:value-of select="pfx6:Restaurant_id"/>
+                            </pfx6:Restaurant_id>
+                            <pfx6:name>
+                                <xsl:value-of select="pfx6:name"/>
+                            </pfx6:name>
+                            <pfx6:address>
+                                <xsl:value-of select="pfx6:address"/>
+                            </pfx6:address>
+                            <pfx6:mob_no>
+                                <xsl:value-of select="pfx6:mob_no"/>
+                            </pfx6:mob_no>
+                            <pfx6:rating>
+                                <xsl:value-of select="pfx6:rating"/>
+                            </pfx6:rating>
+                            <pfx6:price>
+                                <xsl:value-of select="pfx6:price"/>
+                            </pfx6:price>
+                        </pfx6:RestaurantsInfo>
+                    </xsl:for-each>
+                </pfx6:RestaurantsResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx6:RestaurantsResp>
+                    <pfx6:status>
+                        <xsl:value-of select="&quot;failed&quot;"/>
+                    </pfx6:status>
+                    <pfx6:message>
+                        <xsl:value-of select="&quot;failed to perform operations&quot;"/>
+                    </pfx6:message>
+                </pfx6:RestaurantsResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx6:RestaurantsResp"/>
+    <pd:endX>591</pd:endX>
+    <pd:endY>150</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1680511728969</pd:targetNamespace>
+    <pd:activity name="add_Restaurant_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>354</pd:x>
+        <pd:y>42</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <statement>INSERT INTO  SCP_RESTAURANT(RESTAURANT_ID,RES_NAME,RES_ADDRESS,MOB_NUM,RATING,PRICE) VALUES(?,?,?,?,?,?)</statement>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>RESTAURANT_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RES_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RES_ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <RESTAURANT_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RESTAURANT_ID>
+                <RES_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RES_NAME>
+                <RES_ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RES_ADDRESS>
+                <MOB_NUM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </MOB_NUM>
+                <RATING>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RATING>
+                <PRICE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:price)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:price"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PRICE>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>54</pd:x>
+        <pd:y>274</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id) =0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/restId"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/restId"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id,'^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/restIdprprfrmt"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/restIdprprfrmt"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/Name"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/name"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/address"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/address"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating)=0">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/rating"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/rating"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:when test="not(custom_func:matchRegex($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no, '^[0-9]{10}$'))">
+                    <ns:ActivityInput>
+                        <message>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorMessages/contactno-msg"/>
+                        </message>
+                        <messageCode>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/validations/ErrorCodes/contactnoCode"/>
+                        </messageCode>
+                    </ns:ActivityInput>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:ActivityInput/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="fetch_Restaurant_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>320</pd:x>
+        <pd:y>146</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT  RESTAURANT_ID  FROM   SCP_RESTAURANT</statement>
+            <QueryOutputCachedSchemaColumns>RESTAURANT_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <oraObjects/>
+            <oraTables/>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Update_Restaurant_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>436</pd:x>
+        <pd:y>144</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>UPDATE  SCP_RESTAURANT
+  SET  RES_NAME = ?, RES_ADDRESS = ?, MOB_NUM = ? ,RATING =? ,PRICE = ? 
+  WHERE RESTAURANT_ID = ?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>RES_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RES_ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>MOB_NUM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RATING</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PRICE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>RESTAURANT_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <RES_NAME>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RES_NAME>
+                <RES_ADDRESS>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RES_ADDRESS>
+                <MOB_NUM>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </MOB_NUM>
+                <RATING>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RATING>
+                <PRICE>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:price)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:price"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </PRICE>
+                <RESTAURANT_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RESTAURANT_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="delete_Restaurant_details">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>355</pd:x>
+        <pd:y>269</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>false</emptyStrAsNil>
+            <jdbcSharedConfig>/SmartCity_Project/CommonModel/Resource/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>DELETE FROM SCP_RESTAURANT WHERE  RESTAURANT_ID= ? </statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>RESTAURANT_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <jdbcUpdateActivityInput>
+                <RESTAURANT_ID>
+                    <xsl:choose>
+                        <xsl:when test="exists($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id)">
+                            <xsl:value-of select="$Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="xsi:nil">true</xsl:attribute>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </RESTAURANT_ID>
+            </jdbcUpdateActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>165</pd:x>
+        <pd:y>143</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>add_Restaurant_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>fetch_Restaurant_details</pd:from>
+        <pd:to>Update_Restaurant_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Update_Restaurant_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>delete_Restaurant_details</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:xpathDescription>validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id)!=0 and 
+
+custom_func:matchRegex($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:Restaurant_id,'^[0-9]{10}$')   and 
+ 
+string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:name)!=0 and 
+
+string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:address)!=0  and 
+
+custom_func:matchRegex($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:mob_no, '^[0-9]{10}$') and 
+
+string-length($Start/pfx6:RestaurantsReq/pfx6:RestaurantsInfo[1]/pfx6:rating)!=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>add_Restaurant_details</pd:to>
+        <pd:xpathDescription>INSERT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:RestaurantsReq/pfx6:operations='INSERT'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>fetch_Restaurant_details</pd:to>
+        <pd:xpathDescription>UPDATE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:RestaurantsReq/pfx6:operations='UPDATE'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>delete_Restaurant_details</pd:to>
+        <pd:xpathDescription>DELETE</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx6:RestaurantsReq/pfx6:operations='DELETE'</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

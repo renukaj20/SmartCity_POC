@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/college.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/StudentSchema/subprocessSchema/college.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:element name="CollegeReq" type="CollegeReqType"/>
+	<xs:complexType name="CollegeReqType">
+		<xs:sequence>
+			<xs:element ref="operations"/>
+			<xs:element ref="CollegesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="operations" type="xs:string"/>
+	<xs:element name="CollegesInfo" type="CollegesInfoType"/>
+	<xs:complexType name="CollegesInfoType">
+		<xs:sequence>
+			<xs:element ref="college_Id"/>
+			<xs:element ref="college_name"/>
+			<xs:element ref="college_address"/>
+			<xs:element ref="contact_no"/>
+			<xs:element ref="foundedyear"/>
+			<xs:element ref="stream"/>
+			<xs:element ref="ranking"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CollegeRespType">
+		<xs:sequence>
+			<xs:element ref="status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="CollegesInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CollegeResp" type="CollegeRespType"/>
+	<xs:element name="status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="college_name" type="xs:string"/>
+	<xs:element name="college_address" type="xs:string"/>
+	<xs:element name="contact_no" type="xs:string"/>
+	<xs:element name="foundedyear" type="xs:string"/>
+	<xs:element name="stream" type="xs:string"/>
+	<xs:element name="ranking" type="xs:string"/>
+	<xs:element name="college_Id" type="xs:string"/>
+</xs:schema>

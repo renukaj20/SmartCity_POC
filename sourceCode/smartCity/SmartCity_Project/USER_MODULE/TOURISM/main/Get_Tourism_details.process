@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Hotels.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:ns5="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Theater.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Tourist_attraction.xsd" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd" xmlns:ns4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Atms.xsd" xmlns:ns3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Restaurants.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd2">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserRequest.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/TourismSchema/Subprocess_Schema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/Subprocess_Schema/RestaurantsSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/TourismSchema/TourismResp.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/TOURISM/main/Get_Tourism_details.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:UserReq"/>
+    <pd:startX>92</pd:startX>
+    <pd:startY>257</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="$Start/pfx:UserReq/pfx:Search_criteria='hotels'">
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$hotels/ns:HotelResp/ns:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$hotels/ns:HotelResp/ns:message"/>
+                    </pfx3:message>
+                    <pfx3:TourismInfo>
+                        <xsl:for-each select="$hotels/ns:HotelResp/ns:hotelsInfo">
+                            <pfx3:hotels>
+                                <pfx3:Hotel_id>
+                                    <xsl:value-of select="ns:Hotel_id"/>
+                                </pfx3:Hotel_id>
+                                <pfx3:Hotel_name>
+                                    <xsl:value-of select="ns:Hotel_name"/>
+                                </pfx3:Hotel_name>
+                                <pfx3:Address>
+                                    <xsl:value-of select="ns:Address"/>
+                                </pfx3:Address>
+                                <pfx3:mob_no>
+                                    <xsl:value-of select="ns:mob_no"/>
+                                </pfx3:mob_no>
+                                <pfx3:rating>
+                                    <xsl:value-of select="ns:rating"/>
+                                </pfx3:rating>
+                                <pfx3:price>
+                                    <xsl:value-of select="ns:price"/>
+                                </pfx3:price>
+                            </pfx3:hotels>
+                        </xsl:for-each>
+                    </pfx3:TourismInfo>
+                </pfx3:TourismResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx:UserReq/pfx:Search_criteria='Tourists_Attraction'">
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$Tourists_attraction/ns2:TouristAttractionsResp/ns2:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$Tourists_attraction/ns2:TouristAttractionsResp/ns2:message"/>
+                    </pfx3:message>
+                    <pfx3:TourismInfo>
+                        <xsl:for-each select="$Tourists_attraction/ns2:TouristAttractionsResp/ns2:TouristAttractionsInfo">
+                            <pfx3:TouristAttractions>
+                                <pfx3:tourattraction_id>
+                                    <xsl:value-of select="ns2:tourattraction_id"/>
+                                </pfx3:tourattraction_id>
+                                <pfx3:name>
+                                    <xsl:value-of select="ns2:name"/>
+                                </pfx3:name>
+                                <pfx3:category>
+                                    <xsl:value-of select="ns2:category"/>
+                                </pfx3:category>
+                                <pfx3:Address>
+                                    <xsl:value-of select="ns2:Address"/>
+                                </pfx3:Address>
+                                <pfx3:mob_no>
+                                    <xsl:value-of select="ns2:mob_no"/>
+                                </pfx3:mob_no>
+                                <pfx3:price>
+                                    <xsl:value-of select="ns2:price"/>
+                                </pfx3:price>
+                                <pfx3:rating>
+                                    <xsl:value-of select="ns2:rating"/>
+                                </pfx3:rating>
+                            </pfx3:TouristAttractions>
+                        </xsl:for-each>
+                    </pfx3:TourismInfo>
+                </pfx3:TourismResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx:UserReq/pfx:Search_criteria='Restaurants'">
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$Restaurants/ns3:RestaurantsResp/ns3:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$Restaurants/ns3:RestaurantsResp/ns3:message"/>
+                    </pfx3:message>
+                    <pfx3:TourismInfo>
+                        <xsl:for-each select="$Restaurants/ns3:RestaurantsResp/ns3:RestaurantsInfo">
+                            <pfx3:Restaurants>
+                                <pfx3:Restaurant_id>
+                                    <xsl:value-of select="ns3:Restaurant_id"/>
+                                </pfx3:Restaurant_id>
+                                <pfx3:name>
+                                    <xsl:value-of select="ns3:name"/>
+                                </pfx3:name>
+                                <pfx3:address>
+                                    <xsl:value-of select="ns3:address"/>
+                                </pfx3:address>
+                                <pfx3:mob_no>
+                                    <xsl:value-of select="ns3:mob_no"/>
+                                </pfx3:mob_no>
+                                <pfx3:rating>
+                                    <xsl:value-of select="ns3:rating"/>
+                                </pfx3:rating>
+                                <pfx3:price>
+                                    <xsl:value-of select="ns3:price"/>
+                                </pfx3:price>
+                            </pfx3:Restaurants>
+                        </xsl:for-each>
+                    </pfx3:TourismInfo>
+                </pfx3:TourismResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx:UserReq/pfx:Search_criteria='ATMs'">
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$ATMs/ns4:ATMsResp/ns4:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$ATMs/ns4:ATMsResp/ns4:message"/>
+                    </pfx3:message>
+                    <pfx3:TourismInfo>
+                        <xsl:for-each select="$ATMs/ns4:ATMsResp/ns4:ATMSInfo">
+                            <pfx3:ATMs>
+                                <pfx3:Atm_id>
+                                    <xsl:value-of select="ns4:Atm_id"/>
+                                </pfx3:Atm_id>
+                                <pfx3:Atm_name>
+                                    <xsl:value-of select="ns4:Atm_name"/>
+                                </pfx3:Atm_name>
+                                <pfx3:Address>
+                                    <xsl:value-of select="ns4:Address"/>
+                                </pfx3:Address>
+                                <pfx3:Mob_num>
+                                    <xsl:value-of select="ns4:Mob_num"/>
+                                </pfx3:Mob_num>
+                                <pfx3:hours>
+                                    <xsl:value-of select="ns4:hours"/>
+                                </pfx3:hours>
+                            </pfx3:ATMs>
+                        </xsl:for-each>
+                    </pfx3:TourismInfo>
+                </pfx3:TourismResp>
+            </xsl:when>
+            <xsl:when test="$Start/pfx:UserReq/pfx:Search_criteria='Theaters'">
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="$Theaters/ns5:TheatersResp/ns5:status"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="$Theaters/ns5:TheatersResp/ns5:message"/>
+                    </pfx3:message>
+                    <pfx3:TourismInfo>
+                        <xsl:for-each select="$Theaters/ns5:TheatersResp/ns5:TheatersInfo">
+                            <pfx3:Theaters>
+                                <pfx3:TheaterId>
+                                    <xsl:value-of select="ns5:TheaterId"/>
+                                </pfx3:TheaterId>
+                                <pfx3:name>
+                                    <xsl:value-of select="ns5:name"/>
+                                </pfx3:name>
+                                <pfx3:Address>
+                                    <xsl:value-of select="ns5:Address"/>
+                                </pfx3:Address>
+                                <pfx3:Street>
+                                    <xsl:value-of select="ns5:Street"/>
+                                </pfx3:Street>
+                                <pfx3:city>
+                                    <xsl:value-of select="ns5:city"/>
+                                </pfx3:city>
+                                <pfx3:State>
+                                    <xsl:value-of select="ns5:State"/>
+                                </pfx3:State>
+                                <pfx3:pincode>
+                                    <xsl:value-of select="ns5:pincode"/>
+                                </pfx3:pincode>
+                            </pfx3:Theaters>
+                        </xsl:for-each>
+                    </pfx3:TourismInfo>
+                </pfx3:TourismResp>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx3:TourismResp>
+                    <pfx3:status>
+                        <xsl:value-of select="&quot;FAILED&quot;"/>
+                    </pfx3:status>
+                    <pfx3:message>
+                        <xsl:value-of select="&quot;Failed to fetch the details&quot;"/>
+                    </pfx3:message>
+                </pfx3:TourismResp>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:TourismResp"/>
+    <pd:endX>811</pd:endX>
+    <pd:endY>262</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1681748764653</pd:targetNamespace>
+    <pd:activity name="hotels">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>501</pd:x>
+        <pd:y>90</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/TOURISM/main/subpocess/hotels.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:UserReq>
+                <pfx:Search_criteria>
+                    <xsl:value-of select="$Start/pfx:UserReq/pfx:Search_criteria"/>
+                </pfx:Search_criteria>
+            </pfx:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Tourists_attraction">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>504</pd:x>
+        <pd:y>171</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/TOURISM/main/subpocess/Tourists_attraction.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:UserReq>
+                <pfx:Search_criteria>
+                    <xsl:value-of select="$Start/pfx:UserReq/pfx:Search_criteria"/>
+                </pfx:Search_criteria>
+            </pfx:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Restaurants">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>502</pd:x>
+        <pd:y>259</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/TOURISM/main/subpocess/Restaurants.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:UserReq>
+                <pfx:Search_criteria>
+                    <xsl:value-of select="$Start/pfx:UserReq/pfx:Search_criteria"/>
+                </pfx:Search_criteria>
+            </pfx:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="ATMs">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>497</pd:x>
+        <pd:y>339</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/TOURISM/main/subpocess/ATMs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:UserReq>
+                <pfx:Search_criteria>
+                    <xsl:value-of select="$Start/pfx:UserReq/pfx:Search_criteria"/>
+                </pfx:Search_criteria>
+            </pfx:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Theaters">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>496</pd:x>
+        <pd:y>417</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/TOURISM/main/subpocess/Theaters.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx:UserReq>
+                <pfx:Search_criteria>
+                    <xsl:value-of select="$Start/pfx:UserReq/pfx:Search_criteria"/>
+                </pfx:Search_criteria>
+            </pfx:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>297</pd:x>
+        <pd:y>256</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <ns1:ApplictionName>
+                    <xsl:value-of select="&quot;User&quot;"/>
+                </ns1:ApplictionName>
+                <ns1:ProcessName>
+                    <xsl:value-of select="&quot;Get_Tourism_details&quot;"/>
+                </ns1:ProcessName>
+                <ns1:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </ns1:CorrelationID>
+                <ns1:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </ns1:Status>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </ns1:LogType>
+                <ns1:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </ns1:Current_Timestamp>
+                <ns1:Payload>
+                    <xsl:value-of select="string($Start/pfx:UserReq)"/>
+                </ns1:Payload>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SetUUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>195</pd:x>
+        <pd:y>257</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>705</pd:x>
+        <pd:y>262</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns1:LogHandler>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ApplictionName">
+                    <ns1:ApplictionName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ApplictionName"/>
+                    </ns1:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:ProcessName">
+                    <ns1:ProcessName>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:ProcessName"/>
+                    </ns1:ProcessName>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:CorrelationID">
+                    <ns1:CorrelationID>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:CorrelationID"/>
+                    </ns1:CorrelationID>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Status">
+                    <ns1:Status>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Status"/>
+                    </ns1:Status>
+                </xsl:if>
+                <ns1:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </ns1:LogType>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Current_Timestamp">
+                    <ns1:Current_Timestamp>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Current_Timestamp"/>
+                    </ns1:Current_Timestamp>
+                </xsl:if>
+                <xsl:if test="$startlog/ns1:LogHandler/ns1:Payload">
+                    <ns1:Payload>
+                        <xsl:value-of select="$startlog/ns1:LogHandler/ns1:Payload"/>
+                    </ns1:Payload>
+                </xsl:if>
+            </ns1:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SetUUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SetUUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>hotels</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:UserReq/pfx:Search_criteria ='hotels'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Restaurants</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:UserReq/pfx:Search_criteria='Restaurants'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Tourists_attraction</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:UserReq/pfx:Search_criteria='Tourists_Attraction'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>ATMs</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:UserReq/pfx:Search_criteria='ATMs'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Theaters</pd:to>
+        <pd:xpathDescription>Validate</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:UserReq/pfx:Search_criteria='Theaters'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>hotels</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Tourists_attraction</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Restaurants</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>ATMs</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Theaters</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

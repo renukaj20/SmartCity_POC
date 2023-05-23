@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application xmlns="http://www.tibco.com/xmlns/ApplicationManagement" name="smatcity">
+    <description></description>
+    <contact></contact>
+    <NVPairs name="Global Variables">
+        <NameValuePair>
+            <name>DirLedger</name>
+            <value>.</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>DirTrace</name>
+            <value>.</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>HawkEnabled</name>
+            <value>false</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>JmsProviderUrl</name>
+            <value>tcp://localhost:7222</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>JmsSslProviderUrl</name>
+            <value>ssl://localhost:7243</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RemoteRvDaemon</name>
+            <value></value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RvDaemon</name>
+            <value>tcp:7500</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RvNetwork</name>
+            <value></value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RvService</name>
+            <value>7500</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RvaHost</name>
+            <value>localhost</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>RvaPort</name>
+            <value>7600</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>TIBHawkDaemon</name>
+            <value>tcp:7474</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>TIBHawkNetwork</name>
+            <value></value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>TIBHawkService</name>
+            <value>7474</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/AdminId</name>
+            <value>100</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/AdminIdprprfrmt</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/Instit-contact-code</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/InstitId-code</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/InstitIdfrmt-code</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/Institname-code</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/No-recordsCode</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/UserId</name>
+            <value>100</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/UserIdprprfrmt</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/YOE</name>
+            <value>111</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/address</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/atm-addr</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/atm-contno</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/atm-name</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/atmid-prprfrmt</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/atmsId</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/category</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/centername-code</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/collgIdcode</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/collgIdproperfrmt</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/company</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/contactmailCode</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/contactnoCode</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/degree</name>
+            <value>110</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/descrptn_code</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/email</name>
+            <value>112</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/experience</name>
+            <value>107</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/fees</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/foundyear-code</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/hotel-cntactno</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/hotelid</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/hotelid-prperfrmt</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/hotelname</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/industries</name>
+            <value>106</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/industry-idCode</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/industry-nameCode</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/jobId</name>
+            <value>100</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/jobType</name>
+            <value>108</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/jobid-prprfrmt</name>
+            <value>no value</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/libcontactno</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/libname</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/name</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/password</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/passwordprprfrmt</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/phoneno</name>
+            <value>113</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/pub-date-format-code</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/pub-dtcode</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/pubdate</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/ranking-code</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/rating</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/restId</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/restIdprprfrmt</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/role</name>
+            <value>103</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/specialzation-code</name>
+            <value>105</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/stream</name>
+            <value>106</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/theaterId</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/theaterIdprprfmt</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/titlecode</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/uniId-code</name>
+            <value>101</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/uniIdfrmt-code</name>
+            <value>102</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorCodes/uniName</name>
+            <value>104</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/AdminId</name>
+            <value>"Admin Id should  not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/AdminIdprprfrmt</name>
+            <value>"Admin Id should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/Atm-cntactno</name>
+            <value>"Atm contact no should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/Atms-address</name>
+            <value>"atms address should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/Email</name>
+            <value>"Email should  be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/InstitId-msg</name>
+            <value>"Instit_Id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/InstitIdfrmt-msg</name>
+            <value>"Instit_Id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/Institame-msg</name>
+            <value>"Instit name should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/Name</name>
+            <value>"name should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/No-records</name>
+            <value>no records are found"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/UserId</name>
+            <value>"User Id should  not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/UserIdprprfrmt</name>
+            <value>"User Id should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/YOE</name>
+            <value>"year of exp should no be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/address</name>
+            <value>"address should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/atm-name</name>
+            <value>"atm-name  should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/atmid-prprfrmt</name>
+            <value>"atm id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/atmsId</name>
+            <value>"atmsId  should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/category</name>
+            <value>"category should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/center-name</name>
+            <value>"center name should not be emty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/collgId</name>
+            <value>"college id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/collgId-msg</name>
+            <value>"college II should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/company</name>
+            <value>"Company should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/contact-mailmsg</name>
+            <value>"contact email does not match" </value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/contactno-msg</name>
+            <value>"contact no should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/degree</name>
+            <value>"degree should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/descriptn-msg</name>
+            <value>"description should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/experience</name>
+            <value>"Experience shoul not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/fees</name>
+            <value>"fees should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/foundyearr-msg</name>
+            <value>"found year shpuld not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/hotel-cntactno</name>
+            <value>"mobno does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/hotel-name</name>
+            <value>"hotel name should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/hotel-proprfrmt</name>
+            <value>"hotel id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/hotelid-msg</name>
+            <value>"Hotel id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/industries</name>
+            <value>"Industries should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/industry-idmsg</name>
+            <value>"industry id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/industry-nameMsg</name>
+            <value>"industry name should not  be empty "</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/instit-contact</name>
+            <value>"institutes contact no should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/jobIdprprfrmt</name>
+            <value>"job Id should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/jobid</name>
+            <value>"Job Id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/jobtype</name>
+            <value>"JobType should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/libcontactno</name>
+            <value>"library contact no does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/libname-msg</name>
+            <value>"library name should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/location</name>
+            <value>"Locations should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/password</name>
+            <value>"password should not  be empty "</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/passwordprprfrmt</name>
+            <value>"password should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/phoneno</name>
+            <value>"Phone number should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/pub-dtmsg</name>
+            <value>"publishedDate should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/pub-properfrmt</name>
+            <value>"publishedDate should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/pubDate</name>
+            <value>"Published date should be iin proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/raking-msg</name>
+            <value>"ranking shoul not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/rating</name>
+            <value>"rating should not be match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/restId</name>
+            <value>"restaurants Id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/restIdprprfrmt</name>
+            <value>"restaurant id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/role</name>
+            <value>"Role should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/specialzation</name>
+            <value>"specialzation should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/stream</name>
+            <value>"stream should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/theaterId</name>
+            <value>"Id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/theaterId-prprfrmt</name>
+            <value>"Id does not match"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/titlemsg</name>
+            <value>"title should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/uniIdfrmtmsg</name>
+            <value>"University Id should be in proper format"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/uniIdmsg</name>
+            <value>"University Id should not be empty"</value>
+        </NameValuePair>
+        <NameValuePair>
+            <name>validations/ErrorMessages/uniName</name>
+            <value>"University  name should not be emoty"</value>
+        </NameValuePair>
+    </NVPairs>
+    <repoInstances selected="rv">
+        <httpRepoInstance>
+            <timeout>600</timeout>
+            <url></url>
+        </httpRepoInstance>
+        <rvRepoInstance>
+            <timeout>600</timeout>
+            <discoveryTimout>10</discoveryTimout>
+            <daemon>tcp:7500</daemon>
+        </rvRepoInstance>
+        <localRepoInstance>
+            <encoding>ISO8859-1</encoding>
+        </localRepoInstance>
+    </repoInstances>
+    <services>
+        <bw name="Process Archive.par">
+            <enabled>true</enabled>
+            <bindings>
+                <binding name="">
+                    <machine>DESKTOP-VC5MS1O</machine>
+                    <product>
+                        <type>bwengine</type>
+                        <version></version>
+                        <location></location>
+                    </product>
+                    <description></description>
+                    <contact></contact>
+                    <shutdown>
+                        <checkpoint>false</checkpoint>
+                        <timeout>0</timeout>
+                    </shutdown>
+                </binding>
+            </bindings>
+            <NVPairs name="Adapter SDK Properties">
+                <NameValuePair>
+                    <name>Trace.Task.*</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>EnableMemorySavingMode</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.engine.enableJobRecovery</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.engine.autoCheckpointRestart</name>
+                    <value>true</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.engine.jobstats.enable</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>log.file.encoding</name>
+                    <value></value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.engine.emaEnabled</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.container.service</name>
+                    <value></value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.container.service.rmi.port</name>
+                    <value>9995</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.Enabled</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.Hostname</name>
+                    <value>localhost</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.Httpport</name>
+                    <value>8010</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.defaultEncoding</name>
+                    <value>ISO8859_1</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.enableLookups</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.isSecure</name>
+                    <value>false</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.platform.services.retreiveresources.identity</name>
+                    <value>/Identity_HTTPConnection.id</value>
+                </NameValuePair>
+                <NameValuePair>
+                    <name>bw.log4j.configuration</name>
+                    <value></value>
+                </NameValuePair>
+            </NVPairs>
+            <failureCount>0</failureCount>
+            <failureInterval>0</failureInterval>
+            <bwprocesses>
+                <bwprocess name="SmartCity_Project/BUSINESS_MODULE/MAINPROCESS/UPLOAD_BUSINESS_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/JOBSEEKERS_MODULE/main/JobseekerProxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/Upload_ToursimDetails.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/USER_MODULE/TOURISM/GET_TOURISM_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/Admin_LoginRest.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/Create_AccountRestService0.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/JOBSEEKERS_MODULE/main/UPLOADING_JOBSEEKERS_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/USER_MODULE/BUSINESS/GET_BUSINESS_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/NewAccount_Proxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/STUDENT_MODULE/MAINPROCESS/StudentProxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/TOURISM_MODULE/MAIN_PROCESS/TourismProxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/STUDENT_MODULE/MAINPROCESS/UPLOAD_STUDENT_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/USER_MODULE/JOBSEEKERS/GET_JOBSEEKERS_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/BUSINESS_MODULE/MAINPROCESS/BusinessProxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/ADMINISTRATION_MODULE/login/Wait_Process.process">
+                    <starter>Receive Notification</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/USER_MODULE/MAIN_PROCESS/Restser_User.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/USER_MODULE/STUDENT/GET_STUDENT_DETAILS.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+                <bwprocess name="SmartCity_Project/ADMINISTRATION_MODULE/MAIN_PROCESS/AdminProxy_Service.process">
+                    <starter>HTTP Receiver</starter>
+                    <enabled>true</enabled>
+                    <maxJob>0</maxJob>
+                    <activation>true</activation>
+                    <flowLimit>0</flowLimit>
+                </bwprocess>
+            </bwprocesses>
+            <checkpoints selected="Local File">
+                <checkpoint>Local File</checkpoint>
+                <checkpoint>/SmartCity_Project/CommonModel/Resource/JDBC Connection</checkpoint>
+                <tablePrefix>Process_Ar_92950613</tablePrefix>
+            </checkpoints>
+            <isFt>false</isFt>
+        </bw>
+    </services>
+</application>

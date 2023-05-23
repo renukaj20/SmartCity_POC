@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/JobseekersSchema/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="JobseekersReq" type="JobseekersReqType"/>
+	<xs:complexType name="JobseekersReqType">
+		<xs:sequence>
+			<xs:element ref="Operations" minOccurs="0"/>
+			<xs:element ref="JobseekersInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="JobseekersInfo" type="JobseekersInfoType"/>
+	<xs:complexType name="JobseekersInfoType">
+		<xs:sequence>
+			<xs:element ref="JobId"/>
+			<xs:element ref="Role"/>
+			<xs:element ref="postedDate"/>
+			<xs:element ref="Company"/>
+			<xs:element ref="Industries"/>
+			<xs:element ref="location"/>
+			<xs:element ref="Experience"/>
+			<xs:element ref="Job_Type"/>
+			<xs:element ref="Job_description"/>
+			<xs:element ref="Requirements"/>
+			<xs:element ref="Contact_no"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="JobId" type="xs:string"/>
+	<xs:element name="Role" type="xs:string"/>
+	<xs:element name="Company" type="xs:string"/>
+	<xs:element name="Industries" type="xs:string"/>
+	<xs:element name="location" type="xs:string"/>
+	<xs:element name="Experience" type="xs:string"/>
+	<xs:element name="Job_description" type="xs:string"/>
+	<xs:element name="Requirements" type="RequirementsType"/>
+	<xs:element name="Contact_no" type="Contact_noType"/>
+	<xs:complexType name="IndustriesType">
+		<xs:choice>
+			<xs:element ref="I.T" minOccurs="0"/>
+			<xs:element ref="Healthcare" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="I.T" type="xs:string"/>
+	<xs:element name="Healthcare" type="xs:string"/>
+	<xs:complexType name="RequirementsType">
+		<xs:sequence>
+			<xs:element ref="degree"/>
+			<xs:element ref="skills"/>
+			<xs:element ref="year_of_exp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExperienceType">
+		<xs:choice>
+			<xs:element ref="internship" minOccurs="0"/>
+			<xs:element ref="entry-level" minOccurs="0"/>
+			<xs:element ref="mid-senior-level" minOccurs="0"/>
+			<xs:element ref="associate" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="internship" type="xs:string"/>
+	<xs:element name="entry-level" type="xs:string"/>
+	<xs:element name="mid-senior-level" type="xs:string"/>
+	<xs:element name="associate" type="xs:string"/>
+	<xs:element name="postedDate" type="xs:string"/>
+	<xs:element name="degree" type="xs:string"/>
+	<xs:element name="skills" type="xs:string"/>
+	<xs:element name="year_of_exp" type="xs:string"/>
+	<xs:complexType name="Contact_noType">
+		<xs:sequence>
+			<xs:element ref="name"/>
+			<xs:element ref="email"/>
+			<xs:element ref="phone"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="email" type="xs:string"/>
+	<xs:element name="phone" type="xs:string"/>
+	<xs:element name="Job_Type" type="xs:string"/>
+	<xs:complexType name="job_Type">
+		<xs:choice>
+			<xs:element ref="full-time" minOccurs="0"/>
+			<xs:element ref="part-time" minOccurs="0"/>
+			<xs:element ref="contract" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="full-time" type="xs:string"/>
+	<xs:element name="part-time" type="xs:string"/>
+	<xs:element name="contract" type="xs:string"/>
+	<xs:element name="JobseekersResp" type="JobseekersRespType"/>
+	<xs:complexType name="JobseekersRespType">
+		<xs:sequence>
+			<xs:element ref="Status"/>
+			<xs:element ref="message"/>
+			<xs:element ref="JobseekersInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Status" type="xs:string"/>
+	<xs:element name="message" type="xs:string"/>
+	<xs:element name="Operations" type="xs:string"/>
+</xs:schema>

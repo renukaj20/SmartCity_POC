@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/TourismSchema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Schema.xsd2" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/UserSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/UserSchema/UserRequest.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/schema/StudentSchema/Student.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/StudentSchema/StudentResp.xsd"/>
+    <pd:name>SmartCity_Project/USER_MODULE/STUDENT/main/CONVERT_XML_JSON.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:convert"/>
+    <pd:startX>112</pd:startX>
+    <pd:startY>109</pd:startY>
+    <pd:returnBindings>
+        <payload>
+            <xsl:value-of select="$Render-JSON/ns:ActivityOutputClass/jsonString"/>
+        </payload>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="payload" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>630</pd:endX>
+    <pd:endY>109</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1681737081671</pd:targetNamespace>
+    <pd:activity name="Parse JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>228</pd:x>
+        <pd:y>110</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>true</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx2:UserReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx:convert/pfx:payload"/>
+                </jsonString>
+            </ns:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Render JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>491</pd:x>
+        <pd:y>110</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="pfx4:StudentDetailsResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInputClass>
+                <pfx4:StudentDetailsResp>
+                    <pfx4:Status>
+                        <xsl:value-of select="$Get_Student_details/pfx4:StudentDetailsResp/pfx4:Status"/>
+                    </pfx4:Status>
+                    <pfx4:Message>
+                        <xsl:value-of select="$Get_Student_details/pfx4:StudentDetailsResp/pfx4:Message"/>
+                    </pfx4:Message>
+                    <pfx4:StudentDetails>
+                        <xsl:for-each select="$Get_Student_details/pfx4:StudentDetailsResp/pfx4:StudentDetails/pfx4:Edu.Institutes">
+                            <pfx4:Edu.Institutes>
+                                <pfx4:Instit_Id>
+                                    <xsl:value-of select="pfx4:Instit_Id"/>
+                                </pfx4:Instit_Id>
+                                <pfx4:InstitName>
+                                    <xsl:value-of select="pfx4:InstitName"/>
+                                </pfx4:InstitName>
+                                <pfx4:Instit_address>
+                                    <xsl:value-of select="pfx4:Instit_address"/>
+                                </pfx4:Instit_address>
+                                <pfx4:Instit_mobnum>
+                                    <xsl:value-of select="pfx4:Instit_mobnum"/>
+                                </pfx4:Instit_mobnum>
+                                <pfx4:Instit_locations>
+                                    <xsl:value-of select="pfx4:Instit_locations"/>
+                                </pfx4:Instit_locations>
+                                <pfx4:specialzation>
+                                    <xsl:value-of select="pfx4:specialzation"/>
+                                </pfx4:specialzation>
+                            </pfx4:Edu.Institutes>
+                        </xsl:for-each>
+                    </pfx4:StudentDetails>
+                </pfx4:StudentDetailsResp>
+            </ns:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Get_Student_details">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>354</pd:x>
+        <pd:y>111</pd:y>
+        <config>
+            <processName>/SmartCity_Project/USER_MODULE/STUDENT/main/Get_Student_details.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx2:UserReq>
+                <pfx2:Search_criteria>
+                    <xsl:value-of select="$Parse-JSON/ns:ActivityOutputClass/pfx2:UserReq/pfx2:Search_criteria"/>
+                </pfx2:Search_criteria>
+            </pfx2:UserReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Parse JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Render JSON</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse JSON</pd:from>
+        <pd:to>Get_Student_details</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Get_Student_details</pd:from>
+        <pd:to>Render JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

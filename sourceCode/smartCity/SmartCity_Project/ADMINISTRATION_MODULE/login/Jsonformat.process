@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" xmlns:custom_func="java://Custom.Custom" xmlns:pfx="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:ns1="http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions" xmlns:ns3="http://www.tibco.com/pe/EngineTypes" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" xmlns:pfx4="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" xmlns:pfx6="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/CommonModel/LogException/Schema.xsd">
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/BusinessSchema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/BusinessSchema/BusinessResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/Adminschema/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Adminschema/Create_NewAdminResp.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/NewAdminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/schema/Adminschema/Create_NewAdminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/Adminschema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminReq.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Project/CommonModel/schema/common/Schema.xsd" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/common/xml_json.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/smatcity/SmartCity_Schema/Adminschema/Schema.xsd2" schemaLocation="/SmartCity_Project/CommonModel/AdminSchema/Adminschema/adminResp.xsd"/>
+    <pd:name>SmartCity_Project/ADMINISTRATION_MODULE/login/Jsonformat.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:convert"/>
+    <pd:startX>57</pd:startX>
+    <pd:startY>98</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="exists($_error/ns3:ErrorReport)">
+                <PAYLOAD>
+                    <xsl:value-of select="$Error_JsonResponse/ns2:ActivityOutputClass/jsonString"/>
+                </PAYLOAD>
+            </xsl:when>
+            <xsl:otherwise>
+                <PAYLOAD>
+                    <xsl:value-of select="$JSON_Response/ns2:ActivityOutputClass/jsonString"/>
+                </PAYLOAD>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="PAYLOAD" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>735</pd:endX>
+    <pd:endY>101</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Correlatn_Id>
+            <xsd:element name="Correlatn_Id" type="xsd:string"/>
+        </Correlatn_Id>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1681388461088</pd:targetNamespace>
+    <pd:activity name="Json_Request">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>314</pd:x>
+        <pd:y>98</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>true</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx4:AdminReq"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$Start/pfx:convert/pfx:payload"/>
+                </jsonString>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JSON_Response">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>527</pd:x>
+        <pd:y>100</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="pfx5:AdminResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <pfx5:AdminResp>
+                    <pfx5:status>
+                        <xsl:value-of select="$Admin_login/pfx5:AdminResp/pfx5:status"/>
+                    </pfx5:status>
+                    <pfx5:message>
+                        <xsl:value-of select="$Admin_login/pfx5:AdminResp/pfx5:message"/>
+                    </pfx5:message>
+                </pfx5:AdminResp>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Admin_login">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>421</pd:x>
+        <pd:y>98</pd:y>
+        <config>
+            <processName>/SmartCity_Project/ADMINISTRATION_MODULE/login/Admin_login.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx4:AdminReq>
+                <pfx4:AdminId>
+                    <xsl:value-of select="$Json_Request/ns2:ActivityOutputClass/pfx4:AdminReq/pfx4:AdminId"/>
+                </pfx4:AdminId>
+                <pfx4:Password>
+                    <xsl:value-of select="$Json_Request/ns2:ActivityOutputClass/pfx4:AdminReq/pfx4:Password"/>
+                </pfx4:Password>
+            </pfx4:AdminReq>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>353</pd:x>
+        <pd:y>231</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="errorlogs">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>450</pd:x>
+        <pd:y>233</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/errorlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx6:ExceptionHandler>
+                <xsl:if test="$startlog/pfx6:LogHandler/pfx6:ApplictionName">
+                    <pfx6:ApplictionName>
+                        <xsl:value-of select="$startlog/pfx6:LogHandler/pfx6:ApplictionName"/>
+                    </pfx6:ApplictionName>
+                </xsl:if>
+                <xsl:if test="$startlog/pfx6:LogHandler/pfx6:ProcessName">
+                    <pfx6:ProcessName>
+                        <xsl:value-of select="$startlog/pfx6:LogHandler/pfx6:ProcessName"/>
+                    </pfx6:ProcessName>
+                </xsl:if>
+                <pfx6:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </pfx6:CorrelationID>
+                <pfx6:Status>
+                    <xsl:value-of select="&quot;failed&quot;"/>
+                </pfx6:Status>
+                <pfx6:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </pfx6:LogType>
+                <xsl:if test="$startlog/pfx6:LogHandler/pfx6:Current_Timestamp">
+                    <pfx6:Current_Timestamp>
+                        <xsl:value-of select="$startlog/pfx6:LogHandler/pfx6:Current_Timestamp"/>
+                    </pfx6:Current_Timestamp>
+                </xsl:if>
+                <pfx6:Exception>
+                    <pfx6:ErrorCode>
+                        <xsl:value-of select="$_error/ns3:ErrorReport/MsgCode"/>
+                    </pfx6:ErrorCode>
+                    <pfx6:ErrorMsg>
+                        <xsl:value-of select="$_error/ns3:ErrorReport/Msg"/>
+                    </pfx6:ErrorMsg>
+                    <pfx6:StackTrace>
+                        <xsl:value-of select="$_error/ns3:ErrorReport/StackTrace"/>
+                    </pfx6:StackTrace>
+                </pfx6:Exception>
+            </pfx6:ExceptionHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Error_JsonResponse">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>551</pd:x>
+        <pd:y>231</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <removeRootElementForInput>true</removeRootElementForInput>
+            <ActivityInputEditor ref="pfx5:AdminResp"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <pfx5:AdminResp>
+                    <pfx5:status>
+                        <xsl:value-of select="$errorlogs/pfx6:ExceptionHandler/pfx6:Status"/>
+                    </pfx5:status>
+                    <pfx5:message>
+                        <xsl:value-of select="$errorlogs/pfx6:ExceptionHandler/pfx6:Exception/pfx6:ErrorMsg"/>
+                    </pfx5:message>
+                </pfx5:AdminResp>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="startlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>223</pd:x>
+        <pd:y>99</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx6:LogHandler>
+                <pfx6:ApplictionName>
+                    <xsl:value-of select="&quot;Administration&quot;"/>
+                </pfx6:ApplictionName>
+                <pfx6:ProcessName>
+                    <xsl:value-of select="&quot;Admin_login&quot;"/>
+                </pfx6:ProcessName>
+                <pfx6:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </pfx6:CorrelationID>
+                <pfx6:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </pfx6:Status>
+                <pfx6:LogType>
+                    <xsl:value-of select="&quot;startlog&quot;"/>
+                </pfx6:LogType>
+                <pfx6:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </pfx6:Current_Timestamp>
+                <pfx6:Payload>
+                    <xsl:value-of select="string($Start/pfx:convert)"/>
+                </pfx6:Payload>
+            </pfx6:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SetUUID">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>139</pd:x>
+        <pd:y>100</pd:y>
+        <config>
+            <variableName>Correlatn_Id</variableName>
+        </config>
+        <pd:inputBindings>
+            <Correlatn_Id>
+                <xsl:value-of select="custom_func:getUUID()"/>
+            </Correlatn_Id>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="endlog">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>621</pd:x>
+        <pd:y>99</pd:y>
+        <config>
+            <processName>/Common_Framework_Sh/logexceptionproccess/commonlogs.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx6:LogHandler>
+                <pfx6:ApplictionName>
+                    <xsl:value-of select="&quot;Administration&quot;"/>
+                </pfx6:ApplictionName>
+                <pfx6:ProcessName>
+                    <xsl:value-of select="&quot;Admin_login&quot;"/>
+                </pfx6:ProcessName>
+                <pfx6:CorrelationID>
+                    <xsl:value-of select="$Correlatn_Id/Correlatn_Id"/>
+                </pfx6:CorrelationID>
+                <pfx6:Status>
+                    <xsl:value-of select="&quot;success&quot;"/>
+                </pfx6:Status>
+                <pfx6:LogType>
+                    <xsl:value-of select="&quot;endlog&quot;"/>
+                </pfx6:LogType>
+                <pfx6:Current_Timestamp>
+                    <xsl:value-of select="current-dateTime()"/>
+                </pfx6:Current_Timestamp>
+                <pfx6:Payload>
+                    <xsl:value-of select="string($Start/pfx:convert)"/>
+                </pfx6:Payload>
+            </pfx6:LogHandler>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Json_Request</pd:from>
+        <pd:to>Admin_login</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Admin_login</pd:from>
+        <pd:to>JSON_Response</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>errorlogs</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>errorlogs</pd:from>
+        <pd:to>Error_JsonResponse</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Error_JsonResponse</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SetUUID</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SetUUID</pd:from>
+        <pd:to>startlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>startlog</pd:from>
+        <pd:to>Json_Request</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JSON_Response</pd:from>
+        <pd:to>endlog</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>endlog</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
