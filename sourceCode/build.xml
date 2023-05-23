@@ -4,7 +4,7 @@
     <property name="Appmanage" value="C:\tibco_5.10\tra\5.7\bin\AppManage.exe" />
     <property name="build.dir" value="${basedir}/smartCity/Deployables" />
     <property name="app.name" value="smartCity" />
-<property name="project.bw.application" value="${basedir/smartCity" />
+<property name="project.bw.application" value="${basedir}/smartCity" />
     <!-- Define targets -->
 	
    
